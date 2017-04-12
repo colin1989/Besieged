@@ -1,0 +1,18 @@
+Mapping = {
+	message = "app.constants.message",
+	operate_types = "app.constants.operate_types",
+	unit_types = "app.constants.unit_types",
+	DB_Building = "app.db.DB_Building",
+	DBManager = "app.managers.DB_Building",
+	ModuleManager = "app.managers.ModuleManager",
+	MapManager = "app.managers.MapManager",
+	NotificationManager = "app.managers.NotificationManager",
+	Building = "app.models.Building",
+	MapLogicInfo = "app.models.MapLogicInfo",
+	Unit = "app.models.Unit",
+	UnitFactory = "app.models.UnitFactory",
+	MapLayer = "app.views.MapLayer",
+	TouchDispatcher = "app.views.TouchDispatcher",
+	ZoomLayer = "app.views.ZoomLayer",
+	MapUtils = "app.utils.MapUtils",
+}

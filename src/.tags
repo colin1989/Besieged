@@ -1,0 +1,929 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+) return string.find	cocos/cocos2d/functions.lua	/^    for st,sp in function() return string.find(input, delimiter, pos, true) end do$/;"	f
+AppBase:createView	packages/mvc/AppBase.lua	/^function AppBase:createView(name)$/;"	f
+AppBase:ctor	packages/mvc/AppBase.lua	/^function AppBase:ctor(configs)$/;"	f
+AppBase:enterScene	packages/mvc/AppBase.lua	/^function AppBase:enterScene(sceneName, transition, time, more)$/;"	f
+AppBase:onCreate	packages/mvc/AppBase.lua	/^function AppBase:onCreate()$/;"	f
+AppBase:run	packages/mvc/AppBase.lua	/^function AppBase:run(initSceneName)$/;"	f
+CCAnimationCacheDeprecated.addAnimationsWithFile	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCAnimationCacheDeprecated.addAnimationsWithFile(self,...)$/;"	f
+CCAnimationCacheDeprecated.animationByName	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCAnimationCacheDeprecated.animationByName(self,...)$/;"	f
+CCAnimationCacheDeprecated.purgeSharedAnimationCache	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCAnimationCacheDeprecated.purgeSharedAnimationCache()$/;"	f
+CCAnimationCacheDeprecated.removeAnimationByName	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCAnimationCacheDeprecated.removeAnimationByName(self)$/;"	f
+CCAnimationCacheDeprecated.sharedAnimationCache	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCAnimationCacheDeprecated.sharedAnimationCache()$/;"	f
+CCAnimationDeprecated.addSpriteFrameWithFileName	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCAnimationDeprecated.addSpriteFrameWithFileName(self,...)$/;"	f
+CCApplicationDeprecated.sharedApplication	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCApplicationDeprecated.sharedApplication()$/;"	f
+CCArmatureDataManagerDeprecated.purge	cocos/cocostudio/DeprecatedCocoStudioFunc.lua	/^function CCArmatureDataManagerDeprecated.purge()$/;"	f
+CCArmatureDataManagerDeprecated.sharedArmatureDataManager	cocos/cocostudio/DeprecatedCocoStudioFunc.lua	/^function CCArmatureDataManagerDeprecated.sharedArmatureDataManager()$/;"	f
+CCBReaderLoad	cocos/cocosbuilder/CCBReaderLoad.lua	/^function CCBReaderLoad(strFilePath,proxy,owner)$/;"	f
+CCBuilderReaderLoad	cocos/cocosbuilder/CCBReaderLoad.lua	/^local function CCBuilderReaderLoad(strFilePath,proxy,owner)$/;"	f
+CCControlDeprecated.addHandleOfControlEvent	cocos/extension/DeprecatedExtensionFunc.lua	/^function CCControlDeprecated.addHandleOfControlEvent(self,func,controlEvent)$/;"	f
+CCDirectorDeprecated.sharedDirector	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCDirectorDeprecated.sharedDirector()$/;"	f
+CCDrawPrimitivesClassDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function CCDrawPrimitivesClassDeprecated()$/;"	f
+CCDrawPrimitivesDeprecated.ccDrawCardinalSpline	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCDrawPrimitivesDeprecated.ccDrawCardinalSpline(config,tension,segments)$/;"	f
+CCDrawPrimitivesDeprecated.ccDrawCatmullRom	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCDrawPrimitivesDeprecated.ccDrawCatmullRom(arrayOfControlPoints,segments)$/;"	f
+CCDrawPrimitivesDeprecated.ccDrawCircle	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCDrawPrimitivesDeprecated.ccDrawCircle(center,radius,angle,segments,drawLineToCenter,...)$/;"	f
+CCDrawPrimitivesDeprecated.ccDrawColor4B	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCDrawPrimitivesDeprecated.ccDrawColor4B(r,g,b,a)$/;"	f
+CCDrawPrimitivesDeprecated.ccDrawColor4F	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCDrawPrimitivesDeprecated.ccDrawColor4F(r,g,b,a)$/;"	f
+CCDrawPrimitivesDeprecated.ccDrawCubicBezier	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCDrawPrimitivesDeprecated.ccDrawCubicBezier(origin,control1,control2,destination,segments)$/;"	f
+CCDrawPrimitivesDeprecated.ccDrawLine	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCDrawPrimitivesDeprecated.ccDrawLine(origin,destination)$/;"	f
+CCDrawPrimitivesDeprecated.ccDrawPoint	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCDrawPrimitivesDeprecated.ccDrawPoint(pt)$/;"	f
+CCDrawPrimitivesDeprecated.ccDrawQuadBezier	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCDrawPrimitivesDeprecated.ccDrawQuadBezier(origin,control,destination,segments)$/;"	f
+CCDrawPrimitivesDeprecated.ccDrawRect	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCDrawPrimitivesDeprecated.ccDrawRect(origin,destination)$/;"	f
+CCDrawPrimitivesDeprecated.ccDrawSolidCircle	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCDrawPrimitivesDeprecated.ccDrawSolidCircle(center,radius,angle,segments,...)$/;"	f
+CCDrawPrimitivesDeprecated.ccDrawSolidRect	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCDrawPrimitivesDeprecated.ccDrawSolidRect(origin,destination,color)$/;"	f
+CCDrawPrimitivesDeprecated.ccPointSize	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCDrawPrimitivesDeprecated.ccPointSize(pointSize)$/;"	f
+CCFileUtilsDeprecated.purgeFileUtils	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCFileUtilsDeprecated.purgeFileUtils()$/;"	f
+CCFileUtilsDeprecated.sharedFileUtils	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCFileUtilsDeprecated.sharedFileUtils()$/;"	f
+CCGrid3DActionDeprecated.originalVertex	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCGrid3DActionDeprecated.originalVertex(self,pt)$/;"	f
+CCGrid3DActionDeprecated.vertex	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCGrid3DActionDeprecated.vertex(self,pt)$/;"	f
+CCLabelAtlasDeprecated.create	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCLabelAtlasDeprecated.create(self,...)$/;"	f
+CCLayerDeprecated.isKeypadEnabled	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCLayerDeprecated.isKeypadEnabled(self)$/;"	f
+CCLayerDeprecated.setKeypadEnabled	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCLayerDeprecated.setKeypadEnabled( self, enabled)$/;"	f
+CCMenuDeprecated.createWithItem	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCMenuDeprecated.createWithItem(self,...)$/;"	f
+CCMenuDeprecated.setHandlerPriority	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCMenuDeprecated.setHandlerPriority(self)$/;"	f
+CCMenuItemFontDeprecated.fontName	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCMenuItemFontDeprecated.fontName()$/;"	f
+CCMenuItemFontDeprecated.fontNameObj	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCMenuItemFontDeprecated.fontNameObj(self)$/;"	f
+CCMenuItemFontDeprecated.fontSize	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCMenuItemFontDeprecated.fontSize()$/;"	f
+CCMenuItemFontDeprecated.fontSizeObj	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCMenuItemFontDeprecated.fontSizeObj(self)$/;"	f
+CCMenuItemToggleDeprecated.selectedItem	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCMenuItemToggleDeprecated.selectedItem(self)$/;"	f
+CCNodeDeprecated.boundingBox	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCNodeDeprecated.boundingBox(self)$/;"	f
+CCNodeDeprecated.numberOfRunningActions	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCNodeDeprecated.numberOfRunningActions(self)$/;"	f
+CCNodeDeprecated.removeFromParentAndCleanup	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCNodeDeprecated.removeFromParentAndCleanup(self,...)$/;"	f
+CCPointMake	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function CCPointMake(x,y)$/;"	f
+CCProgressTimerDeprecated.setReverseProgress	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCProgressTimerDeprecated.setReverseProgress(self,...)$/;"	f
+CCRectMake	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function CCRectMake(x,y,width,height)$/;"	f
+CCRenderTextureDeprecated.newCCImage	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCRenderTextureDeprecated.newCCImage(self)$/;"	f
+CCSActionManagerExDeprecated.destroyActionManager	cocos/cocostudio/DeprecatedCocoStudioFunc.lua	/^function CCSActionManagerExDeprecated.destroyActionManager()$/;"	f
+CCSGUIReaderDeprecated.purgeGUIReader	cocos/cocostudio/DeprecatedCocoStudioFunc.lua	/^function CCSGUIReaderDeprecated.purgeGUIReader()$/;"	f
+CCSSceneReaderDeprecated.destroySceneReader	cocos/cocostudio/DeprecatedCocoStudioFunc.lua	/^function CCSSceneReaderDeprecated.destroySceneReader(self)$/;"	f
+CCSizeMake	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function CCSizeMake(width,height)$/;"	f
+CCSpriteDeprecated.setFlipX	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCSpriteDeprecated.setFlipX(self,flag)$/;"	f
+CCSpriteDeprecated.setFlipY	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCSpriteDeprecated.setFlipY(self,flag)$/;"	f
+CCSpriteFrameCacheDeprecated.addSpriteFramesWithFile	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCSpriteFrameCacheDeprecated.addSpriteFramesWithFile(self,...)$/;"	f
+CCSpriteFrameCacheDeprecated.getSpriteFrameByName	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCSpriteFrameCacheDeprecated.getSpriteFrameByName(self,...)$/;"	f
+CCSpriteFrameCacheDeprecated.purgeSharedSpriteFrameCache	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCSpriteFrameCacheDeprecated.purgeSharedSpriteFrameCache()$/;"	f
+CCSpriteFrameCacheDeprecated.sharedSpriteFrameCache	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCSpriteFrameCacheDeprecated.sharedSpriteFrameCache()$/;"	f
+CCSpriteFrameCacheDeprecated.spriteFrameByName	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCSpriteFrameCacheDeprecated.spriteFrameByName(self,szName)$/;"	f
+CCTMXLayerDeprecated.positionAt	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTMXLayerDeprecated.positionAt(self,tileCoordinate)$/;"	f
+CCTMXLayerDeprecated.propertyNamed	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTMXLayerDeprecated.propertyNamed(self,propertyName)$/;"	f
+CCTMXLayerDeprecated.tileAt	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTMXLayerDeprecated.tileAt(self,tileCoordinate)$/;"	f
+CCTMXLayerDeprecated.tileGIDAt	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTMXLayerDeprecated.tileGIDAt(self,tileCoordinate)$/;"	f
+CCTMXMapInfoDeprecated.formatWithTMXFile	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTMXMapInfoDeprecated.formatWithTMXFile(infoTable,tmxFile)$/;"	f
+CCTMXMapInfoDeprecated.formatWithXML	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTMXMapInfoDeprecated.formatWithXML(infoTable,tmxString,resourcePath)$/;"	f
+CCTMXMapInfoDeprecated.getStoringCharacters	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTMXMapInfoDeprecated.getStoringCharacters(self)$/;"	f
+CCTMXObjectGroupDeprecated.objectNamed	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTMXObjectGroupDeprecated.objectNamed(self, objectName)$/;"	f
+CCTMXObjectGroupDeprecated.propertyNamed	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTMXObjectGroupDeprecated.propertyNamed(self,propertyName)$/;"	f
+CCTMXTiledMapDeprecated.layerNamed	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTMXTiledMapDeprecated.layerNamed(self,layerName)$/;"	f
+CCTMXTiledMapDeprecated.objectGroupNamed	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTMXTiledMapDeprecated.objectGroupNamed(self,groupName)$/;"	f
+CCTMXTiledMapDeprecated.propertiesForGID	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTMXTiledMapDeprecated.propertiesForGID(self,GID)$/;"	f
+CCTMXTiledMapDeprecated.propertyNamed	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTMXTiledMapDeprecated.propertyNamed(self,propertyName)$/;"	f
+CCTexture2DDeprecated.bitsPerPixelForFormat	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTexture2DDeprecated.bitsPerPixelForFormat(self)$/;"	f
+CCTexture2DDeprecated.bitsPerPixelForFormat	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTexture2DDeprecated.bitsPerPixelForFormat(self,pixelFormat)$/;"	f
+CCTexture2DDeprecated.defaultAlphaPixelFormat	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTexture2DDeprecated.defaultAlphaPixelFormat(self)$/;"	f
+CCTexture2DDeprecated.stringForFormat	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTexture2DDeprecated.stringForFormat(self)$/;"	f
+CCTextureCacheDeprecated.addUIImage	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTextureCacheDeprecated.addUIImage(self, image, key)$/;"	f
+CCTextureCacheDeprecated.purgeSharedTextureCache	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTextureCacheDeprecated.purgeSharedTextureCache()$/;"	f
+CCTextureCacheDeprecated.sharedTextureCache	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTextureCacheDeprecated.sharedTextureCache()$/;"	f
+CCTileMapAtlasDeprecated.tileAt	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTileMapAtlasDeprecated.tileAt(self,pos)$/;"	f
+CCTiledGrid3DActionDeprecated.originalTile	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTiledGrid3DActionDeprecated.originalTile(self,pt)$/;"	f
+CCTiledGrid3DActionDeprecated.tile	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTiledGrid3DActionDeprecated.tile(self,pt)$/;"	f
+CCTimerDeprecated.numberOfRunningActionsInTarget	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTimerDeprecated.numberOfRunningActionsInTarget(self,target)$/;"	f
+CCTimerDeprecated.timerWithScriptHandler	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCTimerDeprecated.timerWithScriptHandler(handler,seconds)$/;"	f
+CCUserDefaultDeprecated.purgeSharedUserDefault	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCUserDefaultDeprecated.purgeSharedUserDefault()$/;"	f
+CCUserDefaultDeprecated.sharedUserDefault	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function CCUserDefaultDeprecated.sharedUserDefault()$/;"	f
+CheckBox:onEvent	cocos/framework/extends/UICheckBox.lua	/^function CheckBox:onEvent(callback)$/;"	f
+DeprecatedClass.CCAction	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCAction()$/;"	f
+DeprecatedClass.CCActionCamera	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCActionCamera()$/;"	f
+DeprecatedClass.CCActionEase	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCActionEase()$/;"	f
+DeprecatedClass.CCActionInstant	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCActionInstant()$/;"	f
+DeprecatedClass.CCActionInterval	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCActionInterval()$/;"	f
+DeprecatedClass.CCActionManager	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCActionManager()$/;"	f
+DeprecatedClass.CCActionTween	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCActionTween()$/;"	f
+DeprecatedClass.CCAnimate	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCAnimate()$/;"	f
+DeprecatedClass.CCAnimation	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCAnimation()$/;"	f
+DeprecatedClass.CCAnimationCache	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCAnimationCache()$/;"	f
+DeprecatedClass.CCAnimationFrame	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCAnimationFrame()$/;"	f
+DeprecatedClass.CCApplication	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCApplication()$/;"	f
+DeprecatedClass.CCAtlasNode	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCAtlasNode()$/;"	f
+DeprecatedClass.CCBezierBy	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCBezierBy()$/;"	f
+DeprecatedClass.CCBezierTo	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCBezierTo()$/;"	f
+DeprecatedClass.CCBlink	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCBlink()$/;"	f
+DeprecatedClass.CCCallFunc	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCCallFunc()$/;"	f
+DeprecatedClass.CCCallFuncN	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCCallFuncN()$/;"	f
+DeprecatedClass.CCCamera	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCCamera()$/;"	f
+DeprecatedClass.CCCardinalSplineBy	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCCardinalSplineBy()$/;"	f
+DeprecatedClass.CCCardinalSplineTo	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCCardinalSplineTo()$/;"	f
+DeprecatedClass.CCCatmullRomBy	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCCatmullRomBy()$/;"	f
+DeprecatedClass.CCCatmullRomTo	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCCatmullRomTo()$/;"	f
+DeprecatedClass.CCClippingNode	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCClippingNode()$/;"	f
+DeprecatedClass.CCDelayTime	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCDelayTime()$/;"	f
+DeprecatedClass.CCDirector	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCDirector()$/;"	f
+DeprecatedClass.CCDrawNode	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCDrawNode()$/;"	f
+DeprecatedClass.CCEGLView	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEGLView()$/;"	f
+DeprecatedClass.CCEGLViewProtocol	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEGLViewProtocol()$/;"	f
+DeprecatedClass.CCEaseBackIn	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseBackIn()$/;"	f
+DeprecatedClass.CCEaseBackInOut	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseBackInOut()$/;"	f
+DeprecatedClass.CCEaseBackOut	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseBackOut()$/;"	f
+DeprecatedClass.CCEaseBounce	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseBounce()$/;"	f
+DeprecatedClass.CCEaseBounceIn	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseBounceIn()$/;"	f
+DeprecatedClass.CCEaseBounceInOut	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseBounceInOut()$/;"	f
+DeprecatedClass.CCEaseBounceOut	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseBounceOut()$/;"	f
+DeprecatedClass.CCEaseElastic	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseElastic()$/;"	f
+DeprecatedClass.CCEaseElasticIn	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseElasticIn()$/;"	f
+DeprecatedClass.CCEaseElasticInOut	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseElasticInOut()$/;"	f
+DeprecatedClass.CCEaseElasticOut	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseElasticOut()$/;"	f
+DeprecatedClass.CCEaseExponentialIn	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseExponentialIn()$/;"	f
+DeprecatedClass.CCEaseExponentialInOut	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseExponentialInOut()$/;"	f
+DeprecatedClass.CCEaseExponentialOut	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseExponentialOut()$/;"	f
+DeprecatedClass.CCEaseIn	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseIn()$/;"	f
+DeprecatedClass.CCEaseInOut	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseInOut()$/;"	f
+DeprecatedClass.CCEaseOut	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseOut()$/;"	f
+DeprecatedClass.CCEaseRateAction	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseRateAction()$/;"	f
+DeprecatedClass.CCEaseSineIn	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseSineIn()$/;"	f
+DeprecatedClass.CCEaseSineInOut	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseSineInOut()$/;"	f
+DeprecatedClass.CCEaseSineOut	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCEaseSineOut()$/;"	f
+DeprecatedClass.CCFadeIn	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCFadeIn()$/;"	f
+DeprecatedClass.CCFadeOut	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCFadeOut()$/;"	f
+DeprecatedClass.CCFadeOutBLTiles	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCFadeOutBLTiles()$/;"	f
+DeprecatedClass.CCFadeOutDownTiles	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCFadeOutDownTiles()$/;"	f
+DeprecatedClass.CCFadeOutTRTiles	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCFadeOutTRTiles()$/;"	f
+DeprecatedClass.CCFadeOutUpTiles	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCFadeOutUpTiles()$/;"	f
+DeprecatedClass.CCFadeTo	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCFadeTo()$/;"	f
+DeprecatedClass.CCFileUtils	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCFileUtils()$/;"	f
+DeprecatedClass.CCFiniteTimeAction	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCFiniteTimeAction()$/;"	f
+DeprecatedClass.CCFlipX	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCFlipX()$/;"	f
+DeprecatedClass.CCFlipX3D	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCFlipX3D()$/;"	f
+DeprecatedClass.CCFlipY	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCFlipY()$/;"	f
+DeprecatedClass.CCFlipY3D	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCFlipY3D()$/;"	f
+DeprecatedClass.CCFollow	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCFollow()$/;"	f
+DeprecatedClass.CCGLProgram	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCGLProgram()$/;"	f
+DeprecatedClass.CCGrid3D	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCGrid3D()$/;"	f
+DeprecatedClass.CCGrid3DAction	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCGrid3DAction()$/;"	f
+DeprecatedClass.CCGridAction	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCGridAction()$/;"	f
+DeprecatedClass.CCGridBase	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCGridBase()$/;"	f
+DeprecatedClass.CCHide	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCHide()$/;"	f
+DeprecatedClass.CCImage	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCImage()$/;"	f
+DeprecatedClass.CCJumpBy	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCJumpBy()$/;"	f
+DeprecatedClass.CCJumpTiles3D	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCJumpTiles3D()$/;"	f
+DeprecatedClass.CCJumpTo	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCJumpTo()$/;"	f
+DeprecatedClass.CCLabel	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCLabel()$/;"	f
+DeprecatedClass.CCLabelAtlas	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCLabelAtlas()$/;"	f
+DeprecatedClass.CCLabelBMFont	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCLabelBMFont()$/;"	f
+DeprecatedClass.CCLabelTTF	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCLabelTTF()$/;"	f
+DeprecatedClass.CCLayer	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCLayer()$/;"	f
+DeprecatedClass.CCLayerColor	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCLayerColor()$/;"	f
+DeprecatedClass.CCLayerGradient	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCLayerGradient()$/;"	f
+DeprecatedClass.CCLayerMultiplex	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCLayerMultiplex()$/;"	f
+DeprecatedClass.CCLayerRGBA	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCLayerRGBA()$/;"	f
+DeprecatedClass.CCLens3D	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCLens3D()$/;"	f
+DeprecatedClass.CCLiquid	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCLiquid()$/;"	f
+DeprecatedClass.CCMenu	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCMenu()$/;"	f
+DeprecatedClass.CCMenuItem	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCMenuItem()$/;"	f
+DeprecatedClass.CCMenuItemAtlasFont	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCMenuItemAtlasFont()$/;"	f
+DeprecatedClass.CCMenuItemFont	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCMenuItemFont()$/;"	f
+DeprecatedClass.CCMenuItemImage	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCMenuItemImage()$/;"	f
+DeprecatedClass.CCMenuItemLabel	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCMenuItemLabel()$/;"	f
+DeprecatedClass.CCMenuItemSprite	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCMenuItemSprite()$/;"	f
+DeprecatedClass.CCMenuItemToggle	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCMenuItemToggle()$/;"	f
+DeprecatedClass.CCMotionStreak	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCMotionStreak()$/;"	f
+DeprecatedClass.CCMoveBy	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCMoveBy()$/;"	f
+DeprecatedClass.CCMoveTo	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCMoveTo()$/;"	f
+DeprecatedClass.CCNode	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCNode()$/;"	f
+DeprecatedClass.CCNodeRGBA	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCNodeRGBA()$/;"	f
+DeprecatedClass.CCObject	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCObject()$/;"	f
+DeprecatedClass.CCOrbitCamera	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCOrbitCamera()$/;"	f
+DeprecatedClass.CCPageTurn3D	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCPageTurn3D()$/;"	f
+DeprecatedClass.CCParallaxNode	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCParallaxNode()$/;"	f
+DeprecatedClass.CCParticleBatchNode	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCParticleBatchNode()$/;"	f
+DeprecatedClass.CCParticleExplosion	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCParticleExplosion()$/;"	f
+DeprecatedClass.CCParticleFire	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCParticleFire()$/;"	f
+DeprecatedClass.CCParticleFireworks	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCParticleFireworks()$/;"	f
+DeprecatedClass.CCParticleFlower	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCParticleFlower()$/;"	f
+DeprecatedClass.CCParticleGalaxy	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCParticleGalaxy()$/;"	f
+DeprecatedClass.CCParticleMeteor	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCParticleMeteor()$/;"	f
+DeprecatedClass.CCParticleRain	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCParticleRain()$/;"	f
+DeprecatedClass.CCParticleSmoke	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCParticleSmoke()$/;"	f
+DeprecatedClass.CCParticleSnow	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCParticleSnow()$/;"	f
+DeprecatedClass.CCParticleSpiral	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCParticleSpiral()$/;"	f
+DeprecatedClass.CCParticleSun	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCParticleSun()$/;"	f
+DeprecatedClass.CCParticleSystem	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCParticleSystem()$/;"	f
+DeprecatedClass.CCParticleSystemQuad	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCParticleSystemQuad()$/;"	f
+DeprecatedClass.CCPlace	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCPlace()$/;"	f
+DeprecatedClass.CCProgressFromTo	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCProgressFromTo()$/;"	f
+DeprecatedClass.CCProgressTimer	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCProgressTimer()$/;"	f
+DeprecatedClass.CCProgressTo	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCProgressTo()$/;"	f
+DeprecatedClass.CCRemoveSelf	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCRemoveSelf()$/;"	f
+DeprecatedClass.CCRenderTexture	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCRenderTexture()$/;"	f
+DeprecatedClass.CCRepeat	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCRepeat()$/;"	f
+DeprecatedClass.CCRepeatForever	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCRepeatForever()$/;"	f
+DeprecatedClass.CCReuseGrid	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCReuseGrid()$/;"	f
+DeprecatedClass.CCRipple3D	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCRipple3D()$/;"	f
+DeprecatedClass.CCRotateBy	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCRotateBy()$/;"	f
+DeprecatedClass.CCRotateTo	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCRotateTo()$/;"	f
+DeprecatedClass.CCScaleBy	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCScaleBy()$/;"	f
+DeprecatedClass.CCScaleTo	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCScaleTo()$/;"	f
+DeprecatedClass.CCScene	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCScene()$/;"	f
+DeprecatedClass.CCScheduler	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCScheduler()$/;"	f
+DeprecatedClass.CCSequence	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCSequence()$/;"	f
+DeprecatedClass.CCSet	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCSet()$/;"	f
+DeprecatedClass.CCShaderCache	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCShaderCache()$/;"	f
+DeprecatedClass.CCShaky3D	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCShaky3D()$/;"	f
+DeprecatedClass.CCShakyTiles3D	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCShakyTiles3D()$/;"	f
+DeprecatedClass.CCShatteredTiles3D	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCShatteredTiles3D()$/;"	f
+DeprecatedClass.CCShow	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCShow()$/;"	f
+DeprecatedClass.CCShuffleTiles	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCShuffleTiles()$/;"	f
+DeprecatedClass.CCSkewBy	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCSkewBy()$/;"	f
+DeprecatedClass.CCSkewTo	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCSkewTo()$/;"	f
+DeprecatedClass.CCSpawn	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCSpawn()$/;"	f
+DeprecatedClass.CCSpeed	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCSpeed()$/;"	f
+DeprecatedClass.CCSplitCols	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCSplitCols()$/;"	f
+DeprecatedClass.CCSplitRows	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCSplitRows()$/;"	f
+DeprecatedClass.CCSprite	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCSprite()$/;"	f
+DeprecatedClass.CCSpriteBatchNode	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCSpriteBatchNode()$/;"	f
+DeprecatedClass.CCSpriteFrame	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCSpriteFrame()$/;"	f
+DeprecatedClass.CCSpriteFrameCache	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCSpriteFrameCache()$/;"	f
+DeprecatedClass.CCStopGrid	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCStopGrid()$/;"	f
+DeprecatedClass.CCTMXLayer	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTMXLayer()$/;"	f
+DeprecatedClass.CCTMXLayerInfo	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTMXLayerInfo()$/;"	f
+DeprecatedClass.CCTMXMapInfo	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTMXMapInfo()$/;"	f
+DeprecatedClass.CCTMXObjectGroup	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTMXObjectGroup()$/;"	f
+DeprecatedClass.CCTMXTiledMap	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTMXTiledMap()$/;"	f
+DeprecatedClass.CCTMXTilesetInfo	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTMXTilesetInfo()$/;"	f
+DeprecatedClass.CCTableViewCell	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTableViewCell()$/;"	f
+DeprecatedClass.CCTargetedAction	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTargetedAction()$/;"	f
+DeprecatedClass.CCTexture2D	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTexture2D()$/;"	f
+DeprecatedClass.CCTextureCache	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTextureCache()$/;"	f
+DeprecatedClass.CCTileMapAtlas	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTileMapAtlas()$/;"	f
+DeprecatedClass.CCTiledGrid3D	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTiledGrid3D()$/;"	f
+DeprecatedClass.CCTiledGrid3DAction	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTiledGrid3DAction()$/;"	f
+DeprecatedClass.CCTimer	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTimer()$/;"	f
+DeprecatedClass.CCTintBy	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTintBy()$/;"	f
+DeprecatedClass.CCTintTo	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTintTo()$/;"	f
+DeprecatedClass.CCToggleVisibility	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCToggleVisibility()$/;"	f
+DeprecatedClass.CCTouch	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTouch()$/;"	f
+DeprecatedClass.CCTransitionCrossFade	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionCrossFade()$/;"	f
+DeprecatedClass.CCTransitionEaseScene	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionEaseScene()$/;"	f
+DeprecatedClass.CCTransitionFade	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionFade()$/;"	f
+DeprecatedClass.CCTransitionFadeBL	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionFadeBL()$/;"	f
+DeprecatedClass.CCTransitionFadeDown	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionFadeDown()$/;"	f
+DeprecatedClass.CCTransitionFadeTR	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionFadeTR()$/;"	f
+DeprecatedClass.CCTransitionFadeUp	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionFadeUp()$/;"	f
+DeprecatedClass.CCTransitionFlipAngular	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionFlipAngular()$/;"	f
+DeprecatedClass.CCTransitionFlipX	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionFlipX()$/;"	f
+DeprecatedClass.CCTransitionFlipY	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionFlipY()$/;"	f
+DeprecatedClass.CCTransitionJumpZoom	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionJumpZoom()$/;"	f
+DeprecatedClass.CCTransitionMoveInB	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionMoveInB()$/;"	f
+DeprecatedClass.CCTransitionMoveInL	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionMoveInL()$/;"	f
+DeprecatedClass.CCTransitionMoveInR	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionMoveInR()$/;"	f
+DeprecatedClass.CCTransitionMoveInT	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionMoveInT()$/;"	f
+DeprecatedClass.CCTransitionPageTurn	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionPageTurn()$/;"	f
+DeprecatedClass.CCTransitionProgress	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionProgress()$/;"	f
+DeprecatedClass.CCTransitionProgressHorizontal	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionProgressHorizontal()$/;"	f
+DeprecatedClass.CCTransitionProgressInOut	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionProgressInOut()$/;"	f
+DeprecatedClass.CCTransitionProgressOutIn	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionProgressOutIn()$/;"	f
+DeprecatedClass.CCTransitionProgressRadialCCW	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionProgressRadialCCW()$/;"	f
+DeprecatedClass.CCTransitionProgressRadialCW	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionProgressRadialCW()$/;"	f
+DeprecatedClass.CCTransitionProgressVertical	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionProgressVertical()$/;"	f
+DeprecatedClass.CCTransitionRotoZoom	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionRotoZoom()$/;"	f
+DeprecatedClass.CCTransitionScene	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionScene()$/;"	f
+DeprecatedClass.CCTransitionSceneOriented	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionSceneOriented()$/;"	f
+DeprecatedClass.CCTransitionShrinkGrow	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionShrinkGrow()$/;"	f
+DeprecatedClass.CCTransitionSlideInB	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionSlideInB()$/;"	f
+DeprecatedClass.CCTransitionSlideInL	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionSlideInL()$/;"	f
+DeprecatedClass.CCTransitionSlideInR	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionSlideInR()$/;"	f
+DeprecatedClass.CCTransitionSlideInT	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionSlideInT()$/;"	f
+DeprecatedClass.CCTransitionSplitCols	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionSplitCols()$/;"	f
+DeprecatedClass.CCTransitionSplitRows	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionSplitRows()$/;"	f
+DeprecatedClass.CCTransitionTurnOffTiles	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionTurnOffTiles()$/;"	f
+DeprecatedClass.CCTransitionZoomFlipAngular	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionZoomFlipAngular()$/;"	f
+DeprecatedClass.CCTransitionZoomFlipX	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionZoomFlipX()$/;"	f
+DeprecatedClass.CCTransitionZoomFlipY	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTransitionZoomFlipY()$/;"	f
+DeprecatedClass.CCTurnOffTiles	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTurnOffTiles()$/;"	f
+DeprecatedClass.CCTwirl	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCTwirl()$/;"	f
+DeprecatedClass.CCUserDefault	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCUserDefault()$/;"	f
+DeprecatedClass.CCWaves	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCWaves()$/;"	f
+DeprecatedClass.CCWaves3D	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCWaves3D()$/;"	f
+DeprecatedClass.CCWavesTiles3D	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.CCWavesTiles3D()$/;"	f
+DeprecatedClass.EGLView	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.EGLView()$/;"	f
+DeprecatedClass.EGLViewProtocol	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.EGLViewProtocol()$/;"	f
+DeprecatedClass.LayerRGBA	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.LayerRGBA()$/;"	f
+DeprecatedClass.NodeRGBA	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.NodeRGBA()$/;"	f
+DeprecatedClass.ShaderCache	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.ShaderCache()$/;"	f
+DeprecatedClass.XMLHttpRequest	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^function DeprecatedClass.XMLHttpRequest()$/;"	f
+DeprecatedCocosBuilderClass.CCBAnimationManager	cocos/cocosbuilder/DeprecatedCocosBuilderClass.lua	/^function DeprecatedCocosBuilderClass.CCBAnimationManager()$/;"	f
+DeprecatedCocosBuilderClass.CCBProxy	cocos/cocosbuilder/DeprecatedCocosBuilderClass.lua	/^function DeprecatedCocosBuilderClass.CCBProxy()$/;"	f
+DeprecatedCocosBuilderClass.CCBReader	cocos/cocosbuilder/DeprecatedCocosBuilderClass.lua	/^function DeprecatedCocosBuilderClass.CCBReader()$/;"	f
+DeprecatedCocosDenshionClass.SimpleAudioEngine	cocos/cocosdenshion/DeprecatedCocosDenshionClass.lua	/^function DeprecatedCocosDenshionClass.SimpleAudioEngine()$/;"	f
+DeprecatedExtensionClass.ActionManager	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.ActionManager()$/;"	f
+DeprecatedExtensionClass.ActionObject	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.ActionObject()$/;"	f
+DeprecatedExtensionClass.CCArmature	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.CCArmature()$/;"	f
+DeprecatedExtensionClass.CCArmatureAnimation	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.CCArmatureAnimation()$/;"	f
+DeprecatedExtensionClass.CCArmatureDataManager	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.CCArmatureDataManager()$/;"	f
+DeprecatedExtensionClass.CCBaseData	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.CCBaseData()$/;"	f
+DeprecatedExtensionClass.CCBatchNode	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.CCBatchNode()$/;"	f
+DeprecatedExtensionClass.CCBone	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.CCBone()$/;"	f
+DeprecatedExtensionClass.CCComAttribute	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.CCComAttribute()$/;"	f
+DeprecatedExtensionClass.CCComAudio	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.CCComAudio()$/;"	f
+DeprecatedExtensionClass.CCComController	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.CCComController()$/;"	f
+DeprecatedExtensionClass.CCComRender	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.CCComRender()$/;"	f
+DeprecatedExtensionClass.CCControl	cocos/extension/DeprecatedExtensionClass.lua	/^function DeprecatedExtensionClass.CCControl()$/;"	f
+DeprecatedExtensionClass.CCControlButton	cocos/extension/DeprecatedExtensionClass.lua	/^function DeprecatedExtensionClass.CCControlButton()$/;"	f
+DeprecatedExtensionClass.CCControlColourPicker	cocos/extension/DeprecatedExtensionClass.lua	/^function DeprecatedExtensionClass.CCControlColourPicker()$/;"	f
+DeprecatedExtensionClass.CCControlHuePicker	cocos/extension/DeprecatedExtensionClass.lua	/^function DeprecatedExtensionClass.CCControlHuePicker()$/;"	f
+DeprecatedExtensionClass.CCControlPotentiometer	cocos/extension/DeprecatedExtensionClass.lua	/^function DeprecatedExtensionClass.CCControlPotentiometer()$/;"	f
+DeprecatedExtensionClass.CCControlSaturationBrightnessPicker	cocos/extension/DeprecatedExtensionClass.lua	/^function DeprecatedExtensionClass.CCControlSaturationBrightnessPicker()$/;"	f
+DeprecatedExtensionClass.CCControlSlider	cocos/extension/DeprecatedExtensionClass.lua	/^function DeprecatedExtensionClass.CCControlSlider()$/;"	f
+DeprecatedExtensionClass.CCControlStepper	cocos/extension/DeprecatedExtensionClass.lua	/^function DeprecatedExtensionClass.CCControlStepper()$/;"	f
+DeprecatedExtensionClass.CCControlSwitch	cocos/extension/DeprecatedExtensionClass.lua	/^function DeprecatedExtensionClass.CCControlSwitch()$/;"	f
+DeprecatedExtensionClass.CCDisplayManager	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.CCDisplayManager()$/;"	f
+DeprecatedExtensionClass.CCEditBox	cocos/extension/DeprecatedExtensionClass.lua	/^function DeprecatedExtensionClass.CCEditBox()$/;"	f
+DeprecatedExtensionClass.CCScale9Sprite	cocos/extension/DeprecatedExtensionClass.lua	/^function DeprecatedExtensionClass.CCScale9Sprite()$/;"	f
+DeprecatedExtensionClass.CCScrollView	cocos/extension/DeprecatedExtensionClass.lua	/^function DeprecatedExtensionClass.CCScrollView()$/;"	f
+DeprecatedExtensionClass.CCSkin	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.CCSkin()$/;"	f
+DeprecatedExtensionClass.CCTableView	cocos/extension/DeprecatedExtensionClass.lua	/^function DeprecatedExtensionClass.CCTableView()$/;"	f
+DeprecatedExtensionClass.CCTween	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.CCTween()$/;"	f
+DeprecatedExtensionClass.CCUIEditBox	cocos/extension/DeprecatedExtensionClass.lua	/^function DeprecatedExtensionClass.CCUIEditBox()$/;"	f
+DeprecatedExtensionClass.GUIReader	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.GUIReader()$/;"	f
+DeprecatedExtensionClass.SceneReader	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.SceneReader()$/;"	f
+DeprecatedExtensionClass.UIButton	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UIButton()$/;"	f
+DeprecatedExtensionClass.UICheckBox	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UICheckBox()$/;"	f
+DeprecatedExtensionClass.UIHelper	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UIHelper()$/;"	f
+DeprecatedExtensionClass.UIImageView	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UIImageView()$/;"	f
+DeprecatedExtensionClass.UILabel	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UILabel()$/;"	f
+DeprecatedExtensionClass.UILabelAtlas	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UILabelAtlas()$/;"	f
+DeprecatedExtensionClass.UILabelBMFont	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UILabelBMFont()$/;"	f
+DeprecatedExtensionClass.UILayer	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UILayer()$/;"	f
+DeprecatedExtensionClass.UILayout	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UILayout()$/;"	f
+DeprecatedExtensionClass.UILayoutParameter	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UILayoutParameter()$/;"	f
+DeprecatedExtensionClass.UILinearLayoutParameter	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UILinearLayoutParameter()$/;"	f
+DeprecatedExtensionClass.UIListView	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UIListView()$/;"	f
+DeprecatedExtensionClass.UILoadingBar	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UILoadingBar()$/;"	f
+DeprecatedExtensionClass.UIPageView	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UIPageView()$/;"	f
+DeprecatedExtensionClass.UIRelativeLayoutParameter	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UIRelativeLayoutParameter()$/;"	f
+DeprecatedExtensionClass.UIRootWidget	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UIRootWidget()$/;"	f
+DeprecatedExtensionClass.UIScale9Sprite	cocos/extension/DeprecatedExtensionClass.lua	/^function DeprecatedExtensionClass.UIScale9Sprite()$/;"	f
+DeprecatedExtensionClass.UIScrollView	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UIScrollView()$/;"	f
+DeprecatedExtensionClass.UISlider	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UISlider()$/;"	f
+DeprecatedExtensionClass.UITextField	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UITextField()$/;"	f
+DeprecatedExtensionClass.UIWidget	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^function DeprecatedExtensionClass.UIWidget()$/;"	f
+DeprecatedNetworkClass.WebSocket	cocos/network/DeprecatedNetworkClass.lua	/^function DeprecatedNetworkClass.WebSocket()$/;"	f
+EditBox:onEditHandler	cocos/framework/extends/UIEditBox.lua	/^function EditBox:onEditHandler(callback)$/;"	f
+EditBox:removeEditHandler	cocos/framework/extends/UIEditBox.lua	/^function EditBox:removeEditHandler()$/;"	f
+Event:bind	cocos/framework/components/event.lua	/^function Event:bind(target)$/;"	f
+Event:dispatchEvent	cocos/framework/components/event.lua	/^function Event:dispatchEvent(event)$/;"	f
+Event:dumpAllEventListeners	cocos/framework/components/event.lua	/^function Event:dumpAllEventListeners()$/;"	f
+Event:hasEventListener	cocos/framework/components/event.lua	/^function Event:hasEventListener(eventName)$/;"	f
+Event:init_	cocos/framework/components/event.lua	/^function Event:init_()$/;"	f
+Event:on	cocos/framework/components/event.lua	/^function Event:on(eventName, listener, tag)$/;"	f
+Event:removeAllEventListeners	cocos/framework/components/event.lua	/^function Event:removeAllEventListeners()$/;"	f
+Event:removeEventListener	cocos/framework/components/event.lua	/^function Event:removeEventListener(handleToRemove)$/;"	f
+Event:removeEventListenersByEvent	cocos/framework/components/event.lua	/^function Event:removeEventListenersByEvent(eventName)$/;"	f
+Event:removeEventListenersByTag	cocos/framework/components/event.lua	/^function Event:removeEventListenersByTag(tagToRemove)$/;"	f
+Event:unbind	cocos/framework/components/event.lua	/^function Event:unbind(target)$/;"	f
+GLProgram.addAttribute	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function GLProgram.addAttribute(self, attributeName, index)$/;"	f
+GLProgram.initWithVertexShaderByteArray	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function GLProgram.initWithVertexShaderByteArray(self,vShaderByteArray, fShaderByteArray)$/;"	f
+GLProgram.initWithVertexShaderFilename	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function GLProgram.initWithVertexShaderFilename(self,vShaderByteArray, fShaderByteArray)$/;"	f
+GUIReaderDeprecated.purgeGUIReader	cocos/cocostudio/DeprecatedCocoStudioFunc.lua	/^function GUIReaderDeprecated.purgeGUIReader()$/;"	f
+GUIReaderDeprecated.shareReader	cocos/cocostudio/DeprecatedCocoStudioFunc.lua	/^function GUIReaderDeprecated.shareReader()$/;"	f
+Layer:onAccelerate	cocos/framework/extends/LayerEx.lua	/^function Layer:onAccelerate(callback)$/;"	f
+Layer:onKeypad	cocos/framework/extends/LayerEx.lua	/^function Layer:onKeypad(callback)$/;"	f
+Layer:onTouch	cocos/framework/extends/LayerEx.lua	/^function Layer:onTouch(callback, isMultiTouches, swallowTouches)$/;"	f
+Layer:removeAccelerate	cocos/framework/extends/LayerEx.lua	/^function Layer:removeAccelerate()$/;"	f
+Layer:removeKeypad	cocos/framework/extends/LayerEx.lua	/^function Layer:removeKeypad()$/;"	f
+Layer:removeTouch	cocos/framework/extends/LayerEx.lua	/^function Layer:removeTouch()$/;"	f
+ListView:onEvent	cocos/framework/extends/UIListView.lua	/^function ListView:onEvent(callback)$/;"	f
+ListView:onScroll	cocos/framework/extends/UIListView.lua	/^function ListView:onScroll(callback)$/;"	f
+M.destroyInstance	cocos/cocosdenshion/AudioEngine.lua	/^function M.destroyInstance()$/;"	f
+M.getEffectsVolume	cocos/cocosdenshion/AudioEngine.lua	/^function M.getEffectsVolume()$/;"	f
+M.getInstance	cocos/cocosdenshion/AudioEngine.lua	/^function M.getInstance()$/;"	f
+M.getMusicVolume	cocos/cocosdenshion/AudioEngine.lua	/^function M.getMusicVolume()$/;"	f
+M.isMusicPlaying	cocos/cocosdenshion/AudioEngine.lua	/^function M.isMusicPlaying()$/;"	f
+M.pauseAllEffects	cocos/cocosdenshion/AudioEngine.lua	/^function M.pauseAllEffects()$/;"	f
+M.pauseEffect	cocos/cocosdenshion/AudioEngine.lua	/^function M.pauseEffect(handle)$/;"	f
+M.pauseMusic	cocos/cocosdenshion/AudioEngine.lua	/^function M.pauseMusic()$/;"	f
+M.playEffect	cocos/cocosdenshion/AudioEngine.lua	/^function M.playEffect(filename, isLoop)$/;"	f
+M.playMusic	cocos/cocosdenshion/AudioEngine.lua	/^function M.playMusic(filename, isLoop)$/;"	f
+M.preloadEffect	cocos/cocosdenshion/AudioEngine.lua	/^function M.preloadEffect(filename)$/;"	f
+M.preloadMusic	cocos/cocosdenshion/AudioEngine.lua	/^function M.preloadMusic(filename)$/;"	f
+M.resumeAllEffects	cocos/cocosdenshion/AudioEngine.lua	/^function M.resumeAllEffects(handle)$/;"	f
+M.resumeEffect	cocos/cocosdenshion/AudioEngine.lua	/^function M.resumeEffect(handle)$/;"	f
+M.resumeMusic	cocos/cocosdenshion/AudioEngine.lua	/^function M.resumeMusic()$/;"	f
+M.rewindMusic	cocos/cocosdenshion/AudioEngine.lua	/^function M.rewindMusic()$/;"	f
+M.setEffectsVolume	cocos/cocosdenshion/AudioEngine.lua	/^function M.setEffectsVolume(volume)$/;"	f
+M.setMusicVolume	cocos/cocosdenshion/AudioEngine.lua	/^function M.setMusicVolume(volume)$/;"	f
+M.stopAllEffects	cocos/cocosdenshion/AudioEngine.lua	/^function M.stopAllEffects()$/;"	f
+M.stopEffect	cocos/cocosdenshion/AudioEngine.lua	/^function M.stopEffect(handle)$/;"	f
+M.stopMusic	cocos/cocosdenshion/AudioEngine.lua	/^function M.stopMusic(isReleaseData)$/;"	f
+M.unloadEffect	cocos/cocosdenshion/AudioEngine.lua	/^function M.unloadEffect(filename)$/;"	f
+M.willPlayMusic	cocos/cocosdenshion/AudioEngine.lua	/^function M.willPlayMusic()$/;"	f
+MainScene:onCreate	app/views/MainScene.lua	/^function MainScene:onCreate()$/;"	f
+MenuItem:onClicked	cocos/framework/extends/MenuEx.lua	/^function MenuItem:onClicked(callback)$/;"	f
+MyApp:onCreate	app/MyApp.lua	/^function MyApp:onCreate()$/;"	f
+Node:add	cocos/framework/extends/NodeEx.lua	/^function Node:add(child, zorder, tag)$/;"	f
+Node:addTo	cocos/framework/extends/NodeEx.lua	/^function Node:addTo(parent, zorder, tag)$/;"	f
+Node:align	cocos/framework/extends/NodeEx.lua	/^function Node:align(anchorPoint, x, y)$/;"	f
+Node:disableNodeEvents	cocos/framework/extends/NodeEx.lua	/^function Node:disableNodeEvents()$/;"	f
+Node:enableNodeEvents	cocos/framework/extends/NodeEx.lua	/^function Node:enableNodeEvents()$/;"	f
+Node:fadeIn	cocos/framework/extends/NodeEx.lua	/^function Node:fadeIn(args)$/;"	f
+Node:fadeOut	cocos/framework/extends/NodeEx.lua	/^function Node:fadeOut(args)$/;"	f
+Node:fadeTo	cocos/framework/extends/NodeEx.lua	/^function Node:fadeTo(args)$/;"	f
+Node:hide	cocos/framework/extends/NodeEx.lua	/^function Node:hide()$/;"	f
+Node:move	cocos/framework/extends/NodeEx.lua	/^function Node:move(x, y)$/;"	f
+Node:moveBy	cocos/framework/extends/NodeEx.lua	/^function Node:moveBy(args)$/;"	f
+Node:moveTo	cocos/framework/extends/NodeEx.lua	/^function Node:moveTo(args)$/;"	f
+Node:onCleanup	cocos/framework/extends/NodeEx.lua	/^function Node:onCleanup()$/;"	f
+Node:onCleanup_	cocos/framework/extends/NodeEx.lua	/^function Node:onCleanup_()$/;"	f
+Node:onEnter	cocos/framework/extends/NodeEx.lua	/^function Node:onEnter()$/;"	f
+Node:onEnterTransitionFinish	cocos/framework/extends/NodeEx.lua	/^function Node:onEnterTransitionFinish()$/;"	f
+Node:onEnterTransitionFinish_	cocos/framework/extends/NodeEx.lua	/^function Node:onEnterTransitionFinish_()$/;"	f
+Node:onEnter_	cocos/framework/extends/NodeEx.lua	/^function Node:onEnter_()$/;"	f
+Node:onExit	cocos/framework/extends/NodeEx.lua	/^function Node:onExit()$/;"	f
+Node:onExitTransitionStart	cocos/framework/extends/NodeEx.lua	/^function Node:onExitTransitionStart()$/;"	f
+Node:onExitTransitionStart_	cocos/framework/extends/NodeEx.lua	/^function Node:onExitTransitionStart_()$/;"	f
+Node:onExit_	cocos/framework/extends/NodeEx.lua	/^function Node:onExit_()$/;"	f
+Node:onNodeEvent	cocos/framework/extends/NodeEx.lua	/^function Node:onNodeEvent(eventName, callback)$/;"	f
+Node:onUpdate	cocos/framework/extends/NodeEx.lua	/^function Node:onUpdate(callback)$/;"	f
+Node:removeSelf	cocos/framework/extends/NodeEx.lua	/^function Node:removeSelf()$/;"	f
+Node:rotate	cocos/framework/extends/NodeEx.lua	/^function Node:rotate(rotation)$/;"	f
+Node:rotateBy	cocos/framework/extends/NodeEx.lua	/^function Node:rotateBy(args)$/;"	f
+Node:rotateTo	cocos/framework/extends/NodeEx.lua	/^function Node:rotateTo(args)$/;"	f
+Node:scaleTo	cocos/framework/extends/NodeEx.lua	/^function Node:scaleTo(args)$/;"	f
+Node:show	cocos/framework/extends/NodeEx.lua	/^function Node:show()$/;"	f
+NodeDeprecated.getVertexZ	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function NodeDeprecated.getVertexZ(self)$/;"	f
+NodeDeprecated.getZOrder	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function NodeDeprecated.getZOrder(self)$/;"	f
+NodeDeprecated.ignoreAnchorPointForPosition	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function NodeDeprecated.ignoreAnchorPointForPosition(self,ignore)$/;"	f
+NodeDeprecated.setVertexZ	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function NodeDeprecated.setVertexZ(self,vertexZ)$/;"	f
+NodeDeprecated.setZOrder	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function NodeDeprecated.setZOrder(self,zOrder)$/;"	f
+PageView:onEvent	cocos/framework/extends/UIPageView.lua	/^function PageView:onEvent(callback)$/;"	f
+SceneReaderDeprecated.purgeSceneReader	cocos/cocostudio/DeprecatedCocoStudioFunc.lua	/^function SceneReaderDeprecated.purgeSceneReader(self)$/;"	f
+SceneReaderDeprecated.sharedSceneReader	cocos/cocostudio/DeprecatedCocoStudioFunc.lua	/^function SceneReaderDeprecated.sharedSceneReader()$/;"	f
+ScrollView:onEvent	cocos/framework/extends/UIScrollView.lua	/^function ScrollView:onEvent(callback)$/;"	f
+ShaderCacheDeprecated.getProgram	cocos/ui/DeprecatedUIFunc.lua	/^function ShaderCacheDeprecated.getProgram(self,strShader)$/;"	f
+SimpleAudioEngineDeprecated.playBackgroundMusic	cocos/cocosdenshion/DeprecatedCocosDenshionFunc.lua	/^function SimpleAudioEngineDeprecated.playBackgroundMusic(self,...)$/;"	f
+SimpleAudioEngineDeprecated.sharedEngine	cocos/cocosdenshion/DeprecatedCocosDenshionFunc.lua	/^function SimpleAudioEngineDeprecated.sharedEngine()$/;"	f
+Slider:onEvent	cocos/framework/extends/UISlider.lua	/^function Slider:onEvent(callback)$/;"	f
+Sprite:playAnimationForever	cocos/framework/extends/SpriteEx.lua	/^function Sprite:playAnimationForever(animation)$/;"	f
+Sprite:playAnimationOnce	cocos/framework/extends/SpriteEx.lua	/^function Sprite:playAnimationOnce(animation, args)$/;"	f
+TextAtlasDeprecated.getStringValue	cocos/ui/DeprecatedUIFunc.lua	/^function TextAtlasDeprecated.getStringValue(self)$/;"	f
+TextAtlasDeprecated.setStringValue	cocos/ui/DeprecatedUIFunc.lua	/^function TextAtlasDeprecated.setStringValue(self, str)$/;"	f
+TextBMFontDeprecated.getStringValue	cocos/ui/DeprecatedUIFunc.lua	/^function TextBMFontDeprecated.getStringValue(self)$/;"	f
+TextBMFontDeprecated.setText	cocos/ui/DeprecatedUIFunc.lua	/^function TextBMFontDeprecated.setText(self, str)$/;"	f
+TextDeprecated.getStringValue	cocos/ui/DeprecatedUIFunc.lua	/^function TextDeprecated.getStringValue(self)$/;"	f
+TextDeprecated.setText	cocos/ui/DeprecatedUIFunc.lua	/^function TextDeprecated.setText(self, str)$/;"	f
+TextField:onEvent	cocos/framework/extends/UITextField.lua	/^function TextField:onEvent(callback)$/;"	f
+TextureCacheDeprecated.destroyInstance	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function TextureCacheDeprecated.destroyInstance(self)$/;"	f
+TextureCacheDeprecated.dumpCachedTextureInfo	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function TextureCacheDeprecated.dumpCachedTextureInfo(self)$/;"	f
+TextureCacheDeprecated.getInstance	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^function TextureCacheDeprecated.getInstance(self)$/;"	f
+UICheckBoxDeprecated.addEventListenerCheckBox	cocos/ui/DeprecatedUIFunc.lua	/^function UICheckBoxDeprecated.addEventListenerCheckBox(self,handler)$/;"	f
+UICheckBoxDeprecated.getSelectedState	cocos/ui/DeprecatedUIFunc.lua	/^function UICheckBoxDeprecated.getSelectedState(self)$/;"	f
+UICheckBoxDeprecated.setSelectedState	cocos/ui/DeprecatedUIFunc.lua	/^function UICheckBoxDeprecated.setSelectedState(self,flag)$/;"	f
+UIListViewDeprecated.addEventListenerListView	cocos/ui/DeprecatedUIFunc.lua	/^function UIListViewDeprecated.addEventListenerListView(self,handler)$/;"	f
+UIListViewDeprecated.refreshView	cocos/ui/DeprecatedUIFunc.lua	/^function UIListViewDeprecated.refreshView(self)$/;"	f
+UIListViewDeprecated.requestRefreshView	cocos/ui/DeprecatedUIFunc.lua	/^function UIListViewDeprecated.requestRefreshView(self)$/;"	f
+UIPageViewDeprecated.addEventListenerPageView	cocos/ui/DeprecatedUIFunc.lua	/^function UIPageViewDeprecated.addEventListenerPageView(self,handler)$/;"	f
+UIPageViewDeprecated.addWidgetToPage	cocos/ui/DeprecatedUIFunc.lua	/^function UIPageViewDeprecated.addWidgetToPage(self, widget, pageIdx)$/;"	f
+UIPageViewDeprecated.getCurPageIndex	cocos/ui/DeprecatedUIFunc.lua	/^function UIPageViewDeprecated.getCurPageIndex(self)$/;"	f
+UIPageViewDeprecated.getCustomScrollThreshold	cocos/ui/DeprecatedUIFunc.lua	/^function UIPageViewDeprecated.getCustomScrollThreshold(self)$/;"	f
+UIPageViewDeprecated.getPage	cocos/ui/DeprecatedUIFunc.lua	/^function UIPageViewDeprecated.getPage(self, index)$/;"	f
+UIPageViewDeprecated.getPages	cocos/ui/DeprecatedUIFunc.lua	/^function UIPageViewDeprecated.getPages(self)$/;"	f
+UIPageViewDeprecated.isUsingCustomScrollThreshold	cocos/ui/DeprecatedUIFunc.lua	/^function UIPageViewDeprecated.isUsingCustomScrollThreshold(self)$/;"	f
+UIPageViewDeprecated.setCurPageIndex	cocos/ui/DeprecatedUIFunc.lua	/^function UIPageViewDeprecated.setCurPageIndex(self, index)$/;"	f
+UIPageViewDeprecated.setCustomScrollThreshold	cocos/ui/DeprecatedUIFunc.lua	/^function UIPageViewDeprecated.setCustomScrollThreshold(self)$/;"	f
+UIPageViewDeprecated.setUsingCustomScrollThreshold	cocos/ui/DeprecatedUIFunc.lua	/^function UIPageViewDeprecated.setUsingCustomScrollThreshold(self)$/;"	f
+UIScrollViewDeprecated.addEventListenerScrollView	cocos/ui/DeprecatedUIFunc.lua	/^function UIScrollViewDeprecated.addEventListenerScrollView(self,handler)$/;"	f
+UISliderDeprecated.addEventListenerSlider	cocos/ui/DeprecatedUIFunc.lua	/^function UISliderDeprecated.addEventListenerSlider(self,handler)$/;"	f
+UITextFieldDeprecated.addEventListenerTextField	cocos/ui/DeprecatedUIFunc.lua	/^function UITextFieldDeprecated.addEventListenerTextField(self,handler)$/;"	f
+UITextFieldDeprecated.getStringValue	cocos/ui/DeprecatedUIFunc.lua	/^function UITextFieldDeprecated.getStringValue(self)$/;"	f
+UITextFieldDeprecated.setText	cocos/ui/DeprecatedUIFunc.lua	/^function UITextFieldDeprecated.setText(self, str)$/;"	f
+UIWidgetDeprecated.getBottomInParent	cocos/ui/DeprecatedUIFunc.lua	/^function UIWidgetDeprecated.getBottomInParent(self)$/;"	f
+UIWidgetDeprecated.getLeftInParent	cocos/ui/DeprecatedUIFunc.lua	/^function UIWidgetDeprecated.getLeftInParent(self)$/;"	f
+UIWidgetDeprecated.getRightInParent	cocos/ui/DeprecatedUIFunc.lua	/^function UIWidgetDeprecated.getRightInParent(self)$/;"	f
+UIWidgetDeprecated.getSize	cocos/ui/DeprecatedUIFunc.lua	/^function UIWidgetDeprecated.getSize(self)$/;"	f
+UIWidgetDeprecated.getTopInParent	cocos/ui/DeprecatedUIFunc.lua	/^function UIWidgetDeprecated.getTopInParent(self)$/;"	f
+UIWidgetDeprecated.setSize	cocos/ui/DeprecatedUIFunc.lua	/^function UIWidgetDeprecated.setSize(self, ...)$/;"	f
+ViewBase:createResourceBinding	packages/mvc/ViewBase.lua	/^function ViewBase:createResourceBinding(binding)$/;"	f
+ViewBase:createResourceNode	packages/mvc/ViewBase.lua	/^function ViewBase:createResourceNode(resourceFilename)$/;"	f
+ViewBase:ctor	packages/mvc/ViewBase.lua	/^function ViewBase:ctor(app, name)$/;"	f
+ViewBase:getApp	packages/mvc/ViewBase.lua	/^function ViewBase:getApp()$/;"	f
+ViewBase:getName	packages/mvc/ViewBase.lua	/^function ViewBase:getName()$/;"	f
+ViewBase:getResourceNode	packages/mvc/ViewBase.lua	/^function ViewBase:getResourceNode()$/;"	f
+ViewBase:showWithScene	packages/mvc/ViewBase.lua	/^function ViewBase:showWithScene(transition, time, more)$/;"	f
+WebSocketDeprecated.sendBinaryMsg	cocos/network/DeprecatedNetworkFunc.lua	/^    function WebSocketDeprecated.sendBinaryMsg(self, table,tablesize)$/;"	f
+WebSocketDeprecated.sendTextMsg	cocos/network/DeprecatedNetworkFunc.lua	/^    function WebSocketDeprecated.sendTextMsg(self, string)$/;"	f
+Widget:onTouch	cocos/framework/extends/UIWidget.lua	/^function Widget:onTouch(callback)$/;"	f
+__G__TRACKBACK__ 	cocos/init.lua	/^__G__TRACKBACK__ = function(msg)$/;"	f
+__index 	cocos/framework/init.lua	/^    __index = function(_, name)$/;"	f
+__newindex 	cocos/framework/init.lua	/^        __newindex = function(_, name, value)$/;"	f
+__newindex 	cocos/framework/init.lua	/^    __newindex = function(_, name, value)$/;"	f
+__onParseConfig	cocos/cocostudio/CocoStudio.lua	/^function __onParseConfig(configType,jasonStr)$/;"	f
+_copy	cocos/cocos2d/functions.lua	/^    local function _copy(object)$/;"	f
+assert(superType 	cocos/cocos2d/functions.lua	/^        assert(superType == "nil" or superType == "table" or superType == "function",$/;"	f
+audio.getMusicVolume	cocos/framework/audio.lua	/^function audio.getMusicVolume()$/;"	f
+audio.getSoundsVolume	cocos/framework/audio.lua	/^function audio.getSoundsVolume()$/;"	f
+audio.isMusicPlaying	cocos/framework/audio.lua	/^function audio.isMusicPlaying()$/;"	f
+audio.pauseAllSounds	cocos/framework/audio.lua	/^function audio.pauseAllSounds()$/;"	f
+audio.pauseMusic	cocos/framework/audio.lua	/^function audio.pauseMusic()$/;"	f
+audio.pauseSound	cocos/framework/audio.lua	/^function audio.pauseSound(handle)$/;"	f
+audio.playMusic	cocos/framework/audio.lua	/^function audio.playMusic(filename, isLoop)$/;"	f
+audio.playSound	cocos/framework/audio.lua	/^function audio.playSound(filename, isLoop)$/;"	f
+audio.preloadMusic	cocos/framework/audio.lua	/^function audio.preloadMusic(filename)$/;"	f
+audio.preloadSound	cocos/framework/audio.lua	/^function audio.preloadSound(filename)$/;"	f
+audio.resumeAllSounds	cocos/framework/audio.lua	/^function audio.resumeAllSounds()$/;"	f
+audio.resumeMusic	cocos/framework/audio.lua	/^function audio.resumeMusic()$/;"	f
+audio.resumeSound	cocos/framework/audio.lua	/^function audio.resumeSound(handle)$/;"	f
+audio.rewindMusic	cocos/framework/audio.lua	/^function audio.rewindMusic()$/;"	f
+audio.setMusicVolume	cocos/framework/audio.lua	/^function audio.setMusicVolume(volume)$/;"	f
+audio.setSoundsVolume	cocos/framework/audio.lua	/^function audio.setSoundsVolume(volume)$/;"	f
+audio.stopAllSounds	cocos/framework/audio.lua	/^function audio.stopAllSounds()$/;"	f
+audio.stopMusic	cocos/framework/audio.lua	/^function audio.stopMusic(isReleaseData)$/;"	f
+audio.stopSound	cocos/framework/audio.lua	/^function audio.stopSound(handle)$/;"	f
+audio.unloadSound	cocos/framework/audio.lua	/^function audio.unloadSound(filename)$/;"	f
+bind_ 	cocos/framework/package_support.lua	/^bind_ = function(target, ...)$/;"	f
+bit._and	cocos/cocos2d/bitExtend.lua	/^function    bit._and(a,b)$/;"	f
+bit._b2d	cocos/cocos2d/bitExtend.lua	/^function bit._b2d(arg)$/;"	f
+bit._d2b	cocos/cocos2d/bitExtend.lua	/^function bit._d2b(arg)$/;"	f
+bit._not	cocos/cocos2d/bitExtend.lua	/^function bit._not(a)$/;"	f
+bit._or	cocos/cocos2d/bitExtend.lua	/^function bit._or(a,b)$/;"	f
+bit._rshift	cocos/cocos2d/bitExtend.lua	/^function    bit._rshift(a,n)$/;"	f
+callback 	config.lua	/^    callback = function(framesize)$/;"	f
+cc.AnimationFrameData	cocos/cocos2d/Cocos2d.lua	/^function cc.AnimationFrameData( _texCoords, _delay, _size)$/;"	f
+cc.PhysicsMaterial	cocos/cocos2d/Cocos2d.lua	/^function cc.PhysicsMaterial(_density, _restitution, _friction)$/;"	f
+cc.PointSprite	cocos/cocos2d/Cocos2d.lua	/^function cc.PointSprite(_pos,_color,_size)$/;"	f
+cc.Quad2	cocos/cocos2d/Cocos2d.lua	/^function cc.Quad2(_tl,_tr,_bl,_br)$/;"	f
+cc.Quad3	cocos/cocos2d/Cocos2d.lua	/^function cc.Quad3(_tl, _tr, _bl, _br)$/;"	f
+cc.RPerp	cocos/cocos2d/Cocos2d.lua	/^function cc.RPerp(pt)$/;"	f
+cc.T2F_Quad	cocos/cocos2d/Cocos2d.lua	/^function cc.T2F_Quad(_bl, _br, _tl, _tr)$/;"	f
+cc.V2F_C4B_T2F	cocos/cocos2d/Cocos2d.lua	/^function cc.V2F_C4B_T2F(_vertices, _colors, _texCoords)$/;"	f
+cc.V2F_C4B_T2F_Quad	cocos/cocos2d/Cocos2d.lua	/^function cc.V2F_C4B_T2F_Quad(_bl, _br, _tl, _tr)$/;"	f
+cc.V2F_C4F_T2F	cocos/cocos2d/Cocos2d.lua	/^function cc.V2F_C4F_T2F(_vertices, _colors, _texCoords)$/;"	f
+cc.V2F_C4F_T2F_Quad	cocos/cocos2d/Cocos2d.lua	/^function cc.V2F_C4F_T2F_Quad(_bl, _br, _tl, _tr)$/;"	f
+cc.V3F_C4B_T2F	cocos/cocos2d/Cocos2d.lua	/^function cc.V3F_C4B_T2F(_vertices, _colors, _texCoords)$/;"	f
+cc.V3F_C4B_T2F_Quad	cocos/cocos2d/Cocos2d.lua	/^function cc.V3F_C4B_T2F_Quad(_tl, _bl, _tr, _br)$/;"	f
+cc.Vertex3F	cocos/cocos2d/Cocos2d.lua	/^function cc.Vertex3F(_x,_y,_z)$/;"	f
+cc.blendFunc	cocos/cocos2d/Cocos2d.lua	/^function cc.blendFunc(_src, _dst)$/;"	f
+cc.c3b	cocos/cocos2d/Cocos2d.lua	/^function cc.c3b( _r,_g,_b )$/;"	f
+cc.c4b	cocos/cocos2d/Cocos2d.lua	/^function cc.c4b( _r,_g,_b,_a )$/;"	f
+cc.c4f	cocos/cocos2d/Cocos2d.lua	/^function cc.c4f( _r,_g,_b,_a )$/;"	f
+cc.clampf	cocos/cocos2d/Cocos2d.lua	/^function cc.clampf(value, min_inclusive, max_inclusive)$/;"	f
+cc.convertColor	cocos/cocos2d/Cocos2d.lua	/^function cc.convertColor(input, typ)$/;"	f
+cc.disable_global	cocos/framework/init.lua	/^function cc.disable_global()$/;"	f
+cc.load	cocos/framework/package_support.lua	/^function cc.load(...)$/;"	f
+cc.mat4.createIdentity	cocos/cocos2d/Cocos2d.lua	/^function cc.mat4.createIdentity()$/;"	f
+cc.mat4.createRotation	cocos/cocos2d/Cocos2d.lua	/^function cc.mat4.createRotation(...)$/;"	f
+cc.mat4.createRotationZ	cocos/cocos2d/Cocos2d.lua	/^function cc.mat4.createRotationZ(self,angle)$/;"	f
+cc.mat4.createTranslation	cocos/cocos2d/Cocos2d.lua	/^function cc.mat4.createTranslation(...)$/;"	f
+cc.mat4.decompose	cocos/cocos2d/Cocos2d.lua	/^function cc.mat4.decompose(self, scale, rotation, translation)$/;"	f
+cc.mat4.getInversed	cocos/cocos2d/Cocos2d.lua	/^function cc.mat4.getInversed(self)$/;"	f
+cc.mat4.multiply	cocos/cocos2d/Cocos2d.lua	/^function cc.mat4.multiply(self, mat)$/;"	f
+cc.mat4.new	cocos/cocos2d/Cocos2d.lua	/^function cc.mat4.new(...)$/;"	f
+cc.mat4.setIdentity	cocos/cocos2d/Cocos2d.lua	/^function cc.mat4.setIdentity(self)$/;"	f
+cc.mat4.transformVector	cocos/cocos2d/Cocos2d.lua	/^function cc.mat4.transformVector(...)$/;"	f
+cc.mat4.translate	cocos/cocos2d/Cocos2d.lua	/^function cc.mat4.translate(self,vec3)$/;"	f
+cc.p	cocos/cocos2d/Cocos2d.lua	/^function cc.p(_x,_y)$/;"	f
+cc.pAdd	cocos/cocos2d/Cocos2d.lua	/^function cc.pAdd(pt1,pt2)$/;"	f
+cc.pCross	cocos/cocos2d/Cocos2d.lua	/^function cc.pCross(self,other)$/;"	f
+cc.pDistanceSQ	cocos/cocos2d/Cocos2d.lua	/^function cc.pDistanceSQ(pt1,pt2)$/;"	f
+cc.pDot	cocos/cocos2d/Cocos2d.lua	/^function cc.pDot(self,other)$/;"	f
+cc.pForAngle	cocos/cocos2d/Cocos2d.lua	/^function cc.pForAngle(a)$/;"	f
+cc.pFromSize	cocos/cocos2d/Cocos2d.lua	/^function cc.pFromSize(sz)$/;"	f
+cc.pFuzzyEqual	cocos/cocos2d/Cocos2d.lua	/^function cc.pFuzzyEqual(pt1,pt2,variance)$/;"	f
+cc.pGetAngle	cocos/cocos2d/Cocos2d.lua	/^function cc.pGetAngle(self,other)$/;"	f
+cc.pGetClampPoint	cocos/cocos2d/Cocos2d.lua	/^function cc.pGetClampPoint(pt1,pt2,pt3)$/;"	f
+cc.pGetDistance	cocos/cocos2d/Cocos2d.lua	/^function cc.pGetDistance(startP,endP)$/;"	f
+cc.pGetIntersectPoint	cocos/cocos2d/Cocos2d.lua	/^function cc.pGetIntersectPoint(pt1,pt2,pt3,pt4)$/;"	f
+cc.pGetLength	cocos/cocos2d/Cocos2d.lua	/^function cc.pGetLength(pt)$/;"	f
+cc.pIsLineIntersect	cocos/cocos2d/Cocos2d.lua	/^function cc.pIsLineIntersect(A, B, C, D, s, t)$/;"	f
+cc.pIsSegmentIntersect	cocos/cocos2d/Cocos2d.lua	/^function cc.pIsSegmentIntersect(pt1,pt2,pt3,pt4)$/;"	f
+cc.pLengthSQ	cocos/cocos2d/Cocos2d.lua	/^function cc.pLengthSQ(pt)$/;"	f
+cc.pLerp	cocos/cocos2d/Cocos2d.lua	/^function cc.pLerp(pt1,pt2,alpha)$/;"	f
+cc.pMidpoint	cocos/cocos2d/Cocos2d.lua	/^function cc.pMidpoint(pt1,pt2)$/;"	f
+cc.pMul	cocos/cocos2d/Cocos2d.lua	/^function cc.pMul(pt1,factor)$/;"	f
+cc.pNormalize	cocos/cocos2d/Cocos2d.lua	/^function cc.pNormalize(pt)$/;"	f
+cc.pPerp	cocos/cocos2d/Cocos2d.lua	/^function cc.pPerp(pt)$/;"	f
+cc.pProject	cocos/cocos2d/Cocos2d.lua	/^function cc.pProject(pt1, pt2)$/;"	f
+cc.pRotate	cocos/cocos2d/Cocos2d.lua	/^function cc.pRotate(pt1, pt2)$/;"	f
+cc.pRotateByAngle	cocos/cocos2d/Cocos2d.lua	/^function cc.pRotateByAngle(pt1, pt2, angle)$/;"	f
+cc.pSub	cocos/cocos2d/Cocos2d.lua	/^function cc.pSub(pt1,pt2)$/;"	f
+cc.pToAngleSelf	cocos/cocos2d/Cocos2d.lua	/^function cc.pToAngleSelf(self)$/;"	f
+cc.pUnrotate	cocos/cocos2d/Cocos2d.lua	/^function cc.pUnrotate(pt1, pt2)$/;"	f
+cc.quaternion	cocos/cocos2d/Cocos2d.lua	/^function cc.quaternion(_x, _y ,_z,_w)$/;"	f
+cc.quaternion_createFromAxisAngle	cocos/cocos2d/Cocos2d.lua	/^function cc.quaternion_createFromAxisAngle(axis, angle)$/;"	f
+cc.rect	cocos/cocos2d/Cocos2d.lua	/^function cc.rect(_x,_y,_width,_height)$/;"	f
+cc.rectContainsPoint	cocos/cocos2d/Cocos2d.lua	/^function cc.rectContainsPoint( rect, point )$/;"	f
+cc.rectEqualToRect	cocos/cocos2d/Cocos2d.lua	/^function cc.rectEqualToRect(rect1,rect2)$/;"	f
+cc.rectGetMaxX	cocos/cocos2d/Cocos2d.lua	/^function cc.rectGetMaxX(rect)$/;"	f
+cc.rectGetMaxY	cocos/cocos2d/Cocos2d.lua	/^function cc.rectGetMaxY(rect)$/;"	f
+cc.rectGetMidX	cocos/cocos2d/Cocos2d.lua	/^function cc.rectGetMidX(rect)$/;"	f
+cc.rectGetMidY	cocos/cocos2d/Cocos2d.lua	/^function cc.rectGetMidY(rect)$/;"	f
+cc.rectGetMinX	cocos/cocos2d/Cocos2d.lua	/^function cc.rectGetMinX(rect)$/;"	f
+cc.rectGetMinY	cocos/cocos2d/Cocos2d.lua	/^function cc.rectGetMinY(rect)$/;"	f
+cc.rectIntersection	cocos/cocos2d/Cocos2d.lua	/^function cc.rectIntersection( rect1, rect2 )$/;"	f
+cc.rectIntersectsRect	cocos/cocos2d/Cocos2d.lua	/^function cc.rectIntersectsRect( rect1, rect2 )$/;"	f
+cc.rectUnion	cocos/cocos2d/Cocos2d.lua	/^function cc.rectUnion( rect1, rect2 )$/;"	f
+cc.register	cocos/framework/package_support.lua	/^function cc.register(name, package)$/;"	f
+cc.setmethods	cocos/framework/package_support.lua	/^function cc.setmethods(target, component, methods)$/;"	f
+cc.size	cocos/cocos2d/Cocos2d.lua	/^function cc.size( _width,_height )$/;"	f
+cc.tex2F	cocos/cocos2d/Cocos2d.lua	/^function cc.tex2F(_u,_v)$/;"	f
+cc.unbind	cocos/framework/package_support.lua	/^function cc.unbind(target, ...)$/;"	f
+cc.unsetmethods	cocos/framework/package_support.lua	/^function cc.unsetmethods(target, methods)$/;"	f
+cc.vec3	cocos/cocos2d/Cocos2d.lua	/^function cc.vec3(_x, _y, _z)$/;"	f
+cc.vec3add	cocos/cocos2d/Cocos2d.lua	/^function cc.vec3add(vec3a, vec3b)$/;"	f
+cc.vec3dot	cocos/cocos2d/Cocos2d.lua	/^function cc.vec3dot(vec3a, vec3b)$/;"	f
+cc.vec3mul	cocos/cocos2d/Cocos2d.lua	/^function cc.vec3mul(vec3, factor)$/;"	f
+cc.vec3normalize	cocos/cocos2d/Cocos2d.lua	/^function cc.vec3normalize(vec3)$/;"	f
+cc.vec3sub	cocos/cocos2d/Cocos2d.lua	/^function cc.vec3sub(vec3a, vec3b)$/;"	f
+cc.vec4	cocos/cocos2d/Cocos2d.lua	/^function cc.vec4(_x, _y, _z, _w)$/;"	f
+cc.vertex2F	cocos/cocos2d/Cocos2d.lua	/^function cc.vertex2F(_x,_y)$/;"	f
+ccAnimationFrameDataDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccAnimationFrameDataDeprecated()$/;"	f
+ccColor3BDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccColor3BDeprecated()$/;"	f
+ccColor4BDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccColor4BDeprecated()$/;"	f
+ccColor4FDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccColor4FDeprecated()$/;"	f
+ccDrawCircle	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawCircle(center, radius, angle, segments, drawLineToCenter)$/;"	f
+ccDrawCircleScale	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawCircleScale( center, radius, angle, segments,drawLineToCenter,scaleX,scaleY)$/;"	f
+ccDrawColor4B	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawColor4B(r,g,b,a)$/;"	f
+ccDrawColor4f	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawColor4f(r,g,b,a)$/;"	f
+ccDrawCubicBezier	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawCubicBezier(origin, control1, control2, destination, segments)$/;"	f
+ccDrawFree	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawFree()$/;"	f
+ccDrawInit	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawInit()$/;"	f
+ccDrawLine	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawLine(origin,destination)$/;"	f
+ccDrawPoint	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawPoint(point)$/;"	f
+ccDrawPoints	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawPoints(points,numOfPoint)$/;"	f
+ccDrawPoly	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawPoly(points,numOfPoints,closePolygon)$/;"	f
+ccDrawQuadBezier	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawQuadBezier(origin, control, destination, segments)$/;"	f
+ccDrawRect	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawRect(origin,destination)$/;"	f
+ccDrawSolidCircle	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawSolidCircle(center, radius, angle, segments,scaleX,scaleY)$/;"	f
+ccDrawSolidPoly	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawSolidPoly(points,numOfPoints,color)$/;"	f
+ccDrawSolidRect	cocos/cocos2d/DrawPrimitives.lua	/^function ccDrawSolidRect( origin,destination,color )$/;"	f
+ccPointSize	cocos/cocos2d/DrawPrimitives.lua	/^function ccPointSize(pointSize)$/;"	f
+ccPointSpriteDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccPointSpriteDeprecated()$/;"	f
+ccQuad2Deprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccQuad2Deprecated()$/;"	f
+ccQuad3Deprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccQuad3Deprecated()$/;"	f
+ccT2FQuadDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccT2FQuadDeprecated()$/;"	f
+ccTex2FDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccTex2FDeprecated()$/;"	f
+ccV2FC4BT2FDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccV2FC4BT2FDeprecated()$/;"	f
+ccV2FC4BT2FQuadDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccV2FC4BT2FQuadDeprecated()$/;"	f
+ccV2FC4FT2FDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccV2FC4FT2FDeprecated()$/;"	f
+ccV2FC4FT2FQuadDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccV2FC4FT2FQuadDeprecated()$/;"	f
+ccV3FC4BT2FDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccV3FC4BT2FDeprecated()$/;"	f
+ccV3FC4BT2FQuadDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccV3FC4BT2FQuadDeprecated()$/;"	f
+ccVertex2FDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccVertex2FDeprecated()$/;"	f
+ccVertex3FDeprecated	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccVertex3FDeprecated()$/;"	f
+ccc3	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccc3(r,g,b)$/;"	f
+ccc4	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccc4(r,g,b,a)$/;"	f
+ccc4BFromccc4F	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccc4BFromccc4F(color4F)$/;"	f
+ccc4FEqual	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccc4FEqual(a,b)$/;"	f
+ccc4FFromccc3B	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccc4FFromccc3B(color3B)$/;"	f
+ccc4FFromccc4B	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccc4FFromccc4B(color4B)$/;"	f
+ccc4f	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccc4f(r,g,b,a)$/;"	f
+ccp	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccp(x,y)$/;"	f
+ccpAdd	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpAdd(pt1,pt2)$/;"	f
+ccpAngle	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpAngle(pt1,pt2)$/;"	f
+ccpAngleSigned	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpAngleSigned(pt1,pt2)$/;"	f
+ccpClamp	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpClamp(pt1,pt2,pt3)$/;"	f
+ccpCompMult	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpCompMult(pt1,pt2)$/;"	f
+ccpCross	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpCross(pt1,pt2)$/;"	f
+ccpDistance	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpDistance(pt1,pt2)$/;"	f
+ccpDistanceSQ	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpDistanceSQ(pt1,pt2)$/;"	f
+ccpDot	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpDot(pt1,pt2)$/;"	f
+ccpForAngle	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpForAngle(angle)$/;"	f
+ccpFromSize	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpFromSize(sz)$/;"	f
+ccpFuzzyEqual	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpFuzzyEqual(pt1,pt2,variance)$/;"	f
+ccpIntersectPoint	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpIntersectPoint(pt1,pt2,pt3,pt4)$/;"	f
+ccpLength	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpLength(pt)$/;"	f
+ccpLengthSQ	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpLengthSQ(pt)$/;"	f
+ccpLerp	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpLerp(pt1,pt2,alpha)$/;"	f
+ccpLineIntersect	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpLineIntersect(a,b,c,d,s,t)$/;"	f
+ccpMidpoint	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpMidpoint(pt1,pt2)$/;"	f
+ccpMult	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpMult(pt,factor)$/;"	f
+ccpNeg	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpNeg(pt)$/;"	f
+ccpNormalize	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpNormalize(pt)$/;"	f
+ccpPerp	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpPerp(pt)$/;"	f
+ccpProject	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpProject(pt1,pt2)$/;"	f
+ccpRPerp	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpRPerp(pt)$/;"	f
+ccpRotate	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpRotate(pt1,pt2)$/;"	f
+ccpRotateByAngle	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpRotateByAngle(pt1,pt2,angle)$/;"	f
+ccpSegmentIntersect	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpSegmentIntersect(pt1,pt2,pt3,pt4)$/;"	f
+ccpSub	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpSub(pt1,pt2)$/;"	f
+ccpToAngle	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpToAngle(pt)$/;"	f
+ccpUnrotate	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function ccpUnrotate(pt1,pt2)$/;"	f
+ccs.AnimationInfo	cocos/cocostudio/CocoStudio.lua	/^function ccs.AnimationInfo(_name, _startIndex, _endIndex)$/;"	f
+ccs.ObjectFactory.destroyInstance	cocos/cocostudio/CocoStudio.lua	/^function ccs.ObjectFactory.destroyInstance()$/;"	f
+ccs.ObjectFactory.getInstance	cocos/cocostudio/CocoStudio.lua	/^function ccs.ObjectFactory.getInstance()$/;"	f
+ccs.ObjectFactory:createObject	cocos/cocostudio/CocoStudio.lua	/^function ccs.ObjectFactory:createObject(classname)$/;"	f
+ccs.ObjectFactory:ctor	cocos/cocostudio/CocoStudio.lua	/^function ccs.ObjectFactory:ctor()$/;"	f
+ccs.ObjectFactory:registerType	cocos/cocostudio/CocoStudio.lua	/^function ccs.ObjectFactory:registerType(t)$/;"	f
+ccs.TInfo:ctor	cocos/cocostudio/CocoStudio.lua	/^function ccs.TInfo:ctor(c,f)$/;"	f
+ccs.TriggerMng.destroyInstance	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerMng.destroyInstance()$/;"	f
+ccs.TriggerMng.getInstance	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerMng.getInstance()$/;"	f
+ccs.TriggerMng:add	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerMng:add(event,triggerObj)$/;"	f
+ccs.TriggerMng:ctor	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerMng:ctor()$/;"	f
+ccs.TriggerMng:get	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerMng:get(event)$/;"	f
+ccs.TriggerMng:getTriggerObj	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerMng:getTriggerObj(id)$/;"	f
+ccs.TriggerMng:isEmpty	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerMng:isEmpty()$/;"	f
+ccs.TriggerMng:parse	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerMng:parse(jsonStr)$/;"	f
+ccs.TriggerMng:remove	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerMng:remove(event, obj)$/;"	f
+ccs.TriggerMng:removeAll	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerMng:removeAll( )$/;"	f
+ccs.TriggerMng:removeObjByEvent	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerMng:removeObjByEvent(event, obj)$/;"	f
+ccs.TriggerMng:removeTriggerObj	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerMng:removeTriggerObj(id)$/;"	f
+ccs.TriggerMng:triggerMngVersion	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerMng:triggerMngVersion()$/;"	f
+ccs.TriggerObj.extend	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerObj.extend(target)$/;"	f
+ccs.TriggerObj:ctor	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerObj:ctor()$/;"	f
+ccs.TriggerObj:detect	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerObj:detect()$/;"	f
+ccs.TriggerObj:done	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerObj:done()$/;"	f
+ccs.TriggerObj:getEvents	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerObj:getEvents()$/;"	f
+ccs.TriggerObj:getId	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerObj:getId()$/;"	f
+ccs.TriggerObj:init	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerObj:init()$/;"	f
+ccs.TriggerObj:removeAll	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerObj:removeAll()$/;"	f
+ccs.TriggerObj:serialize	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerObj:serialize(jsonValue)$/;"	f
+ccs.TriggerObj:setEnable	cocos/cocostudio/CocoStudio.lua	/^function ccs.TriggerObj:setEnable(enable)$/;"	f
+ccs.registerTriggerClass	cocos/cocostudio/CocoStudio.lua	/^function ccs.registerTriggerClass(className, createFunc)$/;"	f
+ccs.sendTriggerEvent	cocos/cocostudio/CocoStudio.lua	/^function ccs.sendTriggerEvent(event)$/;"	f
+checkArguments	cocos/cocos2d/luaj.lua	/^local function checkArguments(args, sig)$/;"	f
+checkResolution	cocos/framework/display.lua	/^local function checkResolution(r)$/;"	f
+checkbool	cocos/cocos2d/functions.lua	/^function checkbool(value)$/;"	f
+checkint	cocos/cocos2d/functions.lua	/^function checkint(value)$/;"	f
+checknumber	cocos/cocos2d/functions.lua	/^function checknumber(value, base)$/;"	f
+checktable	cocos/cocos2d/functions.lua	/^function checktable(value)$/;"	f
+class	cocos/cocos2d/functions.lua	/^function class(classname, ...)$/;"	f
+clone	cocos/cocos2d/functions.lua	/^function clone(object)$/;"	f
+cls.__create 	cocos/cocos2d/functions.lua	/^                cls.__create = function() return super:create() end$/;"	f
+cls.create 	cocos/cocos2d/functions.lua	/^    cls.create = function(_, ...)$/;"	f
+cls.ctor 	cocos/cocos2d/functions.lua	/^        cls.ctor = function() end$/;"	f
+cls.new 	cocos/cocos2d/functions.lua	/^    cls.new = function(...)$/;"	f
+decode	cocos/cocos2d/json.lua	/^function decode(s, startPos)$/;"	f
+decode_scanArray	cocos/cocos2d/json.lua	/^function decode_scanArray(s,startPos)$/;"	f
+decode_scanComment	cocos/cocos2d/json.lua	/^function decode_scanComment(s, startPos)$/;"	f
+decode_scanConstant	cocos/cocos2d/json.lua	/^function decode_scanConstant(s, startPos)$/;"	f
+decode_scanNumber	cocos/cocos2d/json.lua	/^function decode_scanNumber(s,startPos)$/;"	f
+decode_scanObject	cocos/cocos2d/json.lua	/^function decode_scanObject(s,startPos)$/;"	f
+decode_scanString	cocos/cocos2d/json.lua	/^function decode_scanString(s,startPos)$/;"	f
+decode_scanWhitespace	cocos/cocos2d/json.lua	/^function decode_scanWhitespace(s,startPos)$/;"	f
+deprecatedTip	cocos/cocos2d/DeprecatedCocos2dClass.lua	/^local function deprecatedTip(old_name,new_name)$/;"	f
+deprecatedTip	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function deprecatedTip(old_name,new_name)$/;"	f
+deprecatedTip	cocos/cocosbuilder/DeprecatedCocosBuilderClass.lua	/^local function deprecatedTip(old_name,new_name)$/;"	f
+deprecatedTip	cocos/cocosdenshion/DeprecatedCocosDenshionClass.lua	/^local function deprecatedTip(old_name,new_name)$/;"	f
+deprecatedTip	cocos/cocosdenshion/DeprecatedCocosDenshionFunc.lua	/^local function deprecatedTip(old_name,new_name)$/;"	f
+deprecatedTip	cocos/cocostudio/DeprecatedCocoStudioClass.lua	/^local function deprecatedTip(old_name,new_name)$/;"	f
+deprecatedTip	cocos/cocostudio/DeprecatedCocoStudioFunc.lua	/^local function deprecatedTip(old_name,new_name)$/;"	f
+deprecatedTip	cocos/extension/DeprecatedExtensionClass.lua	/^local function deprecatedTip(old_name,new_name)$/;"	f
+deprecatedTip	cocos/extension/DeprecatedExtensionFunc.lua	/^local function deprecatedTip(old_name,new_name)$/;"	f
+deprecatedTip	cocos/network/DeprecatedNetworkClass.lua	/^local function deprecatedTip(old_name,new_name)$/;"	f
+deprecatedTip	cocos/network/DeprecatedNetworkFunc.lua	/^local function deprecatedTip(old_name,new_name)$/;"	f
+deprecatedTip	cocos/ui/DeprecatedUIFunc.lua	/^local function deprecatedTip(old_name,new_name)$/;"	f
+display.getAnimationCache	cocos/framework/display.lua	/^function display.getAnimationCache(name)$/;"	f
+display.getImage	cocos/framework/display.lua	/^function display.getImage(imageFilename)$/;"	f
+display.getRunningScene	cocos/framework/display.lua	/^function display.getRunningScene()$/;"	f
+display.loadImage	cocos/framework/display.lua	/^function display.loadImage(imageFilename, callback)$/;"	f
+display.loadSpriteFrames	cocos/framework/display.lua	/^function display.loadSpriteFrames(dataFilename, imageFilename, callback)$/;"	f
+display.newAnimation	cocos/framework/display.lua	/^function display.newAnimation(...)$/;"	f
+display.newFrames	cocos/framework/display.lua	/^function display.newFrames(pattern, begin, length, isReversed)$/;"	f
+display.newLayer	cocos/framework/display.lua	/^function display.newLayer(...)$/;"	f
+display.newNode	cocos/framework/display.lua	/^function display.newNode()$/;"	f
+display.newScene	cocos/framework/display.lua	/^function display.newScene(name, params)$/;"	f
+display.newSprite	cocos/framework/display.lua	/^function display.newSprite(source, x, y, params)$/;"	f
+display.newSpriteFrame	cocos/framework/display.lua	/^function display.newSpriteFrame(source, ...)$/;"	f
+display.removeAnimationCache	cocos/framework/display.lua	/^function display.removeAnimationCache(name)$/;"	f
+display.removeImage	cocos/framework/display.lua	/^function display.removeImage(imageFilename)$/;"	f
+display.removeSpriteFrame	cocos/framework/display.lua	/^function display.removeSpriteFrame(imageFilename)$/;"	f
+display.removeSpriteFrames	cocos/framework/display.lua	/^function display.removeSpriteFrames(dataFilename, imageFilename)$/;"	f
+display.removeUnusedSpriteFrames	cocos/framework/display.lua	/^function display.removeUnusedSpriteFrames()$/;"	f
+display.runScene	cocos/framework/display.lua	/^function display.runScene(newScene, transition, time, more)$/;"	f
+display.setAnimationCache	cocos/framework/display.lua	/^function display.setAnimationCache(name, animation)$/;"	f
+display.setAutoScale	cocos/framework/display.lua	/^function display.setAutoScale(configs)$/;"	f
+display.setTexturePixelFormat	cocos/framework/display.lua	/^function display.setTexturePixelFormat(imageFilename, format)$/;"	f
+display.wrapScene	cocos/framework/display.lua	/^function display.wrapScene(scene, transition, time, more)$/;"	f
+dump	cocos/cocos2d/functions.lua	/^function dump(value, description, nesting)$/;"	f
+dump_	cocos/cocos2d/functions.lua	/^    local function dump_(value, description, indent, nest, keylen)$/;"	f
+dump_value_	cocos/cocos2d/functions.lua	/^local function dump_value_(v)$/;"	f
+elseif t 	cocos/cocos2d/luaj.lua	/^        elseif t == "function" then$/;"	f
+encode 	cocos/cocos2d/json.lua	/^function encode (v)$/;"	f
+encodeString	cocos/cocos2d/json.lua	/^function encodeString(s)$/;"	f
+event.stop 	cocos/framework/components/event.lua	/^    event.stop = function(self)$/;"	f
+gl.attachShader	cocos/cocos2d/Opengl.lua	/^function gl.attachShader( program, shader )$/;"	f
+gl.bindBuffer	cocos/cocos2d/Opengl.lua	/^function gl.bindBuffer( target,buffer )$/;"	f
+gl.bindFramebuffer	cocos/cocos2d/Opengl.lua	/^function gl.bindFramebuffer(target, buffer)$/;"	f
+gl.bindRenderBuffer	cocos/cocos2d/Opengl.lua	/^function gl.bindRenderBuffer(target, buffer)$/;"	f
+gl.bindTexture	cocos/cocos2d/Opengl.lua	/^function gl.bindTexture(target, texture)$/;"	f
+gl.compileShader	cocos/cocos2d/Opengl.lua	/^function gl.compileShader(shader)$/;"	f
+gl.createBuffer	cocos/cocos2d/Opengl.lua	/^function gl.createBuffer()$/;"	f
+gl.createFramebuffer	cocos/cocos2d/Opengl.lua	/^function gl.createFramebuffer( )$/;"	f
+gl.createProgram	cocos/cocos2d/Opengl.lua	/^function gl.createProgram()$/;"	f
+gl.createRenderbuffer	cocos/cocos2d/Opengl.lua	/^function gl.createRenderbuffer()$/;"	f
+gl.createShader	cocos/cocos2d/Opengl.lua	/^function gl.createShader(shaderType)$/;"	f
+gl.createTexture	cocos/cocos2d/Opengl.lua	/^function  gl.createTexture()$/;"	f
+gl.deleteBuffer	cocos/cocos2d/Opengl.lua	/^function gl.deleteBuffer(buffer)$/;"	f
+gl.deleteFramebuffer	cocos/cocos2d/Opengl.lua	/^function gl.deleteFramebuffer(buffer)$/;"	f
+gl.deleteProgram	cocos/cocos2d/Opengl.lua	/^function gl.deleteProgram( program )$/;"	f
+gl.deleteRenderbuffer	cocos/cocos2d/Opengl.lua	/^function gl.deleteRenderbuffer(buffer)$/;"	f
+gl.deleteShader	cocos/cocos2d/Opengl.lua	/^function gl.deleteShader(shader)$/;"	f
+gl.deleteTexture	cocos/cocos2d/Opengl.lua	/^function gl.deleteTexture(texture)$/;"	f
+gl.getActiveAttrib	cocos/cocos2d/Opengl.lua	/^function gl.getActiveAttrib( program, index )$/;"	f
+gl.getActiveUniform	cocos/cocos2d/Opengl.lua	/^function gl.getActiveUniform( program, index )$/;"	f
+gl.getAttachedShaders	cocos/cocos2d/Opengl.lua	/^function gl.getAttachedShaders(program)$/;"	f
+gl.getAttribLocation	cocos/cocos2d/Opengl.lua	/^function gl.getAttribLocation(program, name )$/;"	f
+gl.getProgramParameter	cocos/cocos2d/Opengl.lua	/^function gl.getProgramParameter(program, e)$/;"	f
+gl.getShaderInfoLog	cocos/cocos2d/Opengl.lua	/^function gl.getShaderInfoLog( shader )$/;"	f
+gl.getShaderParameter	cocos/cocos2d/Opengl.lua	/^function gl.getShaderParameter(shader, e)$/;"	f
+gl.getUniform	cocos/cocos2d/Opengl.lua	/^function gl.getUniform(program, location)$/;"	f
+gl.getUniformLocation	cocos/cocos2d/Opengl.lua	/^function gl.getUniformLocation( program, name )$/;"	f
+gl.glNodeCreate	cocos/cocos2d/Opengl.lua	/^function gl.glNodeCreate()$/;"	f
+gl.linkProgram	cocos/cocos2d/Opengl.lua	/^function gl.linkProgram( program )$/;"	f
+gl.shaderSource	cocos/cocos2d/Opengl.lua	/^function gl.shaderSource(shader, source)$/;"	f
+gl.useProgram	cocos/cocos2d/Opengl.lua	/^function gl.useProgram(program)$/;"	f
+handler	cocos/cocos2d/functions.lua	/^function handler(obj, method)$/;"	f
+if "function" 	cocos/cocosbuilder/CCBReaderLoad.lua	/^                if "function" == type(ccb[documentControllerName][callbackName]) then$/;"	f
+if "function" 	cocos/cocosbuilder/CCBReaderLoad.lua	/^            if "function" == type(owner[callbackName]) then$/;"	f
+if (typeof(controller.onDidLoadFromCCB) 	cocos/cocosbuilder/CCBReaderLoad.lua	/^        if (typeof(controller.onDidLoadFromCCB) == "function")$/;"	f
+if superType 	cocos/cocos2d/functions.lua	/^        if superType == "function" then$/;"	f
+if type(configs.callback) 	cocos/framework/display.lua	/^    if type(configs.callback) == "function" then$/;"	f
+if type(onComplete) ~	cocos/framework/transition.lua	/^    if type(onComplete) ~= "function" then onComplete = nil end$/;"	f
+if vtype	cocos/cocos2d/json.lua	/^  if vtype=='function' and v==null then$/;"	f
+import	cocos/cocos2d/functions.lua	/^function import(moduleName, currentModuleName)$/;"	f
+initBuffer	cocos/cocos2d/DrawPrimitives.lua	/^    local function initBuffer()$/;"	f
+input 	cocos/cocos2d/functions.lua	/^    input = string.gsub (input, "%%(%x%x)", function(h) return string.char(checknumber(h,16)) end)$/;"	f
+io.exists	cocos/cocos2d/functions.lua	/^function io.exists(path)$/;"	f
+io.filesize	cocos/cocos2d/functions.lua	/^function io.filesize(path)$/;"	f
+io.pathinfo	cocos/cocos2d/functions.lua	/^function io.pathinfo(path)$/;"	f
+io.readfile	cocos/cocos2d/functions.lua	/^function io.readfile(path)$/;"	f
+io.writefile	cocos/cocos2d/functions.lua	/^function io.writefile(path, content, mode)$/;"	f
+isArray	cocos/cocos2d/json.lua	/^function isArray(t)$/;"	f
+isEncodable	cocos/cocos2d/json.lua	/^function isEncodable(o)$/;"	f
+isFloatColor	cocos/cocos2d/Cocos2d.lua	/^local function isFloatColor(c)$/;"	f
+iskindof	cocos/cocos2d/functions.lua	/^function iskindof(obj, classname)$/;"	f
+iskindof_ 	cocos/cocos2d/functions.lua	/^iskindof_ = function(cls, name)$/;"	f
+isset	cocos/cocos2d/functions.lua	/^function isset(hashtable, key)$/;"	f
+lazy_init	cocos/cocos2d/DrawPrimitives.lua	/^local function lazy_init()$/;"	f
+local ok, socket 	cocos/cocos2d/functions.lua	/^    local ok, socket = pcall(function()$/;"	f
+local status, view 	packages/mvc/AppBase.lua	/^        local status, view = xpcall(function()$/;"	f
+luaj.callStaticMethod	cocos/cocos2d/luaj.lua	/^function luaj.callStaticMethod(className, methodName, args, sig)$/;"	f
+luaoc.callStaticMethod	cocos/cocos2d/luaoc.lua	/^function luaoc.callStaticMethod(className, methodName, args)$/;"	f
+main	main.lua	/^local function main()$/;"	f
+math.angle2radian	cocos/cocos2d/functions.lua	/^function math.angle2radian(angle)$/;"	f
+math.newrandomseed	cocos/cocos2d/functions.lua	/^function math.newrandomseed()$/;"	f
+math.radian2angle	cocos/cocos2d/functions.lua	/^function math.radian2angle(radian)$/;"	f
+math.round	cocos/cocos2d/functions.lua	/^function math.round(value)$/;"	f
+newAnimation	cocos/framework/display.lua	/^local function newAnimation(frames, time)$/;"	f
+null	cocos/cocos2d/json.lua	/^function null()$/;"	f
+performWithDelay	cocos/cocos2d/deprecated.lua	/^function performWithDelay(node, callback, delay)$/;"	f
+printError	cocos/cocos2d/functions.lua	/^function printError(fmt, ...)$/;"	f
+printInfo	cocos/cocos2d/functions.lua	/^function printInfo(fmt, ...)$/;"	f
+printLog	cocos/cocos2d/functions.lua	/^function printLog(tag, fmt, ...)$/;"	f
+printf	cocos/cocos2d/functions.lua	/^function printf(fmt, ...)$/;"	f
+return (t	cocos/cocos2d/json.lua	/^  return (t=='string' or t=='boolean' or t=='number' or t=='nil' or t=='table') or (t=='function' and o==null)$/;"	f
+schedule	cocos/cocos2d/deprecated.lua	/^function schedule(node, callback, delay)$/;"	f
+setConstants	cocos/framework/display.lua	/^local function setConstants()$/;"	f
+setDesignResolution	cocos/framework/display.lua	/^local function setDesignResolution(r, framesize)$/;"	f
+setDrawProperty	cocos/cocos2d/DrawPrimitives.lua	/^local function setDrawProperty()$/;"	f
+setmetatable(cls, {__index 	cocos/cocos2d/functions.lua	/^        setmetatable(cls, {__index = function(_, key)$/;"	f
+setmetatableindex_ 	cocos/cocos2d/functions.lua	/^setmetatableindex_ = function(t, index)$/;"	f
+string.formatnumberthousands	cocos/cocos2d/functions.lua	/^function string.formatnumberthousands(num)$/;"	f
+string.htmlspecialchars	cocos/cocos2d/functions.lua	/^function string.htmlspecialchars(input)$/;"	f
+string.ltrim	cocos/cocos2d/functions.lua	/^function string.ltrim(input)$/;"	f
+string.nl2br	cocos/cocos2d/functions.lua	/^function string.nl2br(input)$/;"	f
+string.restorehtmlspecialchars	cocos/cocos2d/functions.lua	/^function string.restorehtmlspecialchars(input)$/;"	f
+string.rtrim	cocos/cocos2d/functions.lua	/^function string.rtrim(input)$/;"	f
+string.split	cocos/cocos2d/functions.lua	/^function string.split(input, delimiter)$/;"	f
+string.text2html	cocos/cocos2d/functions.lua	/^function string.text2html(input)$/;"	f
+string.trim	cocos/cocos2d/functions.lua	/^function string.trim(input)$/;"	f
+string.ucfirst	cocos/cocos2d/functions.lua	/^function string.ucfirst(input)$/;"	f
+string.urldecode	cocos/cocos2d/functions.lua	/^function string.urldecode(input)$/;"	f
+string.urlencode	cocos/cocos2d/functions.lua	/^function string.urlencode(input)$/;"	f
+string.utf8len	cocos/cocos2d/functions.lua	/^function string.utf8len(input)$/;"	f
+table.filter	cocos/cocos2d/functions.lua	/^function table.filter(t, fn)$/;"	f
+table.indexof	cocos/cocos2d/functions.lua	/^function table.indexof(array, value, begin)$/;"	f
+table.insertto	cocos/cocos2d/functions.lua	/^function table.insertto(dest, src, begin)$/;"	f
+table.keyof	cocos/cocos2d/functions.lua	/^function table.keyof(hashtable, value)$/;"	f
+table.keys	cocos/cocos2d/functions.lua	/^function table.keys(hashtable)$/;"	f
+table.map	cocos/cocos2d/functions.lua	/^function table.map(t, fn)$/;"	f
+table.merge	cocos/cocos2d/functions.lua	/^function table.merge(dest, src)$/;"	f
+table.nums	cocos/cocos2d/functions.lua	/^function table.nums(t)$/;"	f
+table.removebyvalue	cocos/cocos2d/functions.lua	/^function table.removebyvalue(array, value, removeall)$/;"	f
+table.unique	cocos/cocos2d/functions.lua	/^function table.unique(t, bArray)$/;"	f
+table.values	cocos/cocos2d/functions.lua	/^function table.values(hashtable)$/;"	f
+table.walk	cocos/cocos2d/functions.lua	/^function table.walk(t, fn)$/;"	f
+target[name] 	cocos/framework/package_support.lua	/^        target[name] = function(__, ...)$/;"	f
+tex2	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function tex2(u,v)$/;"	f
+transition.create	cocos/framework/transition.lua	/^function transition.create(action, args)$/;"	f
+transition.execute	cocos/framework/transition.lua	/^function transition.execute(target, action, args)$/;"	f
+transition.fadeIn	cocos/framework/transition.lua	/^function transition.fadeIn(target, args)$/;"	f
+transition.fadeOut	cocos/framework/transition.lua	/^function transition.fadeOut(target, args)$/;"	f
+transition.fadeTo	cocos/framework/transition.lua	/^function transition.fadeTo(target, args)$/;"	f
+transition.moveBy	cocos/framework/transition.lua	/^function transition.moveBy(target, args)$/;"	f
+transition.moveTo	cocos/framework/transition.lua	/^function transition.moveTo(target, args)$/;"	f
+transition.newEasing	cocos/framework/transition.lua	/^function transition.newEasing(action, easingName, more)$/;"	f
+transition.pauseTarget	cocos/framework/transition.lua	/^function transition.pauseTarget(target)$/;"	f
+transition.removeAction	cocos/framework/transition.lua	/^function transition.removeAction(action)$/;"	f
+transition.resumeTarget	cocos/framework/transition.lua	/^function transition.resumeTarget(target)$/;"	f
+transition.rotateBy	cocos/framework/transition.lua	/^function transition.rotateBy(target, args)$/;"	f
+transition.rotateTo	cocos/framework/transition.lua	/^function transition.rotateTo(target, args)$/;"	f
+transition.scaleTo	cocos/framework/transition.lua	/^function transition.scaleTo(target, args)$/;"	f
+transition.sequence	cocos/framework/transition.lua	/^function transition.sequence(actions)$/;"	f
+transition.stopTarget	cocos/framework/transition.lua	/^function transition.stopTarget(target)$/;"	f
+urlencodechar	cocos/cocos2d/functions.lua	/^local function urlencodechar(char)$/;"	f
+vertex2	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function vertex2(x,y)$/;"	f
+vertex3	cocos/cocos2d/DeprecatedCocos2dFunc.lua	/^local function vertex3(x,y,z)$/;"	f

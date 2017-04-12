@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="isometric" width="40" height="40" tilewidth="64" tileheight="48">
+ <tileset firstgid="1" name="64x48" tilewidth="64" tileheight="48">
+  <image source="64x48.png" width="256" height="384"/>
+ </tileset>
+ <layer name="ground" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztwwEJAAAMBKGr8P3LrsdQcNVUVVVVVVUfPVtfakE=
+  </data>
+ </layer>
+ <objectgroup name="对象层 1" width="40" height="40">
+  <object x="138" y="166"/>
+  <object name="obj" x="97" y="97" width="95" height="95"/>
+  <object x="354" y="-100"/>
+  <object x="69" y="73"/>
+  <object x="324" y="-84"/>
+ </objectgroup>
+</map>

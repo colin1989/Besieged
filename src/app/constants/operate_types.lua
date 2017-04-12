@@ -1,0 +1,3 @@
+OP_SELECT 	= 1
+OP_MOVE 	= 2
+OP_ZOOM 	= 3

@@ -1,0 +1,10 @@
+U_EMPTY		= 0
+U_BUILDING 	= 1
+U_PEOPLE 	= 2
+
+U_ST_WAITING 	= 1  -- 等待建造
+U_ST_BUILDING	= 2  -- 建造中
+U_ST_BUILDED	= 3  -- 已完成
+U_ST_SELECTED 	= 4  -- 已选中
+U_ST_UNSELECTED = 5  
+U_ST_MOVING 	= 6
