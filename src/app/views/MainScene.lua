@@ -31,6 +31,8 @@ function MainScene:onCreate()
     -- local group = map:getObjectGroup("对象层1")
     -- print(group:getGroupName())
     -- local obj = group:getObject("主建筑")
+    cc.SpriteFrameCache:getInstance():addSpriteFrames("map/Beijing-hd.plist", "map/Beijing-hd.png")
+
     game.Layers.ZoomLayer = game.ZoomLayer:create()
     game.Layers.MapLayer = game.MapLayer:create()
     game.Layers.TouchDispatcher = game.TouchDispatcher:create()
@@ -38,6 +40,10 @@ function MainScene:onCreate()
     self:addChild(game.Layers.TouchDispatcher)
     self:addChild(game.Layers.ZoomLayer)
     game.Layers.ZoomLayer:addChild(game.Layers.MapLayer)
+
+    performWithDelay(self, function ( ... )
+        game.NotificationManager.post("THIS_IS_COMPONENT_TEST")
+    end, 5)
 
     -- touch   1122.0850830078 522.66546630859
     -- [LUA-print] maptouch    1194.0850830078 682.66546630859

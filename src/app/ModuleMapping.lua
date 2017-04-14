@@ -11,8 +11,10 @@ Mapping = {
 	MapLogicInfo = "app.models.MapLogicInfo",
 	Unit = "app.models.Unit",
 	UnitFactory = "app.models.UnitFactory",
+	TouchStatus = "app.models.TouchStatus",
 	MapLayer = "app.views.MapLayer",
 	TouchDispatcher = "app.views.TouchDispatcher",
 	ZoomLayer = "app.views.ZoomLayer",
 	MapUtils = "app.utils.MapUtils",
+	NotificateUtil = "app.components.NotificateUtil",
 }

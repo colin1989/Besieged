@@ -5,6 +5,41 @@ function MapUtils.isIndexValid( mapIndex )
 	return mapIndex.x >= 0 and mapIndex.y >=0 and mapIndex.x < game.g_mapSize.width and mapIndex.y < game.g_mapSize.height
 end
 
+-- 单元的所有点都有效
+function MapUtils.isUnitValid( vertex, row )
+	local t = {vertex, cc.p(vertex.x + row, vertex.y), cc.p(vertex.x, vertex.y + row), cc.p(vertex.x + row, vertex.y + row)}
+	for _, p in pairs(t) do
+		if not MapUtils.isIndexValid(p) then
+			return false
+		end
+	end
+	return true
+end
+
+-- 是否点击到unit
+function MapUtils:isTouchedUnit( tileCoordinate )
+	if not MapUtils.isIndexValid(tileCoordinate) then
+		return nil
+	end
+	return game.MapLogicInfo:isTouchedUnit(tileCoordinate)
+end
+
+function MapUtils.isUsable( vertex, row )
+	if not MapUtils.isUnitValid(vertex, row) then
+		return false
+	end
+	return game.MapLogicInfo:isCanUse(vertex, row)
+end
+
+-- 查找逻辑位置
+function MapUtils.logicVertex( unit )
+	local unique = game.MapLogicInfo:findVertexByUnit(unit)
+	if unique then
+		return MapUtils.unique_2_tile(unique)
+	end
+	return cc.p(0, 0)
+end
+
 function MapUtils.map_2_tile( map, pos )
     local result = {}
     local newpos = {}
@@ -26,13 +61,6 @@ function MapUtils.map_2_tile( map, pos )
     -- end
     result.x = math.floor(result.x)
     result.y = math.floor(result.y)
-
-    -- 4
-    -- result.x = (newpos.x - layersize.width * tilesize.width/2) / tilesize.height - (newpos.y - layersize.height * tilesize.height) / tilesize.width;
-    -- result.y = -(newpos.x - layersize.width * tilesize.width/2) / tilesize.height - (newpos.y - layersize.height * tilesize.height) / tilesize.width;
-    -- printInfo("newpos x:%d y:%d index x:%s y:%s", newpos.x, newpos.y, result.x, result.y)
-    -- result.x = round(result.x)
-    -- result.y = round(result.y)
 
     return result, MapUtils.isIndexValid(result)
 end
@@ -58,7 +86,7 @@ function MapUtils.unique_2_tile( uni )
     return cc.p(math.floor(uni/100), uni%100)
 end
 
--- 将基准位置转换成实际拜访的位置
+-- 将基准位置转换成实际摆放的位置
 function MapUtils.vertex_2_real( map, vertex, row )
     local mapPoint = map:getLayer("ground"):getPositionAt(vertex)
     local tilesize = game.g_mapTileSize
