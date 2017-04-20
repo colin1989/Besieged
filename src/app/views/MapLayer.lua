@@ -174,6 +174,8 @@ function MapLayer:TEST( ... )
 		MapManager.addUnit(building)
 		building:refresh(U_ST_BUILDED)
 	end
+
+	
 end
 
 return MapLayer

@@ -53,11 +53,26 @@ function ZoomLayer:touchMoved( event )
 		local curMidPosition = cc.pMidpoint(TouchPoint.points_[1], TouchPoint.points_[2])
 		local curDistance = cc.pGetDistance(TouchPoint.points_[1], TouchPoint.points_[2])
 		local curScale = self:getScale()
+		local scale = curDistance / self.distance_ * self.startScale_
+		scale = scale < 3 and scale or 3
+        scale = scale > 320 / (game.g_mapSize.height * game.g_mapGridNum) and scale or 320 / (game.g_mapSize.height * game.g_mapGridNum)
+		-- 记录中点的地图坐标
+		local mpoint = game.Layers.MapLayer.map_:convertToNodeSpace(self.midPosition_)  
+		-- 缩放
+		self:setScale(scale)
+		-- 记录地图缩放后中点坐标的世界坐标
+		local wpoint = game.Layers.MapLayer.map_:convertToWorldSpace(mpoint)  
+		-- 平移的距离
+		local movement = cc.p(curMidPosition.x - self.midPosition_.x, curMidPosition.y - self.midPosition_.y)
+		-- 缩放的平移距离
+		local scalemovement = cc.p(wpoint.x - self.midPosition_.x, wpoint.y - self.midPosition_.y)
+		-- 新的位置
+		local new_position = cc.p(self:getPositionX() - scalemovement.x + movement.x,
+								self:getPositionY() - scalemovement.y + movement.y)
 
-		self:setPosition(cc.p(self:getPositionX() + curMidPosition.x - self.midPosition_.x, 
-								self:getPositionY() + curMidPosition.y - self.midPosition_.y))
-		self:setScale(curDistance / self.distance_ * self.startScale_)
-		
+
+		self:setPosition(new_position)
+				
 		self.midPosition_ = curMidPosition
 		self.distance_ = curDistance
 		self.startScale_ = self:getScale()

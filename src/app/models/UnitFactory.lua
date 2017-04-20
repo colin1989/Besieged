@@ -1,3 +1,5 @@
+local Building = game.Building
+
 local factory = {}
 
 function factory.newBuilding( id, vertex, map )
