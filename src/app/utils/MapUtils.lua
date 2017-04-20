@@ -16,30 +16,6 @@ function MapUtils.isUnitValid( vertex, row )
 	return true
 end
 
--- 是否点击到unit
-function MapUtils:isTouchedUnit( tileCoordinate )
-	if not MapUtils.isIndexValid(tileCoordinate) then
-		return nil
-	end
-	return game.MapLogicInfo:isTouchedUnit(tileCoordinate)
-end
-
-function MapUtils.isUsable( vertex, row )
-	if not MapUtils.isUnitValid(vertex, row) then
-		return false
-	end
-	return game.MapLogicInfo:isCanUse(vertex, row)
-end
-
--- 查找逻辑位置
-function MapUtils.logicVertex( unit )
-	local unique = game.MapLogicInfo:findVertexByUnit(unit)
-	if unique then
-		return MapUtils.unique_2_tile(unique)
-	end
-	return cc.p(0, 0)
-end
-
 function MapUtils.map_2_tile( map, pos )
     local result = {}
     local newpos = {}
@@ -95,7 +71,7 @@ end
 
 -- 创建变红变绿的基座
 function MapUtils.createXXX( num, b )
-	local file = b and "map/build_1_1__.png" or "map/build_1_1____.png"
+	local file = b and "map/tile_green.png" or "map/tile_red.png"
 	local batchnode = cc.SpriteBatchNode:create(file)
 	local tilesize = game.g_mapTileSize
 	for i = 0, num - 1 do
@@ -107,6 +83,15 @@ function MapUtils.createXXX( num, b )
 		end
 	end
 	return batchnode
+end
+
+function MapUtils.getPoints( event )
+	local result = {}
+	for k, v in pairs(event.points) do
+		v.touchid = k
+		table.insert(result, v)
+	end
+	return unpack(result)
 end
 
 return MapUtils

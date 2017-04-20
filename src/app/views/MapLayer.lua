@@ -2,94 +2,76 @@ local Building = game.Building
 local MapUtils = game.MapUtils
 local Notification = game.NotificationManager
 local TouchStatus = game.TouchStatus
+local TouchPoint = game.TouchPoint
+local UnitFactory = game.UnitFactory
+local MapManager = game.MapManager
 
 local MapLayer = class("MapLayer", cc.Layer)
 
 MapLayer.map_ = nil
 MapLayer.selectedUnit_ = nil
-MapLayer.selectIndex_ = nil
+MapLayer.selectedUnitVertex_ = nil
+MapLayer.pressedIndex_ = nil
 
 function MapLayer:ctor( ... )
 	self:move(cc.p(0, 0))
 
-	self.map_ = cc.TMXTiledMap:create("map/mymap.tmx")
-        :align(cc.p(0.5, 0.5), display.center)
-        :addTo(self)
-        :setMapOrientation(3)
-  		:setScale(0.5)
-
-  	-- 设置
-	local mapsize = self.map_:getMapSize()  	
-    game.g_mapSize = mapsize
-    game.g_mapGridNum = mapsize.width * mapsize.height
-    game.g_mapTileSize = self.map_:getTileSize()
-    game.MapLogicInfo = game.MapLogicInfo:create(mapsize.width, mapsize.height)
-
-    self:test()
+    self:onNodeEvent("enter", function ( ... )
+		game.NotificateUtil.add(self, "MapLayer")
+	end)
+	self:onNodeEvent("exit", function ( ... )
+		game.NotificateUtil.remove(self, "MapLayer")
+	end)
 end
 
-function MapLayer:test( ... )
-	local vertex = cc.p(34, 1)
-	local position = MapUtils.vertex_2_real(self.map_, vertex, 5)
-
-	local building = game.MapManager.newBuilding(10001, vertex, self.map_)
-	game.MapManager.addUnit(building)
-	building:refresh(U_ST_BUILDED)
-
-	do
-		local vertex = cc.p(15, 15)
-		local position = MapUtils.vertex_2_real(self.map_, vertex, 5)
-
-		local building = game.MapManager.newBuilding(10001, vertex, self.map_)
-		game.MapManager.addUnit(building)
-		building:refresh(U_ST_BUILDED)
-	end
+function MapLayer:setMap( map )
+	self.map_ = map
 end
 
 function MapLayer:touchBegan( event )
+	if table.nums(TouchPoint.points_) > 1 then
+		return
+	end
 	print("MapLayer touchBegan")
-	local touch = cc.p(event.points[0].x, event.points[0].y)
+	local touch = game.MapUtils.getPoints(event)
 	local maptouch = MapUtils.screen_2_map(self.map_, touch)
 	local tileCoordinate = MapUtils.map_2_tile(self.map_, maptouch)
-	local unit = MapUtils:isTouchedUnit(tileCoordinate)
-	if unit then
-		print("touched unit, judge is selected")
-		if unit:isSelected() then  -- 点中了选择状态的unit，屏蔽zoomlayer
-			print("pressed")
-			unit:refresh(U_ST_PRESSED)
-			self.selectedUnit_ = unit
-			self.selectIndex_ = tileCoordinate  -- 点中的grid
-
-			TouchStatus.switch_press_unit()
-			
+	if self.selectedUnit_ then
+		if MapManager.isInBound(tileCoordinate, self.selectedUnit_.vertex_, self.selectedUnit_.row_) then
+			if self.selectedUnit_:isSelected() then  -- 点中了选择状态的unit，屏蔽zoomlayer
+				self.selectedUnit_:refresh(U_ST_PRESSED)
+				self.pressedIndex_ = tileCoordinate  -- 点中的grid
+				TouchStatus.switch_press_unit()
+			end
 		end
 	end
 end
 
 function MapLayer:touchMoved( event )
-	if table.nums(event.points) > 1 then
+	-- 如果当前触摸点大于1，并且没按住unit
+	if table.nums(TouchPoint.points_) > 1 and not TouchStatus.isStatus(OP_PRESS_UNIT) then
 		return
 	end
 	if TouchStatus.isStatus(OP_MOVE_MAP) or TouchStatus.isStatus(OP_ZOOM_MAP) then
 		return
 	end
 	print("MapLayer touchMoved")
-	if self.selectedUnit_ then
+	if self.selectedUnit_ and self.pressedIndex_ then
 		TouchStatus.switch_move_unit()  -- 只要按下了高亮的unit，就算是移动建筑，不管移动的目标位置是否正确
 
-		local touch = cc.p(event.points[0].x, event.points[0].y)
+		local touch = game.MapUtils.getPoints(event)
 		local maptouch = MapUtils.screen_2_map(self.map_, touch)
 		local tileCoordinate = MapUtils.map_2_tile(self.map_, maptouch)
-		if MapUtils.isIndexValid(tileCoordinate) and tileCoordinate.x ~= self.selectIndex_.x or tileCoordinate.y ~= self.selectIndex_.y  then
-			local vertex = self.selectedUnit_.vertex_
-			local new_vertex = cc.p(vertex.x + tileCoordinate.x - self.selectIndex_.x,
-									vertex.y + tileCoordinate.y - self.selectIndex_.y)
+	
+		if MapUtils.isIndexValid(tileCoordinate) and tileCoordinate.x ~= self.pressedIndex_.x or tileCoordinate.y ~= self.pressedIndex_.y  then
+			local vertex = self.selectedUnit_.vertex_						
+			local new_vertex = cc.p(vertex.x + tileCoordinate.x - self.pressedIndex_.x, 
+									vertex.y + tileCoordinate.y - self.pressedIndex_.y)
 			local row = self.selectedUnit_.row_
 
 			if MapUtils.isUnitValid(new_vertex, row) then
-				game.MapManager.tryUpdateUnit(self.selectedUnit_, new_vertex, row)  -- 只改变位置，不改变逻辑数据
-
-				self.selectIndex_ = tileCoordinate  -- 保存本次选中的index
+				self.selectedUnitVertex_ = new_vertex
+				self.pressedIndex_ = tileCoordinate  -- 保存本次选中的index
 
 				self.selectedUnit_:refresh(U_ST_MOVING, new_vertex)
 			end
@@ -104,22 +86,24 @@ function MapLayer:touchEnded( event )
 	print("MapLayer touchEnded")
 	if self.selectedUnit_ then
 		self.selectedUnit_:refresh(U_ST_UNPRESSED)
-		self.selectedUnit_ = nil
 	end
+	self.pressedIndex_ = nil
+	-- 没移动过，则执行点击判定
 	if not TouchStatus.isStatus(OP_MOVE_UNIT) then
 		-- 选中判定
-		local touch = cc.p(event.points[0].x, event.points[0].y)
+		local touch = game.MapUtils.getPoints(event)
 		local maptouch = MapUtils.screen_2_map(self.map_, touch)
 		local tileCoordinate = MapUtils.map_2_tile(self.map_, maptouch)
-		print(tileCoordinate.x, tileCoordinate.y)
-		local unit = MapUtils:isTouchedUnit(tileCoordinate)
-		if unit and TouchStatus.isStatus(OP_NONE) then
-			print("选中了")
+		local unit = MapManager.isTouchedUnit(tileCoordinate)
+		if unit and not unit:isSelected() and TouchStatus.isStatus(OP_NONE) then
 			game.NotificationManager.post(MSG_UNSELECTED_UNIT)
 			unit:refresh(U_ST_SELECTED)
+			self.selectedUnit_ = unit
+			self.selectedUnitVertex_ = unit.vertex_
 		else
-			print("没选中")
 			game.NotificationManager.post(MSG_UNSELECTED_UNIT)  -- 没选中则取消掉已选中状态的unit
+			self.selectedUnit_ = nil
+			self.selectedUnitVertex_ = nil
 		end
 	end
 	TouchStatus.switch_none()
@@ -142,7 +126,7 @@ function MapLayer:touchEnded( event )
 	-- -- 假定点击放置建筑，点击的点是建筑以为底板的左上角
 	-- if game.MapLogicInfo:isCanUse(tileCoordinate, row) then
 
-	-- 	local building = game.MapManager.newBuilding(unitId, tileCoordinate, self.map_)
+	-- 	local building = UnitFactory.newBuilding(unitId, tileCoordinate, self.map_)
 	-- 	building.Node_:addTo(self.map_)
 	-- 	building:refresh(U_ST_BUILDED)
 
@@ -164,11 +148,32 @@ end
 function MapLayer:notifications( ... )
 	return {
 		MSG_MAP_ADD,
+		"TEST",
 	}
 end
 
 function MapLayer:MSG_MAP_ADD( tileCoordinate, type )
 	
+end
+
+function MapLayer:TEST( ... )
+	print("TEST")
+
+	local vertex = cc.p(34, 1)
+	local position = MapUtils.vertex_2_real(self.map_, vertex, 5)
+
+	local building = UnitFactory.newBuilding(10001, vertex, self.map_)
+	MapManager.addUnit(building)
+	building:refresh(U_ST_BUILDED)
+
+	do
+		local vertex = cc.p(15, 15)
+		local position = MapUtils.vertex_2_real(self.map_, vertex, 5)
+
+		local building = UnitFactory.newBuilding(10001, vertex, self.map_)
+		MapManager.addUnit(building)
+		building:refresh(U_ST_BUILDED)
+	end
 end
 
 return MapLayer

@@ -72,6 +72,7 @@ function Unit:reset( ... )  -- final
 	self.scheduleId_ = nil
 	self.background_ = nil
 	self.isSelected_ = false
+	self.isValidPosition_ = true  -- 是否在正确的位置
 
 	self.Node_ = nil
 	self.render_ = nil
@@ -87,14 +88,18 @@ function Unit:delete( ... )
 	self:reset()
 end
 
-function Unit:refresh( status, ... )
-
+function Unit:hideWidgets( ... )
 	self.BTN_OK_:setVisible(false)
 	self.BTN_CANCEL_:setVisible(false)
 	self.LAY_ARROW_:setVisible(false)
 	if self.background_ then
 		self.background_:setVisible(false)
 	end
+end
+
+function Unit:refresh( status, ... )
+	self:hideWidgets()
+
 	if status == U_ST_WAITING then
 		self.status_ = status
 
@@ -118,16 +123,15 @@ function Unit:refresh( status, ... )
 		local actions = {}
 		actions[#actions + 1] = cc.ScaleTo:create(0.2, 1.3, 1.3)
 		actions[#actions + 1] = cc.ScaleTo:create(0.2, 1, 1)
-		self.Node_:runAction(transition.sequence(actions))
+		self.render_:runAction(transition.sequence(actions))
 		self.LAY_ARROW_:setVisible(true)
+		self:resetZOrder(ZORDER_MOVING)
 	elseif status == U_ST_UNSELECTED then
 		self.isSelected_ = false
-		self:drawSubstrate()
+		self:clearSubstrate()
 		-- 如果当前位置不可用，则回到原来的位置
-		local usable = game.MapUtils.isUsable(self.vertex_, self.row_)
-		local real_vertex = game.MapUtils.logicVertex(self)
-		print("可不可用呢", tostring(usable))
-		print("real_vertex", real_vertex.x, real_vertex.y)
+		local usable = game.MapManager.isUsableExcept(self.vertex_, self.row_, self.unique_)
+		local real_vertex = game.MapManager.logicVertex(self)
 		if not usable then
 			self:setVertex(real_vertex)
 		else
@@ -135,25 +139,35 @@ function Unit:refresh( status, ... )
 			self.vertex_ = real_vertex
 			game.MapManager.updateUnit(self, new_vertex, self.row_)
 		end
+		self.isValidPosition_ = true
+		self:drawSubstrate()
+		self:resetZOrder(ZORDER_NORMAL)
 	elseif status == U_ST_PRESSED then
 		self:drawSubstrate()
 		self.LAY_ARROW_:setVisible(true)
+		self:setBackgroundVisible(false)
 	elseif status == U_ST_UNPRESSED then
 		self:drawSubstrate()
 		self.LAY_ARROW_:setVisible(true)
+		self:setBackgroundVisible(false)
+		self:resetZOrder(self.isValidPosition_ and ZORDER_NORMAL or ZORDER_MOVING)
 	elseif status == U_ST_MOVING then
-		self.LAY_ARROW_:setVisible(true)
-
+		local new_vertex = ...  -- 因为当前逻辑数据没更新，所以不能用self.vertex_
+		self:clearSubstrate()  -- 清楚上一步的基座
+		local usable = game.MapManager.isUsableExcept(new_vertex, self.row_, self.unique_)  -- 新位置是否可用
+		self.isValidPosition_ = usable
+		game.MapManager.tryUpdateUnit(self, new_vertex, self.row_)  -- 只改变位置，不改变逻辑数据
 		if self.background_ then
-			local cur_vertex = ...  -- 因为当前逻辑数据没更新，所以不能用self.vertex_
-			local usable = game.MapUtils.isUsable(cur_vertex, self.row_)
 			if self.background_.flag ~= usable then
+				self.background_:removeSelf()
 				self.background_ = game.MapUtils.createXXX(self.row_, usable)
 			    self.background_.flag = usable
 			    self.Node_:addChild(self.background_, 0)
 			end
-			self.background_:setVisible(true)
 		end
+		self:setBackgroundVisible(true)  -- 颜色底板可见性
+		self:resetZOrder(ZORDER_MOVING)  -- 重设z值
+		self.LAY_ARROW_:setVisible(true)  -- 显示箭头
 	end
 end
 
@@ -186,6 +200,9 @@ function Unit:isSelected( ... )
 end
 
 function Unit:drawSubstrate( ... )
+	if not self.isValidPosition_ then
+		return
+	end
 	local pos = self.vertex_
 	local row = self.row_
 	for i = pos.x, pos.x + row - 1 do
@@ -195,6 +212,34 @@ function Unit:drawSubstrate( ... )
 			end
 		end
 	end
+end
+
+function Unit:clearSubstrate( ... )
+	if not self.isValidPosition_ then
+		return
+	end
+	local pos = self.vertex_
+	local row = self.row_
+	for i = pos.x, pos.x + row - 1 do
+		for j = pos.y, pos.y + row - 1 do
+			if game.MapUtils.isIndexValid(cc.p(i, j)) then
+				self.map_:getLayer("ground"):setTileGID(25, cc.p(i, j))
+			end
+		end
+	end
+end
+
+function Unit:setBackgroundVisible( visible )
+	if self.background_ then
+		if not self.isValidPosition_ then
+			visible = true
+		end
+		self.background_:setVisible(visible)
+	end
+end
+
+function Unit:resetZOrder( z )
+	self.Node_:setZOrder(z)
 end
 
 function Unit:schedule( interval )

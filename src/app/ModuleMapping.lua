@@ -12,6 +12,7 @@ Mapping = {
 	Unit = "app.models.Unit",
 	UnitFactory = "app.models.UnitFactory",
 	TouchStatus = "app.models.TouchStatus",
+	TouchPoint = "app.models.TouchPoint",
 	MapLayer = "app.views.MapLayer",
 	TouchDispatcher = "app.views.TouchDispatcher",
 	ZoomLayer = "app.views.ZoomLayer",

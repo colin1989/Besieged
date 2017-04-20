@@ -3,6 +3,7 @@ local MapUtils = game.MapUtils
 local MapLogicInfo = class("MapLogicInfo")
 MapLogicInfo.maps_ = {}  -- 存储地形上的数据
 MapLogicInfo.vertexs_ = {}  -- 根据vertex保存unit
+MapLogicInfo.originGID_ = {}
 
 function MapLogicInfo:ctor( mapwidth, mapheight )
 	for i = 0, mapwidth - 1 do
@@ -30,14 +31,28 @@ function MapLogicInfo:clearUnit( tileCoordinate, row )
 	self.vertexs_[MapUtils.tile_2_unique(tileCoordinate)] = nil
 end
 
-function MapLogicInfo:isEmpty( tileCoordinate )
+function MapLogicInfo:isEmpty( tileCoordinate, unique )
 	return self.maps_[MapUtils.tile_2_unique(tileCoordinate)] == U_EMPTY
 end
 
+-- 查看指定范围是否可用
 function MapLogicInfo:isCanUse( tileCoordinate, row )
 	for i = tileCoordinate.x, tileCoordinate.x + row - 1 do
 		for j = tileCoordinate.y, tileCoordinate.y + row - 1 do
 			if not self:isEmpty(cc.p(i, j)) then
+				return false
+			end
+		end
+	end
+	return true
+end
+
+-- 查看指定范围是否可用，排除掉给定unit的位置
+function MapLogicInfo:isCanUseExcept( tileCoordinate, row, unique )
+	for i = tileCoordinate.x, tileCoordinate.x + row - 1 do
+		for j = tileCoordinate.y, tileCoordinate.y + row - 1 do
+			local value = self.maps_[MapUtils.tile_2_unique(cc.p(i, j))]
+			if value ~= U_EMPTY and value.unique_ ~= unique then
 				return false
 			end
 		end
