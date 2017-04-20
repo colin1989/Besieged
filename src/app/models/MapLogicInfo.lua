@@ -1,3 +1,7 @@
+--[[
+	存储地图的数据
+]]
+
 local MapUtils = game.MapUtils
 
 local MapLogicInfo = class("MapLogicInfo")

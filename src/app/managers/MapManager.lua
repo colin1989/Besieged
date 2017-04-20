@@ -1,3 +1,7 @@
+--[[
+	地图的总管理
+]]
+
 local MapLogicInfo = game.MapLogicInfo
 local Building = game.Building
 

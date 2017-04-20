@@ -1,10 +1,13 @@
+--[[
+	存储一次触摸流程中的触摸点
+]]
+
 local TouchPoint = {}
 TouchPoint.points_ = {}
 function TouchPoint.touchBegan( event )
-	local p1, p2 = game.MapUtils.getPoints(event)
-	table.insert(TouchPoint.points_, p1)
-	if p2 then
-		table.insert(TouchPoint.points_, p2)
+	local ps = {game.MapUtils.getPoints(event)}
+	for _, p in pairs(ps or {}) do
+		table.insert(TouchPoint.points_, p)
 	end
 end
 function TouchPoint.touchMoved( event )

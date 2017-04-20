@@ -12,22 +12,21 @@ function Unit:init( ... )  -- final
 	self.operability_ = false  -- 默认不可操作
 	self.Node_ = display.newNode():align(cc.p(0.5, 0.5), 0, 0)
 
-	self.LAY_ARROW_ = display.newNode():align(cc.p(0.5, 0.5), 0, 0):addTo(self.Node_, 1)
-	display.newSprite("map/ui_map_btn_jiantou1.png")
+	cc.SpriteFrameCache:getInstance():addSpriteFrames("map/UI_Building.plist", "map/UI_Building.pvr.ccz")
+	self.BATCH_ARROWS_ = cc.SpriteBatchNode:create("map/UI_Building.pvr.ccz"):addTo(self.Node_, 1)
+	cc.Sprite:createWithSpriteFrameName("ui_map_btn_jiantou1.png")
 		:align(cc.p(0,0), game.g_mapTileSize.width/4 * self.row_, game.g_mapTileSize.height/4 * self.row_)
-		:addTo(self.LAY_ARROW_)
-	display.newSprite("map/ui_map_btn_jiantou2.png")
+		:addTo(self.BATCH_ARROWS_)
+	cc.Sprite:createWithSpriteFrameName("ui_map_btn_jiantou2.png")
 		:align(cc.p(1,1), -game.g_mapTileSize.width/4 * self.row_, -game.g_mapTileSize.height/4 * self.row_)
-		:addTo(self.LAY_ARROW_)
-	self.LAY_ARROW_:setVisible(false)
-	display.newSprite("map/ui_map_btn_jiantou3.png")
+		:addTo(self.BATCH_ARROWS_)
+	cc.Sprite:createWithSpriteFrameName("ui_map_btn_jiantou3.png")
 		:align(cc.p(1,0), -game.g_mapTileSize.width/4 * self.row_, game.g_mapTileSize.height/4 * self.row_)
-		:addTo(self.LAY_ARROW_)
-	self.LAY_ARROW_:setVisible(false)
-	display.newSprite("map/ui_map_btn_jiantou4.png")
+		:addTo(self.BATCH_ARROWS_)
+	cc.Sprite:createWithSpriteFrameName("ui_map_btn_jiantou4.png")
 		:align(cc.p(0,1), game.g_mapTileSize.width/4 * self.row_, -game.g_mapTileSize.height/4 * self.row_)
-		:addTo(self.LAY_ARROW_)
-	self.LAY_ARROW_:setVisible(false)
+		:addTo(self.BATCH_ARROWS_)
+	self.BATCH_ARROWS_:setVisible(false)
 
 	self.BTN_OK_ = ccui.Button:create()
 	self.BTN_OK_:loadTextures("ui/ui_public_btn_ok.png", "ui/ui_public_btn_ok.png", nil)
@@ -78,7 +77,7 @@ function Unit:reset( ... )  -- final
 	self.render_ = nil
 	self.BTN_OK_ = nil
 	self.BTN_CANCEL_ = nil
-	self.LAY_ARROW_ = nil
+	self.BATCH_ARROWS_ = nil
 end
 
 function Unit:delete( ... )
@@ -91,7 +90,7 @@ end
 function Unit:hideWidgets( ... )
 	self.BTN_OK_:setVisible(false)
 	self.BTN_CANCEL_:setVisible(false)
-	self.LAY_ARROW_:setVisible(false)
+	self.BATCH_ARROWS_:setVisible(false)
 	if self.background_ then
 		self.background_:setVisible(false)
 	end
@@ -124,7 +123,7 @@ function Unit:refresh( status, ... )
 		actions[#actions + 1] = cc.ScaleTo:create(0.2, 1.3, 1.3)
 		actions[#actions + 1] = cc.ScaleTo:create(0.2, 1, 1)
 		self.render_:runAction(transition.sequence(actions))
-		self.LAY_ARROW_:setVisible(true)
+		self.BATCH_ARROWS_:setVisible(true)
 		self:resetZOrder(ZORDER_MOVING)
 	elseif status == U_ST_UNSELECTED then
 		self.isSelected_ = false
@@ -144,11 +143,11 @@ function Unit:refresh( status, ... )
 		self:resetZOrder(ZORDER_NORMAL)
 	elseif status == U_ST_PRESSED then
 		self:drawSubstrate()
-		self.LAY_ARROW_:setVisible(true)
+		self.BATCH_ARROWS_:setVisible(true)
 		self:setBackgroundVisible(false)
 	elseif status == U_ST_UNPRESSED then
 		self:drawSubstrate()
-		self.LAY_ARROW_:setVisible(true)
+		self.BATCH_ARROWS_:setVisible(true)
 		self:setBackgroundVisible(false)
 		self:resetZOrder(self.isValidPosition_ and ZORDER_NORMAL or ZORDER_MOVING)
 	elseif status == U_ST_MOVING then
@@ -167,7 +166,7 @@ function Unit:refresh( status, ... )
 		end
 		self:setBackgroundVisible(true)  -- 颜色底板可见性
 		self:resetZOrder(ZORDER_MOVING)  -- 重设z值
-		self.LAY_ARROW_:setVisible(true)  -- 显示箭头
+		self.BATCH_ARROWS_:setVisible(true)  -- 显示箭头
 	end
 end
 

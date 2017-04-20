@@ -1,3 +1,7 @@
+--[[
+	触摸状态
+]]
+
 local TouchStatus = {}
 
 local status_ = OP_NONE

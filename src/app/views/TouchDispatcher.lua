@@ -1,10 +1,13 @@
+--[[
+	触摸事件分发
+]]
+
 -- if game.touchDispatcher then return end
 local TouchDispatcher = class("TouchDispatcher", cc.Layer)
 local zoom = game.Layers.ZoomLayer
 local map = game.Layers.MapLayer
 local TouchStatus = game.TouchStatus
 local TouchPoint = game.TouchPoint
-
 
 local function touchBegan( event )
 	if TouchStatus.isStatus(OP_CCUI) then

@@ -1,4 +1,6 @@
--- 使用时需定义notifications方法，返回要接受的消息名字
+--[[
+	使用时需定义notifications方法，返回要接受的消息名字
+]]
 local component = {}
 
 function component.add(instance, flag)

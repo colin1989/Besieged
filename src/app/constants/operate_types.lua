@@ -1,3 +1,7 @@
+--[[
+	手指的操作集合
+]]
+
 OP_NONE 		= 0
 OP_PRESS_UNIT	= 1
 OP_MOVE_UNIT 	= 2

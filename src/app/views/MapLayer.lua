@@ -1,3 +1,7 @@
+--[[
+	用于显示地图的层
+]]
+
 local Building = game.Building
 local MapUtils = game.MapUtils
 local Notification = game.NotificationManager
@@ -175,7 +179,7 @@ function MapLayer:TEST( ... )
 		building:refresh(U_ST_BUILDED)
 	end
 
-	
+
 end
 
 return MapLayer

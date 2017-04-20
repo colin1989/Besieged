@@ -1,3 +1,7 @@
+--[[
+	控制地图缩放和移动的层
+]]
+
 local TouchStatus = game.TouchStatus
 local TouchPoint = game.TouchPoint
 

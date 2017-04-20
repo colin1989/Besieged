@@ -1,3 +1,7 @@
+--[[
+	unit所有使用到的类型
+]]
+
 U_EMPTY		= 0
 U_BUILDING 	= 1
 U_PEOPLE 	= 2
@@ -11,9 +15,6 @@ U_ST_PRESSED 	= 6  -- 按下
 U_ST_UNPRESSED 	= 7  -- 抬起
 U_ST_MOVING 	= 8
 
-ORDER_UNIT_BTN 	= 0
-ORDER_UNIT_BACKGROUND = 1
-ORDER_UNIT_ARROW 	  = 2
-
+-- Z order
 ZORDER_NORMAL 	= 1
 ZORDER_MOVING 	= 2

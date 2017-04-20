@@ -11,6 +11,8 @@ function MainScene:onCreate()
     -- local group = map:getObjectGroup("对象层1")
     -- print(group:getGroupName())
     -- local obj = group:getObject("主建筑")
+    cc.Texture2D:setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_RGBA4444)
+    cc.Image:setPVRImagesHavePremultipliedAlpha(true)
     cc.SpriteFrameCache:getInstance():addSpriteFrames("map/Beijing-hd.plist", "map/Beijing-hd.png")
 
     game.Layers.ZoomLayer = game.ZoomLayer:create()

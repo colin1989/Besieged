@@ -1,3 +1,7 @@
+--[[
+	一些地图常用的工具
+]]
+
 local MapUtils = {}
 
 -- 所以是否在地图内
@@ -71,12 +75,12 @@ end
 
 -- 创建变红变绿的基座
 function MapUtils.createXXX( num, b )
-	local file = b and "map/tile_green.png" or "map/tile_red.png"
-	local batchnode = cc.SpriteBatchNode:create(file)
+	local file = b and "tile_green.png" or "tile_red.png"
+	local batchnode = cc.SpriteBatchNode:create("map/UI_Building.pvr.ccz")
 	local tilesize = game.g_mapTileSize
 	for i = 0, num - 1 do
 		for j = 0, num - 1 do
-			local sprite = display.newSprite(file)
+			local sprite = cc.Sprite:createWithSpriteFrameName(file)
 			sprite:setPosition(cc.p((j - i) * tilesize.width/2,
 									-(i + j) * tilesize.height/2 + math.floor(num / 2) * tilesize.height))
 			batchnode:addChild(sprite)
