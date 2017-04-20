@@ -4,6 +4,8 @@ local TouchPoint = game.TouchPoint
 -- 控制移动和放大缩小的的基础层
 -- 地图层的根节点
 local ZoomLayer = class("ZoomLayer", cc.Layer)
+ZoomLayer.background_ = nil
+
 ZoomLayer.startPosition_ = nil
 ZoomLayer.prevPosition_ = nil
 
@@ -14,9 +16,9 @@ ZoomLayer.startScale_ = nil
 
 function ZoomLayer:ctor( ... )
 	self:move(cc.p(0, 0))
-	cc.Sprite:createWithSpriteFrameName("beijing.png")
-		:move(display.cx, display.cy)
-		:addTo(self)
+	self.background_ = cc.Sprite:createWithSpriteFrameName("beijing.png")
+								:move(display.cx, display.cy)
+								:addTo(self)
 end
 
 function ZoomLayer:touchBegan( event )
@@ -44,8 +46,10 @@ function ZoomLayer:touchMoved( event )
 	print("zoomLayer touchMoved ", table.nums(TouchPoint.points_))
 	if table.nums(TouchPoint.points_) == 1 then
 		local curPosition = cc.p(TouchPoint.points_[1].x, TouchPoint.points_[1].y)
-		self:setPosition(cc.p(self:getPositionX() + curPosition.x - self.prevPosition_.x, 
-								self:getPositionY() + curPosition.y - self.prevPosition_.y))
+		local new_position = cc.p(self:getPositionX() + curPosition.x - self.prevPosition_.x, 
+								self:getPositionY() + curPosition.y - self.prevPosition_.y)
+		self:calcPosition(new_position)
+		self:setPosition(new_position)
 		self.prevPosition_ = curPosition
 
 		TouchStatus.switch_move_map()
@@ -55,9 +59,9 @@ function ZoomLayer:touchMoved( event )
 		local curScale = self:getScale()
 		local scale = curDistance / self.distance_ * self.startScale_
 		scale = scale < 3 and scale or 3
-        scale = scale > 320 / (game.g_mapSize.height * game.g_mapGridNum) and scale or 320 / (game.g_mapSize.height * game.g_mapGridNum)
+        scale = scale > 0.8 and scale or 0.8
 		-- 记录中点的地图坐标
-		local mpoint = game.Layers.MapLayer.map_:convertToNodeSpace(self.midPosition_)  
+		local mpoint = game.Layers.MapLayer.map_:convertToNodeSpace(self.midPosition_)
 		-- 缩放
 		self:setScale(scale)
 		-- 记录地图缩放后中点坐标的世界坐标
@@ -69,7 +73,7 @@ function ZoomLayer:touchMoved( event )
 		-- 新的位置
 		local new_position = cc.p(self:getPositionX() - scalemovement.x + movement.x,
 								self:getPositionY() - scalemovement.y + movement.y)
-
+		self:calcPosition(new_position)
 
 		self:setPosition(new_position)
 				
@@ -111,6 +115,20 @@ function ZoomLayer:touchCancelled( event )
 	end
 
 	TouchStatus.switch_none()
+end
+
+-- 计算合法位置
+function ZoomLayer:calcPosition( position )
+	local scale = self:getScale()
+	local maxX = (self.background_:getContentSize().width * scale - display.width) / 2
+	local minX = -maxX
+	local maxY = (self.background_:getContentSize().height * scale - display.height) / 2
+	local minY = -maxY
+	position.x = position.x > maxX and maxX or position.x
+	position.x = position.x < minX and minX or position.x
+	position.y = position.y > maxY and maxY or position.y
+	position.y = position.y < minY and minY or position.y
+	return position
 end
 
 return ZoomLayer
