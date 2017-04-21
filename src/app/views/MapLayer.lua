@@ -3,6 +3,7 @@
 ]]
 
 local Building = game.Building
+local Plant = game.Plant
 local MapUtils = game.MapUtils
 local Notification = game.NotificationManager
 local TouchStatus = game.TouchStatus
@@ -164,22 +165,23 @@ function MapLayer:TEST( ... )
 	print("TEST")
 
 	local vertex = cc.p(34, 1)
-	local position = MapUtils.vertex_2_real(self.map_, vertex, 5)
-
 	local building = UnitFactory.newBuilding(10001, vertex, self.map_)
 	MapManager.addUnit(building)
 	building:refresh(U_ST_BUILDED)
 
 	do
 		local vertex = cc.p(15, 15)
-		local position = MapUtils.vertex_2_real(self.map_, vertex, 5)
-
-		local building = UnitFactory.newBuilding(10001, vertex, self.map_)
+		local building = UnitFactory.newBuilding(10004, vertex, self.map_)
 		MapManager.addUnit(building)
 		building:refresh(U_ST_BUILDED)
 	end
 
-
+	do
+		local vertex = cc.p(1, 1)
+		local plant = UnitFactory.newPlant(11004, vertex, self.map_)
+		MapManager.addUnit(plant)
+		plant:refresh(U_ST_BUILDED)
+	end
 end
 
 return MapLayer

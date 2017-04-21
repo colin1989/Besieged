@@ -42,6 +42,8 @@ function MainScene:onCreate()
         game.NotificationManager.post("TEST")
     end, 1/60)
 
+    
+
  --    local jsonfile = "ui/home_menu.json"
  --    local widget = ccs.GUIReader:getInstance():widgetFromJsonFile(jsonfile)
 	-- assert(widget, "load UI Error: " .. jsonfile)

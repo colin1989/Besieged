@@ -82,7 +82,7 @@ function MapUtils.createXXX( num, b )
 		for j = 0, num - 1 do
 			local sprite = cc.Sprite:createWithSpriteFrameName(file)
 			sprite:setPosition(cc.p((j - i) * tilesize.width/2,
-									-(i + j) * tilesize.height/2 + math.floor(num / 2) * tilesize.height))
+									(num - 1) / 2 * tilesize.height - (i + j) * tilesize.height/2))
 			batchnode:addChild(sprite)
 		end
 	end

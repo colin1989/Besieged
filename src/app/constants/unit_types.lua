@@ -5,6 +5,7 @@
 U_EMPTY		= 0
 U_BUILDING 	= 1
 U_PEOPLE 	= 2
+U_PLANT 	= 3
 
 U_ST_WAITING 	= 1  -- 等待建造
 U_ST_BUILDING	= 2  -- 建造中
