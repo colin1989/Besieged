@@ -15,7 +15,6 @@ ZoomLayer.prevPosition_ = nil
 
 ZoomLayer.midPosition_ = nil
 ZoomLayer.distance_ = nil
-ZoomLayer.startScale_ = nil
 
 
 function ZoomLayer:ctor( ... )
@@ -36,8 +35,6 @@ function ZoomLayer:touchBegan( event )
 	elseif table.nums(TouchPoint.points_) == 2 then
 		self.midPosition_ = cc.pMidpoint(TouchPoint.points_[1], TouchPoint.points_[2])
 		self.distance_ = cc.pGetDistance(TouchPoint.points_[1], TouchPoint.points_[2])
-		
-		self.startScale_ = self:getScale()
 	end
 	return true
 end
@@ -61,7 +58,7 @@ function ZoomLayer:touchMoved( event )
 		local curMidPosition = cc.pMidpoint(TouchPoint.points_[1], TouchPoint.points_[2])
 		local curDistance = cc.pGetDistance(TouchPoint.points_[1], TouchPoint.points_[2])
 		local curScale = self:getScale()
-		local scale = curDistance / self.distance_ * self.startScale_
+		local scale = curDistance / self.distance_ * curScale
 		scale = scale < 3 and scale or 3
         scale = scale > 0.8 and scale or 0.8
 		-- 记录中点的地图坐标
@@ -83,7 +80,6 @@ function ZoomLayer:touchMoved( event )
 				
 		self.midPosition_ = curMidPosition
 		self.distance_ = curDistance
-		self.startScale_ = self:getScale()
 
 		TouchStatus.switch_zoom_map()
 	end
@@ -99,10 +95,8 @@ function ZoomLayer:touchEnded( event )
 		self.prevPosition_ = nil
 		self.midPosition_ = nil
 		self.distance_ = nil
-		self.startScale_ = nil
+		TouchStatus.switch_none()
 	end
-
-	TouchStatus.switch_none()
 end
 
 function ZoomLayer:touchCancelled( event )
@@ -115,10 +109,8 @@ function ZoomLayer:touchCancelled( event )
 		self.prevPosition_ = nil
 		self.midPosition_ = nil
 		self.distance_ = nil
-		self.startScale_ = nil
+		TouchStatus.switch_none()
 	end
-
-	TouchStatus.switch_none()
 end
 
 -- 计算合法位置

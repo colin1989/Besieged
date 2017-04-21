@@ -111,7 +111,9 @@ function MapLayer:touchEnded( event )
 			self.selectedUnitVertex_ = nil
 		end
 	end
-	TouchStatus.switch_none()
+	if table.nums(TouchPoint.points_) == 0 then
+		TouchStatus.switch_none()	
+	end
 
 	-- local unitId = 10001
 	-- local unitdb = game.DB_Building.getById(unitId)
@@ -176,9 +178,11 @@ function MapLayer:TEST( ... )
 		building:refresh(U_ST_BUILDED)
 	end
 
-	do
-		local vertex = cc.p(1, 1)
-		local plant = UnitFactory.newPlant(11004, vertex, self.map_)
+	local plants = {11001, 11001, 11003, 11002, 11001, 11004, 11005, 11006, 11001, 11004, 11005, 11006, 11001, 11004}
+	local vers = {cc.p(1,1), cc.p(2,5), cc.p(4,10), cc.p(5,15), cc.p(5,1), cc.p(10,10), cc.p(15,7), cc.p(36,10),
+					cc.p(35,36), cc.p(30,13), cc.p(22,31), cc.p(26,1), cc.p(27,19), cc.p(20,20)}
+	for k,v in pairs(plants) do
+		local plant = UnitFactory.newPlant(v, vers[k], self.map_)
 		MapManager.addUnit(plant)
 		plant:refresh(U_ST_BUILDED)
 	end
