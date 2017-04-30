@@ -22,10 +22,10 @@ function MapLayer:ctor( ... )
 	self:move(cc.p(0, 0))
 
     self:onNodeEvent("enter", function ( ... )
-		game.NotificateUtil.add(self, "MapLayer")
+		game.NotificateDelegate.add(self, "MapLayer")
 	end)
 	self:onNodeEvent("exit", function ( ... )
-		game.NotificateUtil.remove(self, "MapLayer")
+		game.NotificateDelegate.remove(self, "MapLayer")
 	end)
 end
 
@@ -44,7 +44,7 @@ function MapLayer:touchBegan( event )
 	if self.selectedUnit_ then
 		if MapManager.isInBound(tileCoordinate, self.selectedUnit_.vertex_, self.selectedUnit_.row_) then
 			if self.selectedUnit_:isSelected() then  -- 点中了选择状态的unit，屏蔽zoomlayer
-				self.selectedUnit_:refresh(U_ST_PRESSED)
+				self.selectedUnit_:onPressed()
 				self.pressedIndex_ = tileCoordinate  -- 点中的grid
 				TouchStatus.switch_press_unit()
 			end
@@ -78,7 +78,7 @@ function MapLayer:touchMoved( event )
 				self.selectedUnitVertex_ = new_vertex
 				self.pressedIndex_ = tileCoordinate  -- 保存本次选中的index
 
-				self.selectedUnit_:refresh(U_ST_MOVING, new_vertex)
+				self.selectedUnit_:onMoving(new_vertex)
 			end
 		end
 	end
@@ -90,7 +90,7 @@ function MapLayer:touchEnded( event )
 	end
 	print("MapLayer touchEnded")
 	if self.selectedUnit_ then
-		self.selectedUnit_:refresh(U_ST_UNPRESSED)
+		self.selectedUnit_:onUnPressed()
 	end
 	self.pressedIndex_ = nil
 	-- 没移动过，则执行点击判定
@@ -102,7 +102,7 @@ function MapLayer:touchEnded( event )
 		local unit = MapManager.isTouchedUnit(tileCoordinate)
 		if unit and not unit:isSelected() and TouchStatus.isStatus(OP_NONE) then
 			game.NotificationManager.post(MSG_UNSELECTED_UNIT)
-			unit:refresh(U_ST_SELECTED)
+			unit:onSelected()
 			self.selectedUnit_ = unit
 			self.selectedUnitVertex_ = unit.vertex_
 		else

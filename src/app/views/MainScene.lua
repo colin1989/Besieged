@@ -18,9 +18,11 @@ function MainScene:onCreate()
     game.Layers.ZoomLayer = game.ZoomLayer:create()
     game.Layers.MapLayer = game.MapLayer:create()
     game.Layers.TouchDispatcher = game.TouchDispatcher:create()
+    game.Layers.UILayer = cc.Layer:create() -- game.UILayer:create()
 
     self:addChild(game.Layers.TouchDispatcher)
     self:addChild(game.Layers.ZoomLayer)
+    self:addChild(game.Layers.UILayer)
     game.Layers.ZoomLayer:addChild(game.Layers.MapLayer)
 
     -- init tmx
@@ -42,14 +44,6 @@ function MainScene:onCreate()
         game.NotificationManager.post("TEST")
     end, 1/60)
 
-    
-
- --    local jsonfile = "ui/home_menu.json"
- --    local widget = ccs.GUIReader:getInstance():widgetFromJsonFile(jsonfile)
-	-- assert(widget, "load UI Error: " .. jsonfile)
-	-- widget:setSize(cc.Director:getInstance():getVisibleSize())
-	-- -- GUIReader:purge() -- 加载完释放Reader
-	-- widget:addTo(self)
 end
 
 return MainScene

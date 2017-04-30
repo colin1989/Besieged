@@ -3,12 +3,6 @@
  <tileset firstgid="1" name="64x48" tilewidth="64" tileheight="48">
   <image source="64x48.png" width="256" height="384"/>
  </tileset>
- <tileset firstgid="33" name="green" tilewidth="64" tileheight="48">
-  <image source="build_1_1__.png" width="64" height="48"/>
- </tileset>
- <tileset firstgid="34" name="red" tilewidth="64" tileheight="48">
-  <image source="build_1_1____.png" width="64" height="48"/>
- </tileset>
  <layer name="ground" width="40" height="40">
   <data encoding="base64" compression="zlib">
    eJztwwEJAAAMBKGr8f2LrsdQcNVUVVVVVVUfPeP+nEE=

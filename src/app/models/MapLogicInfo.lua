@@ -67,7 +67,7 @@ end
 -- 是否点击到unit
 function MapLogicInfo:isTouchedUnit( tileCoordinate )
 	local unit = self.maps_[MapUtils.tile_2_unique(tileCoordinate)]
-	if unit and unit ~= U_EMPTY and unit:operability() then
+	if unit and unit ~= U_EMPTY --[[ and unit:operability()]] then
 		return unit
 	end
 	return nil

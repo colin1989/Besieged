@@ -10,9 +10,9 @@ local TouchStatus = game.TouchStatus
 local TouchPoint = game.TouchPoint
 
 local function touchBegan( event )
-	if TouchStatus.isStatus(OP_CCUI) then
-		return false
-	end
+	-- if TouchStatus.isStatus(OP_CCUI) then
+	-- 	return false
+	-- end
 	print("touch began point ", table.nums(event.points))
 
 	TouchPoint.touchBegan(event)

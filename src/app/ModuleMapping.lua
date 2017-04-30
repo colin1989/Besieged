@@ -17,6 +17,8 @@ Mapping = {
 	MapLayer = "app.views.MapLayer",
 	TouchDispatcher = "app.views.TouchDispatcher",
 	ZoomLayer = "app.views.ZoomLayer",
+	UILayer = "app.views.UILayer",
 	MapUtils = "app.utils.MapUtils",
-	NotificateUtil = "app.components.NotificateUtil",
+	NotificateDelegate = "app.components.NotificateDelegate",
+	UnitSelectedView = "app.module.UnitSelectedView",
 }

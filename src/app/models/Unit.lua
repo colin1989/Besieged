@@ -30,31 +30,40 @@ function Unit:init( ... )  -- final
 
 	self.BTN_OK_ = ccui.Button:create()
 	self.BTN_OK_:loadTextures("ui/ui_public_btn_ok.png", "ui/ui_public_btn_ok.png", nil)
-	self.BTN_OK_:setPosition(cc.p(self.BTN_OK_:getSize().width/2, self.row_ / 2 * game.g_mapTileSize.height))
+	self.BTN_OK_:setPosition(cc.p(self.BTN_OK_:getContentSize().width/2, self.row_ / 2 * game.g_mapTileSize.height))
 	self.Node_:addChild(self.BTN_OK_, 2)
 	self.BTN_OK_:addClickEventListener(function ( ... )
-		game.TouchStatus.switch_ccui()
+		-- game.TouchStatus.switch_ccui()
 		self:onBuild(...)
 	end)
+	-- self.BTN_OK_:setSwallowTouches(true)
 
 	self.BTN_CANCEL_ = ccui.Button:create()
 	self.BTN_CANCEL_:loadTextures("ui/ui_public_btn_closed.png", "ui/ui_public_btn_closed.png", nil)
-	self.BTN_CANCEL_:setPosition(cc.p(-self.BTN_CANCEL_:getSize().width/2, self.row_ / 2 * game.g_mapTileSize.height))
+	self.BTN_CANCEL_:setPosition(cc.p(-self.BTN_CANCEL_:getContentSize().width/2, self.row_ / 2 * game.g_mapTileSize.height))
 	self.Node_:addChild(self.BTN_CANCEL_, 3)
 	self.BTN_CANCEL_:addClickEventListener(function ( ... )
-		game.TouchStatus.switch_ccui()
+		-- game.TouchStatus.switch_ccui()
 		self:onRemove(...)
 	end)
 
 	self.Node_:onNodeEvent("enter", function ( ... )
-		game.NotificateUtil.add(self, self.unique_)
+		game.NotificateDelegate.add(self, self.unique_)
 	end)
 	self.Node_:onNodeEvent("exit", function ( ... )
-		game.NotificateUtil.remove(self, self.unique_)
+		game.NotificateDelegate.remove(self, self.unique_)
 	end)
 end
 
-function Unit:init_db( ... )  -- virtaul
+function Unit:init_db( id )  -- virtaul
+	if self.type_ == U_BUILDING then
+		self.db_ = game.DB_Building.getById(tonumber(id))
+		self.row_ = self.db_.occupy + 2 * self.db_.edge
+		self.level_ = self.db_.level
+	elseif self.type_ == U_PLANT then
+		self.db_ = game.DB_Plant.getById(tonumber(id))
+		self.row_ = self.db_.occupy + 2 * self.db_.edge
+	end
 end
 
 function Unit:reset( ... )  -- final
@@ -66,7 +75,7 @@ function Unit:reset( ... )  -- final
 	self.status_ = nil  -- 状态
 	self.row_ = nil
 	self.map_ = nil
-	self.type_ = nil
+	-- self.type_ = nil
 	self.operability_ = nil  -- 是否可操作
 	self.scheduleId_ = nil
 	self.background_ = nil
@@ -88,12 +97,9 @@ function Unit:delete( ... )
 end
 
 function Unit:hideWidgets( ... )
-	self.BTN_OK_:setVisible(false)
-	self.BTN_CANCEL_:setVisible(false)
-	self.BATCH_ARROWS_:setVisible(false)
-	if self.background_ then
-		self.background_:setVisible(false)
-	end
+	self:setBuildBtnVisible(false)
+	self:setArrowVisible(false)
+	self:setBackgroundVisible(false)
 end
 
 function Unit:refresh( status, ... )
@@ -101,12 +107,10 @@ function Unit:refresh( status, ... )
 
 	if status == U_ST_WAITING then
 		self.status_ = status
+		self.isSelected_ = true
 
-		self.BTN_OK_:setVisible(true)
-		self.BTN_CANCEL_:setVisible(true)
-		if self.background_ then
-			self.background_:setVisible(true)
-		end
+		self:setBuildBtnVisible(true)
+		self:setBackgroundVisible(true)
 
 	elseif status == U_ST_BUILDING then
 		self.status_ = status
@@ -116,57 +120,6 @@ function Unit:refresh( status, ... )
 		self.status_ = status
 		-- 底部
 		self:drawSubstrate()
-	elseif status == U_ST_SELECTED then
-		self.isSelected_ = true
-
-		local actions = {}
-		actions[#actions + 1] = cc.ScaleTo:create(0.2, 1.3, 1.3)
-		actions[#actions + 1] = cc.ScaleTo:create(0.2, 1, 1)
-		self.render_:runAction(transition.sequence(actions))
-		self.BATCH_ARROWS_:setVisible(true)
-		self:resetZOrder(ZORDER_MOVING)
-	elseif status == U_ST_UNSELECTED then
-		self.isSelected_ = false
-		self:clearSubstrate()
-		-- 如果当前位置不可用，则回到原来的位置
-		local usable = game.MapManager.isUsableExcept(self.vertex_, self.row_, self.unique_)
-		local real_vertex = game.MapManager.logicVertex(self)
-		if not usable then
-			self:setVertex(real_vertex)
-		else
-			local new_vertex = self.vertex_
-			self.vertex_ = real_vertex
-			game.MapManager.updateUnit(self, new_vertex, self.row_)
-		end
-		self.isValidPosition_ = true
-		self:drawSubstrate()
-		self:resetZOrder(ZORDER_NORMAL)
-	elseif status == U_ST_PRESSED then
-		self:drawSubstrate()
-		self.BATCH_ARROWS_:setVisible(true)
-		self:setBackgroundVisible(false)
-	elseif status == U_ST_UNPRESSED then
-		self:drawSubstrate()
-		self.BATCH_ARROWS_:setVisible(true)
-		self:setBackgroundVisible(false)
-		self:resetZOrder(self.isValidPosition_ and ZORDER_NORMAL or ZORDER_MOVING)
-	elseif status == U_ST_MOVING then
-		local new_vertex = ...  -- 因为当前逻辑数据没更新，所以不能用self.vertex_
-		self:clearSubstrate()  -- 清楚上一步的基座
-		local usable = game.MapManager.isUsableExcept(new_vertex, self.row_, self.unique_)  -- 新位置是否可用
-		self.isValidPosition_ = usable
-		game.MapManager.tryUpdateUnit(self, new_vertex, self.row_)  -- 只改变位置，不改变逻辑数据
-		if self.background_ then
-			if self.background_.flag ~= usable then
-				self.background_:removeSelf()
-				self.background_ = game.MapUtils.createXXX(self.row_, usable)
-			    self.background_.flag = usable
-			    self.Node_:addChild(self.background_, 0)
-			end
-		end
-		self:setBackgroundVisible(true)  -- 颜色底板可见性
-		self:resetZOrder(ZORDER_MOVING)  -- 重设z值
-		self.BATCH_ARROWS_:setVisible(true)  -- 显示箭头
 	end
 end
 
@@ -181,6 +134,7 @@ end
 
 function Unit:onBuild( sender )
 	print("Unit Build")
+	self.isSelected_ = false
 	game.MapManager.updateUnit(self, self.vertex_, self.row_)
 	self:refresh(U_ST_BUILDED)
 end
@@ -191,11 +145,91 @@ function Unit:onRemove( sender )
 end
 
 function Unit:onSelected( ... )
-	
+	self:hideWidgets()
+	self.isSelected_ = true
+
+	local actions = {}
+	actions[#actions + 1] = cc.ScaleTo:create(0.1, 1.3, 1.3)
+	actions[#actions + 1] = cc.ScaleTo:create(0.1, 1, 1)
+	self.render_:runAction(transition.sequence(actions))
+
+	self:setArrowVisible(true)
+	self:resetZOrder(ZORDER_MOVING)
+
+	-- 选中unit后打开的菜单
+	game.UnitSelectedView:create(self)
 end
 
 function Unit:isSelected( ... )
 	return self.isSelected_
+end
+
+function Unit:onUnSelected( ... )
+	self.isSelected_ = false
+	self:hideWidgets()
+	self:clearSubstrate()
+	-- 如果当前位置不可用，则回到原来的位置
+	local usable = game.MapManager.isUsableExcept(self.vertex_, self.row_, self.unique_)
+	local real_vertex = game.MapManager.logicVertex(self)
+	if not usable then
+		self:setVertex(real_vertex)
+	else
+		local new_vertex = self.vertex_
+		self.vertex_ = real_vertex
+		game.MapManager.updateUnit(self, new_vertex, self.row_)
+	end
+	self.isValidPosition_ = true
+	self:drawSubstrate()
+	self:resetZOrder(ZORDER_NORMAL)
+end
+
+function Unit:onPressed( ... )
+	self:hideWidgets()
+	self:drawSubstrate()
+	self:setArrowVisible(true)
+	self:setBackgroundVisible(false)
+end
+
+function Unit:onUnPressed( ... )
+	self:hideWidgets()
+	self:drawSubstrate()
+	self:setArrowVisible(true)
+	self:setBackgroundVisible(false)
+	self:resetZOrder(self.isValidPosition_ and ZORDER_NORMAL or ZORDER_MOVING)
+end
+
+function Unit:onMoving( new_vertex )
+	if not self.db_.isCanMove then
+		return
+	end
+	self:hideWidgets()
+	self:clearSubstrate()  -- 清楚上一步的基座
+	local usable = game.MapManager.isUsableExcept(new_vertex, self.row_, self.unique_)  -- 新位置是否可用
+	self.isValidPosition_ = usable
+	game.MapManager.tryUpdateUnit(self, new_vertex, self.row_)  -- 只改变位置，不改变逻辑数据
+	if self.background_ then
+		if self.background_.flag ~= usable then
+			self.background_:removeSelf()
+			self.background_ = game.MapUtils.createXXX(self.row_, usable)
+		    self.background_.flag = usable
+		    self.Node_:addChild(self.background_, 0)
+		end
+	end
+	self:setBackgroundVisible(true)  -- 颜色底板可见性
+	self:resetZOrder(ZORDER_MOVING)  -- 重设z值
+	self:setArrowVisible(true)  -- 显示箭头
+end
+
+function Unit:setArrowVisible( visible )
+	if not self.db_.isCanMove then
+		visible = false
+	end
+	self.BATCH_ARROWS_:setVisible(visible)
+end
+
+function Unit:setBuildBtnVisible( visible )
+	self.BTN_OK_:setVisible(visible)
+	self.BTN_CANCEL_:setVisible(visible)
 end
 
 function Unit:drawSubstrate( ... )
@@ -230,8 +264,11 @@ end
 
 function Unit:setBackgroundVisible( visible )
 	if self.background_ then
-		if not self.isValidPosition_ then
+		if not self.isValidPosition_ and self.isSelected_ then  -- 选中状态松手的时候，如果位置不可用，则不隐藏地板
 			visible = true
+		end
+		if not self.db_.isCanMove then  -- 不可移动的unit，不显示地面
+			visible = false
 		end
 		self.background_:setVisible(visible)
 	end
@@ -272,7 +309,7 @@ end
 -- 取消所有选中的unit
 function Unit:MSG_UNSELECTED_UNIT( ... )
 	if self:isSelected() then
-		self:refresh(U_ST_UNSELECTED)
+		self:onUnSelected()
 	end
 end
 

@@ -1,8 +1,8 @@
 local Plant = class("Plant", game.Unit)
 
 function Plant:ctor( id )
-	self:init(id)
 	self.type_ = U_PLANT
+	self:init(id)
 
 	self.operability_ = false  -- 不可操作
     self.render_ = display.newSprite(string.format("plant/%s.png", self.db_.path)):move(cc.p(0, 0))
@@ -14,10 +14,5 @@ function Plant:ctor( id )
     print("Plant anchor point y ", anchorY)
 end
 
-function Plant:init_db( id )
-	print("Plant init_db")
-	self.db_ = game.DB_Plant.getById(tonumber(id))
-	self.row_ = self.db_.occupy + 2 * self.db_.edge
-end
 
 return Plant
