@@ -127,7 +127,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename></filename>
+        <filename>UI_Building.plist</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>

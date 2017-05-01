@@ -101,7 +101,7 @@ function MapLayer:touchEnded( event )
 		local tileCoordinate = MapUtils.map_2_tile(self.map_, maptouch)
 		local unit = MapManager.isTouchedUnit(tileCoordinate)
 		if unit and not unit:isSelected() and TouchStatus.isStatus(OP_NONE) then
-			game.NotificationManager.post(MSG_UNSELECTED_UNIT)
+			game.NotificationManager.post(MSG_UNSELECTED_UNIT)  -- 先清掉之前选中的unit
 			unit:onSelected()
 			self.selectedUnit_ = unit
 			self.selectedUnitVertex_ = unit.vertex_

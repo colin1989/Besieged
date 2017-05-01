@@ -7,7 +7,7 @@ end
 function Unit:init( ... )  -- final
 	self:reset()
 	self:init_db(...)
-	self.unique_ = os.clock()  -- 唯一性，临时用时间表示
+	self.unique_ = os.clock()  -- 唯一性
 	self.type_ = U_EMPTY
 	self.operability_ = false  -- 默认不可操作
 	self.Node_ = display.newNode():align(cc.p(0.5, 0.5), 0, 0)
