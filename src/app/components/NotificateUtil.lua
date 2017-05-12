@@ -1,9 +1,9 @@
 --[[
 	使用时需定义notifications方法，返回要接受的消息名字
 ]]
-local delegate = {}
+local component = {}
 
-function delegate.add(instance, flag)
+function component.add(instance, flag)
 	if instance.notifications then
 		local notificates = instance:notifications()
 		for _, v in pairs(notificates) do
@@ -16,7 +16,7 @@ function delegate.add(instance, flag)
 	end
 end
 
-function delegate.remove( instance, flag )
+function component.remove( self, flag )
 	if instance.notifications then
 		local notificates = instance:notifications()
 		for _, v in pairs(notificates) do
@@ -25,4 +25,4 @@ function delegate.remove( instance, flag )
 	end
 end
 
-return delegate
+return component

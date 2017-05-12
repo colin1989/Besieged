@@ -12,41 +12,6 @@ function Unit:init( ... )  -- final
 	self.operability_ = false  -- 默认不可操作
 	self.Node_ = display.newNode():align(cc.p(0.5, 0.5), 0, 0)
 
-	cc.SpriteFrameCache:getInstance():addSpriteFrames("map/UI_Building.plist", "map/UI_Building.pvr.ccz")
-	self.BATCH_ARROWS_ = cc.SpriteBatchNode:create("map/UI_Building.pvr.ccz"):addTo(self.Node_, 1)
-	cc.Sprite:createWithSpriteFrameName("ui_map_btn_jiantou1.png")
-		:align(cc.p(0,0), game.g_mapTileSize.width/4 * self.row_, game.g_mapTileSize.height/4 * self.row_)
-		:addTo(self.BATCH_ARROWS_)
-	cc.Sprite:createWithSpriteFrameName("ui_map_btn_jiantou2.png")
-		:align(cc.p(1,1), -game.g_mapTileSize.width/4 * self.row_, -game.g_mapTileSize.height/4 * self.row_)
-		:addTo(self.BATCH_ARROWS_)
-	cc.Sprite:createWithSpriteFrameName("ui_map_btn_jiantou3.png")
-		:align(cc.p(1,0), -game.g_mapTileSize.width/4 * self.row_, game.g_mapTileSize.height/4 * self.row_)
-		:addTo(self.BATCH_ARROWS_)
-	cc.Sprite:createWithSpriteFrameName("ui_map_btn_jiantou4.png")
-		:align(cc.p(0,1), game.g_mapTileSize.width/4 * self.row_, -game.g_mapTileSize.height/4 * self.row_)
-		:addTo(self.BATCH_ARROWS_)
-	self.BATCH_ARROWS_:setVisible(false)
-
-	self.BTN_OK_ = ccui.Button:create()
-	self.BTN_OK_:loadTextures("ui/ui_public_btn_ok.png", "ui/ui_public_btn_ok.png", nil)
-	self.BTN_OK_:setPosition(cc.p(self.BTN_OK_:getContentSize().width/2, self.row_ / 2 * game.g_mapTileSize.height))
-	self.Node_:addChild(self.BTN_OK_, 2)
-	self.BTN_OK_:addClickEventListener(function ( ... )
-		-- game.TouchStatus.switch_ccui()
-		self:onBuild(...)
-	end)
-	-- self.BTN_OK_:setSwallowTouches(true)
-
-	self.BTN_CANCEL_ = ccui.Button:create()
-	self.BTN_CANCEL_:loadTextures("ui/ui_public_btn_closed.png", "ui/ui_public_btn_closed.png", nil)
-	self.BTN_CANCEL_:setPosition(cc.p(-self.BTN_CANCEL_:getContentSize().width/2, self.row_ / 2 * game.g_mapTileSize.height))
-	self.Node_:addChild(self.BTN_CANCEL_, 3)
-	self.BTN_CANCEL_:addClickEventListener(function ( ... )
-		-- game.TouchStatus.switch_ccui()
-		self:onRemove(...)
-	end)
-
 	self.Node_:onNodeEvent("enter", function ( ... )
 		game.NotificateDelegate.add(self, self.unique_)
 	end)
@@ -224,12 +189,18 @@ function Unit:setArrowVisible( visible )
 	if not self.db_.isCanMove then
 		visible = false
 	end
-	self.BATCH_ARROWS_:setVisible(visible)
+	if self.BATCH_ARROWS_ then
+		self.BATCH_ARROWS_:setVisible(visible)
+	end
 end
 
 function Unit:setBuildBtnVisible( visible )
-	self.BTN_OK_:setVisible(visible)
-	self.BTN_CANCEL_:setVisible(visible)
+	if self.BTN_OK_ then
+		self.BTN_OK_:setVisible(visible)
+	end
+	if self.BTN_CANCEL_ then
+		self.BTN_CANCEL_:setVisible(visible)
+	end
 end
 
 function Unit:drawSubstrate( ... )
