@@ -12,17 +12,25 @@ function UnitSelectedView:ctor( unit )
 	self._mainLayer:onNodeEvent("exit", function ( ... )
 		NotificateDelegate.remove(self, "UnitSelectedView")
 	end)
-	local tfd = self._mainLayer:getChildByName("TXT_DES")
-	tfd:setString(unit.db_.name)
-	-- self:align(cc.p(0.5, 0.5), display.cx, display.cy)
 
-	-- local label = ccui.Text:create(unit.db_.name, "宋体", 28):move(display.cx, display.cy - 200):addTo(self)
-	-- game.LayerManager.addLayout(self, "UnitSelectedView")
+	local layout = self._mainLayer:getChildByName("LAY_BUILDING")
+
+	local tfd = layout.TXT_NAME
+	tfd:setString(unit.db_.name)
+
+	layout.BTN_OK:addClickEventListener(function ( ... )
+		local soldier = game.UnitFactory.newSoldier(20001, cc.p(unit.vertex_.x - 1, unit.vertex_.y - 1), unit.map_)
+		game.MapManager.addUnit(soldier)
+		print("UnitSelectedView BTN_OK click")
+	end)
+	layout.BTN_CANCEL:addClickEventListener(function ( ... )
+		print("UnitSelectedView BTN_CANCEL click")
+	end)
 
     LayerManager.addLayout(self._mainLayer, "UnitSelectedView")
 end
 
-function UnitSelectedView:destrpy( ... )
+function UnitSelectedView:destroy( ... )
 	
 end
 

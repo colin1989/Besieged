@@ -131,7 +131,7 @@ function MapLayer:touchEnded( event )
 	--  --   \/
 	--  -- 保存矩形 只需要保存基准点的位置，以及宽高
 	-- -- 假定点击放置建筑，点击的点是建筑以为底板的左上角
-	-- if game.MapLogicInfo:isCanUse(tileCoordinate, row) then
+	-- if game.MapCache:isCanUse(tileCoordinate, row) then
 
 	-- 	local building = UnitFactory.newBuilding(unitId, tileCoordinate, self.map_)
 	-- 	building.Node_:addTo(self.map_)

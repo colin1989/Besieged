@@ -76,6 +76,7 @@ end
 -- 创建变红变绿的基座
 function MapUtils.createXXX( num, b )
 	local file = b and "tile_green.png" or "tile_red.png"
+	cc.SpriteFrameCache:getInstance():addSpriteFrames("map/UI_Building.plist")
 	local batchnode = cc.SpriteBatchNode:create("map/UI_Building.pvr.ccz")
 	local tilesize = game.g_mapTileSize
 	for i = 0, num - 1 do

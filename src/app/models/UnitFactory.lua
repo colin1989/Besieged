@@ -1,5 +1,6 @@
 local Building = game.Building
 local Plant = game.Plant
+local Soldier = game.Soldier
 
 local factory = {}
 
@@ -15,6 +16,13 @@ function factory.newPlant( id, vertex, map )
 	plant.map_ = map
 	plant:setVertex(vertex)
 	return plant
+end
+
+function factory.newSoldier( id, vertex, map )
+	local soldier = Soldier:create(id)
+	soldier.map_ = map
+	soldier:setVertex(vertex)
+	return soldier
 end
 
 return factory

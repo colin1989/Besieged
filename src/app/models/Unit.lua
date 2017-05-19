@@ -1,3 +1,4 @@
+local UnitSelectedView = game.UnitSelectedView
 local Unit = class("Unit")
 
 function Unit:ctor( id )
@@ -27,6 +28,9 @@ function Unit:init_db( id )  -- virtaul
 		self.level_ = self.db_.level
 	elseif self.type_ == U_PLANT then
 		self.db_ = game.DB_Plant.getById(tonumber(id))
+		self.row_ = self.db_.occupy + 2 * self.db_.edge
+	elseif self.type_ == U_PEOPLE then
+		self.db_ = game.DB_Soldier.getById(tonumber(id))
 		self.row_ = self.db_.occupy + 2 * self.db_.edge
 	end
 end
@@ -97,14 +101,14 @@ function Unit:setVertex( vertex )
 	self.Node_:move(position)
 end
 
-function Unit:onBuild( sender )
+function Unit:onBtnBuild( sender )
 	print("Unit Build")
 	self.isSelected_ = false
 	game.MapManager.updateUnit(self, self.vertex_, self.row_)
 	self:refresh(U_ST_BUILDED)
 end
 
-function Unit:onRemove( sender )
+function Unit:onBtnRemove( sender )
 	print("Unit Cancel")
 	self:delete()
 end
@@ -250,14 +254,14 @@ function Unit:resetZOrder( z )
 end
 
 function Unit:schedule( interval )
-	self.scheduleId_ = cc.Scheduler:scheduleScriptFunc(interval or 1 / 60, function ( ... )
+	self.scheduleId_ = cc.Director:getInstance():getScheduler():scheduleScriptFunc(function ( ... )
 		self:update(...)
-	end)
+	end, interval or 1 / 60, false)
 end
 
 function Unit:unschedule( ... )
 	if self.scheduleId_ then
-		cc.Scheduler:unscheduleScriptEntry(self.scheduleId_)
+		cc.Director:getInstance():getScheduler():unscheduleScriptEntry(self.scheduleId_)
 		self.scheduleId_ = nil
 	end
 end

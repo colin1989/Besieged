@@ -3,7 +3,7 @@
 	支持切换模块和弹出层
 ]]
 
-local UILayer = game.Layers.UILayer
+-- local UILayer = game.Layers.UILayer
 
 local LayerManager = {}
 local currentModule_ = {
@@ -15,11 +15,11 @@ local layoutStack_ = {}
 function LayerManager.changeModule( layout, name )
 	-- 移除现存的层
 	if currentModule_.layout then
-		UILayer:removeChild(currentModule_.layout)
+		game.Layers.UILayer:removeChild(currentModule_.layout)
 	end
 	currentModule_.name = name
 	currentModule_.layout = layout
-	UILayer:addChild(layout)
+	game.Layers.UILayer:addChild(layout)
 end
 
 -- layout 层
@@ -27,7 +27,7 @@ end
 -- action true|false 是否弹出效果
 function LayerManager.addLayout( layout, name, action )
 	table.insert(layoutStack_, {name = name, layout = layout})
-	UILayer:addChild(layout)
+	game.Layers.UILayer:addChild(layout)
 	if action then
 		local actions = {}
 		actions[#actions + 1] = cc.ScaleTo:create(0.1, 1.2)
@@ -49,9 +49,8 @@ function LayerManager.removeLayout( name )
 			end
 		end
 	else
-		local layout = layoutStack_[#layoutStack_].layout
-		layout:removeFromParent()
-		table.remove(layoutStack_, #layoutStack_)
+		local module = table.remove(layoutStack_, #layoutStack_)
+		module.layout:removeFromParent()
 	end
 end
 

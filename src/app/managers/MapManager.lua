@@ -2,31 +2,31 @@
 	地图的总管理
 ]]
 
-local MapLogicInfo = game.MapLogicInfo
+local MapCache = game.MapCache
 local Building = game.Building
 
 local MapManager = {}
 
-local mapInfo_ = nil
+local mapCache_ = nil
 
 function MapManager.init( ... )
-	mapInfo_ = game.MapLogicInfo:create(game.g_mapSize.width, game.g_mapSize.height)
+	mapCache_ = game.MapCache:create(game.g_mapSize.width, game.g_mapSize.height)
 end
 
 function MapManager.addUnit( unit )
-	mapInfo_:addUnit(unit.vertex_, unit, unit.row_)
+	mapCache_:addUnit(unit.vertex_, unit, unit.row_)
 	unit.Node_:addTo(unit.map_, ZORDER_NORMAL)
 	-- unit:refresh(U_ST_BUILDED)
 end
 
 function MapManager.removeUnit( unit )
-	mapInfo_:clearUnit(unit.vertex_, unit.row_)
+	mapCache_:clearUnit(unit.vertex_, unit.row_)
 	unit:delete()
 end
 
 function MapManager.updateUnit( unit, vertex, row )
-	mapInfo_:clearUnit(unit.vertex_, unit.row_)  -- 清空旧位置
-	mapInfo_:addUnit(vertex, unit, row)  -- 更新新位置
+	mapCache_:clearUnit(unit.vertex_, unit.row_)  -- 清空旧位置
+	mapCache_:addUnit(vertex, unit, row)  -- 更新新位置
 	unit:setVertex(vertex)
 end
 
@@ -41,7 +41,7 @@ function MapManager.isTouchedUnit( tileCoordinate )
 	if not game.MapUtils.isIndexValid(tileCoordinate) then
 		return nil
 	end
-	return mapInfo_:isTouchedUnit(tileCoordinate)
+	return mapCache_:isTouchedUnit(tileCoordinate)
 end
 
 -- 点是否在给定的范围
@@ -53,23 +53,23 @@ function MapManager.isUsable( vertex, row )
 	if not game.MapUtils.isUnitValid(vertex, row) then
 		return false
 	end
-	return mapInfo_:isCanUse(vertex, row)
+	return mapCache_:isCanUse(vertex, row)
 end
 
 function MapManager.isUsableExcept( vertex, row, unique )
 	if not game.MapUtils.isUnitValid(vertex, row) then
 		return false
 	end
-	return mapInfo_:isCanUseExcept(vertex, row, unique)
+	return mapCache_:isCanUseExcept(vertex, row, unique)
 end
 
 function MapManager.isEmpty( tileCoordinate )
-	return mapInfo_:isEmpty(tileCoordinate)
+	return mapCache_:isEmpty(tileCoordinate)
 end
 
 -- 查找逻辑位置
 function MapManager.logicVertex( unit )
-	local unique = mapInfo_:findVertexByUnit(unit)
+	local unique = mapCache_:findVertexByUnit(unit)
 	if unique then
 		return game.MapUtils.unique_2_tile(unique)
 	end
