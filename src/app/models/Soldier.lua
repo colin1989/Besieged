@@ -3,8 +3,7 @@ local Soldier = class("Soldier", Unit)
 Soldier.behavior_ = nil
 
 function Soldier:ctor( id )
-	self.type_ = U_PEOPLE
-	self:init(id)
+	self:init(id, U_PEOPLE)
 
 	self.operability_ = true
 	self.behavior_ = 1

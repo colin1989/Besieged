@@ -4,22 +4,53 @@
 
 local MapCache = game.MapCache
 local Building = game.Building
+local UnitFactory = game.UnitFactory
 
 local MapManager = {}
 
+local map_ = nil
 local mapCache_ = nil
 
-function MapManager.init( ... )
+function MapManager.init( map )
+	map_ = map
+
+	local mapsize = map_:getMapSize()      
+    game.g_mapSize = mapsize
+    game.g_mapGridNum = mapsize.width * mapsize.height
+    game.g_mapTileSize = map_:getTileSize()
+
 	mapCache_ = game.MapCache:create(game.g_mapSize.width, game.g_mapSize.height)
+end
+
+function MapManager.getMap( ... )
+	return map_
+end
+
+function MapManager.addUnitById( id, vertex, status )
+	local createFunc
+	if 10000 <= id and id < 20000 then
+		createFunc = UnitFactory.newBuilding
+	elseif 20000 <= id and id < 30000 then
+		createFunc = UnitFactory.newSoldier
+	elseif 30000 <= id and id < 40000 then
+		createFunc = UnitFactory.newPlant
+	end
+	local unit = createFunc(id, vertex, map_)
+	unit:setStatus(status)
+	unit:render()
+	MapManager.addUnit(unit)
+	return unit
 end
 
 function MapManager.addUnit( unit )
 	mapCache_:addUnit(unit.vertex_, unit, unit.row_)
 	unit.Node_:addTo(unit.map_, ZORDER_NORMAL)
-	-- unit:refresh(U_ST_BUILDED)
+	game.NotificationManager.post(MSG_ADD_UNIT, unit)
+	return unit
 end
 
 function MapManager.removeUnit( unit )
+	game.NotificationManager.post(MSG_REMOVE_UNIT, unit)
 	mapCache_:clearUnit(unit.vertex_, unit.row_)
 	unit:delete()
 end
@@ -28,11 +59,14 @@ function MapManager.updateUnit( unit, vertex, row )
 	mapCache_:clearUnit(unit.vertex_, unit.row_)  -- 清空旧位置
 	mapCache_:addUnit(vertex, unit, row)  -- 更新新位置
 	unit:setVertex(vertex)
+	game.NotificationManager.post(MSG_UPDATE_UNIT, unit)
+	return unit
 end
 
 -- 
 function MapManager.tryUpdateUnit( unit, vertex, row )
 	unit:setVertex(vertex)
+	return unit
 end
 
 

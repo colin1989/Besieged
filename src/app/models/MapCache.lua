@@ -5,6 +5,15 @@
 local MapUtils = game.MapUtils
 
 local MapCache = class("MapCache")
+
+--  --   /\ ______ 基准点
+--  --  /\/\
+--  -- /\/\/\
+--  -- \/\/\/
+--  --  \/\/
+--  --   \/
+--  -- 保存矩形 只需要保存基准点的位置，以及宽高
+-- -- 假定点击放置建筑，点击的点是建筑以为底板的左上角
 MapCache.maps_ = {}  -- 存储地形上的数据
 MapCache.vertexs_ = {}  -- 根据vertex保存unit
 

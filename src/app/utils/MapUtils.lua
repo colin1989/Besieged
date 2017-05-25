@@ -74,7 +74,7 @@ function MapUtils.vertex_2_real( map, vertex, row )
 end
 
 -- 创建变红变绿的基座
-function MapUtils.createXXX( num, b )
+function MapUtils.createColorBoard( num, b )
 	local file = b and "tile_green.png" or "tile_red.png"
 	cc.SpriteFrameCache:getInstance():addSpriteFrames("map/UI_Building.plist")
 	local batchnode = cc.SpriteBatchNode:create("map/UI_Building.pvr.ccz")
@@ -97,6 +97,10 @@ function MapUtils.getPoints( event )
 		table.insert(result, v)
 	end
 	return unpack(result)
+end
+
+function MapUtils.isEqual( p1, p2 )
+	return p1.x == p2.x and p1.y == p2.y
 end
 
 return MapUtils

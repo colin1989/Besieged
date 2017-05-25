@@ -1,8 +1,7 @@
 local Plant = class("Plant", game.Unit)
 
 function Plant:ctor( id )
-	self.type_ = U_PLANT
-	self:init(id)
+	self:init(id, U_PLANT)
 
 	self.operability_ = false  -- 不可操作
     self.render_ = display.newSprite(string.format("plant/%s.png", self.db_.path)):move(cc.p(0, 0))

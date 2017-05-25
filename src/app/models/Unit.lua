@@ -5,11 +5,12 @@ function Unit:ctor( id )
 	self.init(id)
 end
 
-function Unit:init( ... )  -- final
+function Unit:init( id, type )  -- final
 	self:reset()
-	self:init_db(...)
+	
+	self.type_ = type
+	self:init_db(id)
 	self.unique_ = os.clock()  -- 唯一性
-	self.type_ = U_EMPTY
 	self.operability_ = false  -- 默认不可操作
 	self.Node_ = display.newNode():align(cc.p(0.5, 0.5), 0, 0)
 
@@ -47,7 +48,7 @@ function Unit:reset( ... )  -- final
 	-- self.type_ = nil
 	self.operability_ = nil  -- 是否可操作
 	self.scheduleId_ = nil
-	self.background_ = nil
+	self.colorBoard_ = nil
 	self.isSelected_ = false
 	self.isValidPosition_ = true  -- 是否在正确的位置
 
@@ -60,6 +61,7 @@ end
 
 function Unit:delete( ... )
 	self:unschedule()
+	self:clearSubstrate()
 	self.Node_:removeSelf()
 	self.Node_ = nil
 	self:reset()
@@ -68,7 +70,7 @@ end
 function Unit:hideWidgets( ... )
 	self:setBuildBtnVisible(false)
 	self:setArrowVisible(false)
-	self:setBackgroundVisible(false)
+	self:setColorBoardVisible(false)
 end
 
 function Unit:refresh( status, ... )
@@ -79,16 +81,46 @@ function Unit:refresh( status, ... )
 		self.isSelected_ = true
 
 		self:setBuildBtnVisible(true)
-		self:setBackgroundVisible(true)
+		self:setColorBoardVisible(true)
 
 	elseif status == U_ST_BUILDING then
 		self.status_ = status
 		-- 底部
 		self:drawSubstrate()
+		self:setBuildBtnVisible(false)
+		self:setColorBoardVisible(false)
+		self:setArrowVisible(false)
 	elseif status == U_ST_BUILDED then
 		self.status_ = status
 		-- 底部
 		self:drawSubstrate()
+		self:setBuildBtnVisible(false)
+		self:setColorBoardVisible(false)
+		self:setArrowVisible(false)
+	end
+end
+
+function Unit:setStatus( status )
+	self.status_ = status
+end
+
+function Unit:render( ... )
+	self:hideWidgets()
+	if self.status_ == U_ST_WAITING then
+		self.isSelected_ = true
+
+		self:setBuildBtnVisible(true)
+		self:setColorBoardVisible(true)
+	elseif self.status_ == U_ST_BUILDING then
+		self:drawSubstrate()
+		self:setBuildBtnVisible(false)
+		self:setColorBoardVisible(false)
+		self:setArrowVisible(false)
+	elseif self.status_ == U_ST_BUILDED then
+		self:drawSubstrate()
+		self:setBuildBtnVisible(false)
+		self:setColorBoardVisible(false)
+		self:setArrowVisible(false)
 	end
 end
 
@@ -103,14 +135,20 @@ end
 
 function Unit:onBtnBuild( sender )
 	print("Unit Build")
-	self.isSelected_ = false
+	self.status_ = U_ST_BUILDED
+	if self:isSelected() then
+		self:onUnSelected()
+	end
+	-- 更新数据	
 	game.MapManager.updateUnit(self, self.vertex_, self.row_)
-	self:refresh(U_ST_BUILDED)
+	-- 取消选中状态
+	game.NotificationManager.post(MSG_MAP_UNSELECTED)
 end
 
 function Unit:onBtnRemove( sender )
 	print("Unit Cancel")
-	self:delete()
+	-- self:delete()
+	game.MapManager.removeUnit(self)
 end
 
 function Unit:onSelected( ... )
@@ -134,8 +172,8 @@ function Unit:isSelected( ... )
 end
 
 function Unit:onUnSelected( ... )
+	self:render()
 	self.isSelected_ = false
-	self:hideWidgets()
 	self:clearSubstrate()
 	-- 如果当前位置不可用，则回到原来的位置
 	local usable = game.MapManager.isUsableExcept(self.vertex_, self.row_, self.unique_)
@@ -153,17 +191,17 @@ function Unit:onUnSelected( ... )
 end
 
 function Unit:onPressed( ... )
-	self:hideWidgets()
+	self:render()
 	self:drawSubstrate()
 	self:setArrowVisible(true)
-	self:setBackgroundVisible(false)
+	self:setColorBoardVisible(false)
 end
 
 function Unit:onUnPressed( ... )
-	self:hideWidgets()
+	self:render()
 	self:drawSubstrate()
 	self:setArrowVisible(true)
-	self:setBackgroundVisible(false)
+	self:setColorBoardVisible(false)
 	self:resetZOrder(self.isValidPosition_ and ZORDER_NORMAL or ZORDER_MOVING)
 end
 
@@ -171,20 +209,20 @@ function Unit:onMoving( new_vertex )
 	if not self.db_.isCanMove then
 		return
 	end
-	self:hideWidgets()
+	self:render()
 	self:clearSubstrate()  -- 清楚上一步的基座
 	local usable = game.MapManager.isUsableExcept(new_vertex, self.row_, self.unique_)  -- 新位置是否可用
 	self.isValidPosition_ = usable
 	game.MapManager.tryUpdateUnit(self, new_vertex, self.row_)  -- 只改变位置，不改变逻辑数据
-	if self.background_ then
-		if self.background_.flag ~= usable then
-			self.background_:removeSelf()
-			self.background_ = game.MapUtils.createXXX(self.row_, usable)
-		    self.background_.flag = usable
-		    self.Node_:addChild(self.background_, 0)
+	if self.colorBoard_ then
+		if self.colorBoard_.flag ~= usable then
+			self.colorBoard_:removeSelf()
+			self.colorBoard_ = game.MapUtils.createColorBoard(self.row_, usable)
+		    self.colorBoard_.flag = usable
+		    self.Node_:addChild(self.colorBoard_, 0)
 		end
 	end
-	self:setBackgroundVisible(true)  -- 颜色底板可见性
+	self:setColorBoardVisible(true)  -- 颜色底板可见性
 	self:resetZOrder(ZORDER_MOVING)  -- 重设z值
 	self:setArrowVisible(true)  -- 显示箭头
 end
@@ -193,12 +231,18 @@ function Unit:setArrowVisible( visible )
 	if not self.db_.isCanMove then
 		visible = false
 	end
+	if self.status_ == U_ST_WAITING then
+		visible = true
+	end
 	if self.BATCH_ARROWS_ then
 		self.BATCH_ARROWS_:setVisible(visible)
 	end
 end
 
 function Unit:setBuildBtnVisible( visible )
+	if self.status_ == U_ST_WAITING then
+		visible = true
+	end
 	if self.BTN_OK_ then
 		self.BTN_OK_:setVisible(visible)
 	end
@@ -237,15 +281,18 @@ function Unit:clearSubstrate( ... )
 	end
 end
 
-function Unit:setBackgroundVisible( visible )
-	if self.background_ then
+function Unit:setColorBoardVisible( visible )
+	if self.colorBoard_ then
 		if not self.isValidPosition_ and self.isSelected_ then  -- 选中状态松手的时候，如果位置不可用，则不隐藏地板
+			visible = true
+		end
+		if self.status_ == U_ST_WAITING then
 			visible = true
 		end
 		if not self.db_.isCanMove then  -- 不可移动的unit，不显示地面
 			visible = false
 		end
-		self.background_:setVisible(visible)
+		self.colorBoard_:setVisible(visible)
 	end
 end
 
@@ -277,13 +324,18 @@ end
 
 function Unit:notifications( ... )  -- virtual
 	return {
-		MSG_UNSELECTED_UNIT,
+		MSG_UNIT_UNSELECTED,
 	}
 end
 
 -- 取消所有选中的unit
-function Unit:MSG_UNSELECTED_UNIT( ... )
-	if self:isSelected() then
+function Unit:MSG_UNIT_UNSELECTED( unit )
+	if not unit or self.unique_ ~= unit.unique_ then
+		return
+	end
+	if self.status_ == U_ST_WAITING then
+		self:delete()
+	elseif self:isSelected() then
 		self:onUnSelected()
 	end
 end

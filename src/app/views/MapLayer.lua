@@ -5,7 +5,7 @@
 local Building = game.Building
 local Plant = game.Plant
 local MapUtils = game.MapUtils
-local Notification = game.NotificationManager
+local NotificationManager = game.NotificationManager
 local TouchStatus = game.TouchStatus
 local TouchPoint = game.TouchPoint
 local UnitFactory = game.UnitFactory
@@ -19,6 +19,7 @@ MapLayer.selectedUnitVertex_ = nil
 MapLayer.pressedIndex_ = nil
 
 function MapLayer:ctor( ... )
+	self.map_ = MapManager.getMap()
 	self:move(cc.p(0, 0))
 
     self:onNodeEvent("enter", function ( ... )
@@ -29,16 +30,12 @@ function MapLayer:ctor( ... )
 	end)
 end
 
-function MapLayer:setMap( map )
-	self.map_ = map
-end
-
 function MapLayer:touchBegan( event )
 	if table.nums(TouchPoint.points_) > 1 then
 		return
 	end
 	print("MapLayer touchBegan")
-	local touch = game.MapUtils.getPoints(event)
+	local touch = TouchPoint.points_[1]
 	local maptouch = MapUtils.screen_2_map(self.map_, touch)
 	local tileCoordinate = MapUtils.map_2_tile(self.map_, maptouch)
 	if self.selectedUnit_ then
@@ -64,7 +61,7 @@ function MapLayer:touchMoved( event )
 	if self.selectedUnit_ and self.pressedIndex_ then
 		TouchStatus.switch_move_unit()  -- 只要按下了高亮的unit，就算是移动建筑，不管移动的目标位置是否正确
 
-		local touch = game.MapUtils.getPoints(event)
+		local touch = TouchPoint.points_[1]
 		local maptouch = MapUtils.screen_2_map(self.map_, touch)
 		local tileCoordinate = MapUtils.map_2_tile(self.map_, maptouch)
 	
@@ -96,53 +93,19 @@ function MapLayer:touchEnded( event )
 	-- 没移动过，则执行点击判定
 	if not TouchStatus.isStatus(OP_MOVE_UNIT) then
 		-- 选中判定
-		local touch = game.MapUtils.getPoints(event)
+		local touch = MapUtils.getPoints(event)
 		local maptouch = MapUtils.screen_2_map(self.map_, touch)
 		local tileCoordinate = MapUtils.map_2_tile(self.map_, maptouch)
 		local unit = MapManager.isTouchedUnit(tileCoordinate)
-		if unit and not unit:isSelected() and TouchStatus.isStatus(OP_NONE) then
-			game.NotificationManager.post(MSG_UNSELECTED_UNIT)  -- 先清掉之前选中的unit
-			unit:onSelected()
-			self.selectedUnit_ = unit
-			self.selectedUnitVertex_ = unit.vertex_
+		if unit --[[and not unit:isSelected() ]]and TouchStatus.isStatus(OP_NONE) then
+			self:unitSelected(unit)
 		else
-			game.NotificationManager.post(MSG_UNSELECTED_UNIT)  -- 没选中则取消掉已选中状态的unit
-			self.selectedUnit_ = nil
-			self.selectedUnitVertex_ = nil
+			self:unitUnSelected()
 		end
 	end
 	if table.nums(TouchPoint.points_) == 0 then
 		TouchStatus.switch_none()	
 	end
-
-	-- local unitId = 10001
-	-- local unitdb = game.DB_Building.getById(unitId)
-	-- -- 获取占地行数
-	-- local occupy = unitdb.occupy
-	-- -- 边宽
-	-- local edge = unitdb.edge
-	-- local tilesize = game.g_mapTileSize
-	-- local row = occupy + 2 * edge
-	--  --   /\ ______ 基准点
-	--  --  /\/\
-	--  -- /\/\/\
-	--  -- \/\/\/
-	--  --  \/\/
-	--  --   \/
-	--  -- 保存矩形 只需要保存基准点的位置，以及宽高
-	-- -- 假定点击放置建筑，点击的点是建筑以为底板的左上角
-	-- if game.MapCache:isCanUse(tileCoordinate, row) then
-
-	-- 	local building = UnitFactory.newBuilding(unitId, tileCoordinate, self.map_)
-	-- 	building.Node_:addTo(self.map_)
-	-- 	building:refresh(U_ST_BUILDED)
-
-	-- 	-- print("touch ", touch.x, touch.y)
-	-- 	-- print("maptouch ", maptouch.x, maptouch.y)
-	-- 	print("tileCoordinate ", tileCoordinate.x, tileCoordinate.y)
-	-- else
-	-- 	print("此位置已存在单位")
-	-- end
 end
 
 function MapLayer:touchCancelled( event )
@@ -152,40 +115,80 @@ function MapLayer:touchCancelled( event )
 	TouchStatus.switch_none()
 end
 
+function MapLayer:unitSelected( unit )
+	NotificationManager.post(MSG_UNIT_UNSELECTED, self.selectedUnit_)  -- 先清掉之前选中的unit
+	unit:onSelected()
+	self.selectedUnit_ = unit
+	self.selectedUnitVertex_ = unit.vertex_
+end
+
+function MapLayer:unitUnSelected( ... )
+	NotificationManager.post(MSG_UNIT_UNSELECTED, self.selectedUnit_)  -- 没选中则取消掉已选中状态的unit
+	self.selectedUnit_ = nil
+	self.selectedUnitVertex_ = nil
+	if table.nums(TouchPoint.points_) == 0 then
+		TouchStatus.switch_none()	
+	end
+end
+
 function MapLayer:notifications( ... )
 	return {
-		MSG_MAP_ADD,
-		"TEST",
+		MSG_ADD_TEST_UNIT,
+		MSG_MAP_UNSELECTED,
+		MSG_ADD_UNIT,
+		MSG_REMOVE_UNIT,
+		MSG_UPDATE_UNIT,
 	}
 end
 
-function MapLayer:MSG_MAP_ADD( tileCoordinate, type )
+-- 取消选中
+function MapLayer:MSG_MAP_UNSELECTED( ... )
+	print("In MSG_MAP_UNSELECTED")
+	self:unitUnSelected()
+end
+
+-- 添加新unit
+function MapLayer:MSG_ADD_UNIT( unit )
+	if unit.status_ == U_ST_WAITING then
+		NotificationManager.post(MSG_UNIT_UNSELECTED, self.selectedUnit_)  -- 先清掉之前选中的unit
+		self.selectedUnit_ = unit
+		self.selectedUnitVertex_ = unit.vertex_
+	end
+end
+
+-- 移除unit
+function MapLayer:MSG_REMOVE_UNIT( unit )
+	-- 移除选中状态的unit
+	if self.selectedUnit_ and self.selectedUnit_.unique_ == unit.unique_ then
+		self.selectedUnit_ = nil
+		self.selectedUnitVertex_ = nil
+		if table.nums(TouchPoint.points_) == 0 then
+			TouchStatus.switch_none()	
+		end
+	end
+end
+
+-- 更新unit
+function MapLayer:MSG_UPDATE_UNIT( unit )
 	
 end
 
-function MapLayer:TEST( ... )
-	print("TEST")
+-- 添加测试unit
+function MapLayer:MSG_ADD_TEST_UNIT( ... )
+	print("MSG_ADD_TEST_UNIT")
 
-	local vertex = cc.p(34, 1)
-	local building = UnitFactory.newBuilding(10001, vertex, self.map_)
-	MapManager.addUnit(building)
-	building:refresh(U_ST_BUILDED)
+	MapManager.addUnitById(10001, cc.p(34, 1), U_ST_BUILDED)
 
-	do
-		local vertex = cc.p(15, 15)
-		local building = UnitFactory.newBuilding(10004, vertex, self.map_)
-		MapManager.addUnit(building)
-		building:refresh(U_ST_BUILDED)
-	end
+	-- NotificationManager.post(MSG_UNIT_UNSELECTED, self.selectedUnit_)  -- 先清掉之前选中的unit
+	MapManager.addUnitById(10004, cc.p(15, 15), U_ST_BUILDED)
 
-	local plants = {11001, 11001, 11003, 11002, 11001, 11004, 11005, 11006, 11001, 11004, 11005, 11006, 11001, 11004}
+	local plants = {30001, 30001, 30003, 30002, 30001, 30004, 30005, 30006, 30001, 30004, 30005, 30006, 30001, 30004}
 	local vers = {cc.p(1,1), cc.p(2,5), cc.p(4,10), cc.p(5,15), cc.p(5,1), cc.p(10,10), cc.p(15,7), cc.p(36,10),
 					cc.p(35,36), cc.p(30,13), cc.p(22,31), cc.p(26,1), cc.p(27,19), cc.p(32,3)}
 	for k,v in pairs(plants) do
-		local plant = UnitFactory.newPlant(v, vers[k], self.map_)
-		MapManager.addUnit(plant)
-		plant:refresh(U_ST_BUILDED)
+		MapManager.addUnitById(v, vers[k], U_ST_BUILDED)
 	end
 end
+
 
 return MapLayer

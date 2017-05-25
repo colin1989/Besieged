@@ -25,6 +25,7 @@ function notification.erase( name, flag )
 end
 
 function notification.post( name, ... )
+	print("NotificationManager post ", name)
 	if not observers_[name] then
 		return nil
 	end

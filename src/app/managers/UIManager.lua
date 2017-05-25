@@ -41,7 +41,7 @@ function UIManager.loadCSB( fileName )
     -- layout:setPosition(cc.p(-display.cx, -display.cy))
     layout:setPosition(cc.p(0, 0))
     layout:setScale(display.width / 960)
-    return layout
+    return tolua.cast(layout, "ccui.Layout")
 end
 
 return UIManager

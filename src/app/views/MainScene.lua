@@ -15,33 +15,27 @@ function MainScene:onCreate()
     cc.Image:setPVRImagesHavePremultipliedAlpha(true)
     cc.SpriteFrameCache:getInstance():addSpriteFrames("map/Beijing-hd.plist", "map/Beijing-hd.png")
 
+    -- init tmx
+    local map = cc.TMXTiledMap:create("map/mymap.tmx")
+        :align(cc.p(0.5, 0.5), display.center)
+        :setMapOrientation(3)
+        :setScale(0.5)
+
+    game.MapManager.init(map)
+
     game.Layers.ZoomLayer = game.ZoomLayer:create()
     game.Layers.MapLayer = game.MapLayer:create()
     game.Layers.TouchDispatcher = game.TouchDispatcher:create()
     game.Layers.UILayer = cc.Layer:create() -- game.UILayer:create()
 
+    map:addTo(game.Layers.MapLayer)
     self:addChild(game.Layers.TouchDispatcher)
     self:addChild(game.Layers.ZoomLayer)
     self:addChild(game.Layers.UILayer)
     game.Layers.ZoomLayer:addChild(game.Layers.MapLayer)
 
-    -- init tmx
-    local map = cc.TMXTiledMap:create("map/mymap.tmx")
-        :align(cc.p(0.5, 0.5), display.center)
-        :addTo(game.Layers.MapLayer)
-        :setMapOrientation(3)
-        :setScale(0.5)
-    game.Layers.MapLayer:setMap(map)
-
-    local mapsize = map:getMapSize()      
-    game.g_mapSize = mapsize
-    game.g_mapGridNum = mapsize.width * mapsize.height
-    game.g_mapTileSize = map:getTileSize()
-
-    game.MapManager.init()
-
     performWithDelay(self, function ( ... )
-        game.NotificationManager.post("TEST")
+        game.NotificationManager.post(MSG_ADD_TEST_UNIT)
     end, 1/60)
 
 end
