@@ -25,4 +25,6 @@ Mapping = {
 	MapUtils = "app.utils.MapUtils",
 	NotificateDelegate = "app.components.NotificateDelegate",
 	UnitSelectedView = "app.module.UnitSelectedView",
+	MainPage = "app.module.MainPage",
+	BaseView = "app.public.BaseView",
 }

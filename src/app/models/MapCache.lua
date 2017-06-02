@@ -43,7 +43,7 @@ function MapCache:clearUnit( tileCoordinate, row )
 	self.vertexs_[MapUtils.tile_2_unique(tileCoordinate)] = nil
 end
 
-function MapCache:isEmpty( tileCoordinate, unique )
+function MapCache:isEmpty( tileCoordinate )
 	return self.maps_[MapUtils.tile_2_unique(tileCoordinate)] == U_EMPTY
 end
 
@@ -85,6 +85,18 @@ function MapCache:findVertexByUnit( unit )
 	for k,v in pairs(self.vertexs_) do
 		if v.unique_ == unit.unique_ then
 			return k
+		end
+	end
+	return nil
+end
+
+function MapCache:findEmptyArea( row )
+	for i = 0, game.g_mapSize.width - 1 - row do
+		for j = 0, game.g_mapSize.height - 1 - row do
+			local vertex = cc.p(i, j)
+			if self:isCanUse(vertex, row) then
+				return vertex
+			end
 		end
 	end
 	return nil

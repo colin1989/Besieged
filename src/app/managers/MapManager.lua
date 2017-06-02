@@ -90,6 +90,7 @@ function MapManager.isUsable( vertex, row )
 	return mapCache_:isCanUse(vertex, row)
 end
 
+-- 判断给定区域是否可用，给定的unit不计算
 function MapManager.isUsableExcept( vertex, row, unique )
 	if not game.MapUtils.isUnitValid(vertex, row) then
 		return false
@@ -108,6 +109,11 @@ function MapManager.logicVertex( unit )
 		return game.MapUtils.unique_2_tile(unique)
 	end
 	return cc.p(0, 0)
+end
+
+function MapManager.findEmptyArea( row )
+	local v = mapCache_:findEmptyArea(tonumber(row))
+	return v
 end
 
 return MapManager

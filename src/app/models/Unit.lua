@@ -297,7 +297,7 @@ function Unit:setColorBoardVisible( visible )
 end
 
 function Unit:resetZOrder( z )
-	self.Node_:setZOrder(z)
+	self.Node_:setLocalZOrder(z)
 end
 
 function Unit:schedule( interval )
@@ -334,7 +334,7 @@ function Unit:MSG_UNIT_UNSELECTED( unit )
 		return
 	end
 	if self.status_ == U_ST_WAITING then
-		self:delete()
+		game.MapManager.removeUnit(self)
 	elseif self:isSelected() then
 		self:onUnSelected()
 	end

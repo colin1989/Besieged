@@ -1,8 +1,4 @@
-local LayerManager = game.LayerManager
-local UIManager = game.UIManager
-local NotificateDelegate = game.NotificateDelegate
-
-local UnitSelectedView = class("UnitSelectedView")
+local UnitSelectedView = class("UnitSelectedView", game.BaseView)
 UnitSelectedView.mapping_ = {
 	"LAY_BUILDING",
 	"LAY_SOLDIER",
@@ -12,13 +8,7 @@ UnitSelectedView.unit_ = nil
 
 function UnitSelectedView:ctor( unit )
 	self.unit_ = unit
-	self._mainLayer = UIManager.loadCSB("ui/unit_select.csb")
-	self._mainLayer:onNodeEvent("enter", function ( ... )
-		NotificateDelegate.add(self, "UnitSelectedView")
-	end)
-	self._mainLayer:onNodeEvent("exit", function ( ... )
-		NotificateDelegate.remove(self, "UnitSelectedView")
-	end)
+	self:init("unit_select")
 
 	for _, v in pairs(self.mapping_) do
 		self._mainLayer[v]:setVisible(false)
@@ -28,17 +18,9 @@ function UnitSelectedView:ctor( unit )
 
 	layout.TXT_NAME:setString(unit.db_.name)
 
-	if layout.BTN_MAKE then
-		layout.BTN_MAKE:addClickEventListener(function ( ... ) self:onBtnMake(...) end)
-	end
-	if layout.BTN_SALE then
-		layout.BTN_SALE:addClickEventListener(function ( ... ) self:onBtnSale(...) end)
-	end
-	if layout.BTN_UPGRADE then
-		layout.BTN_UPGRADE:addClickEventListener(function ( ... ) self:onBtnUpgrade(...) end)
-	end
-
-    LayerManager.addLayout(self._mainLayer, "UnitSelectedView")
+	self:binding(layout.BTN_MAKE, "onBtnMake")
+	self:binding(layout.BTN_SALE, "onBtnSale")
+	self:binding(layout.BTN_UPGRADE, "onBtnUpgrade")
 end
 
 function UnitSelectedView:onBtnMake( ... )
@@ -55,10 +37,6 @@ end
 
 function UnitSelectedView:onBtnUpgrade( ... )
 	print("UnitSelectedView BTN_UPGRADE click")
-end
-
-function UnitSelectedView:destroy( ... )
-	LayerManager.removeLayout("UnitSelectedView")
 end
 
 -- notification delegate

@@ -34,8 +34,14 @@ function MainScene:onCreate()
     self:addChild(game.Layers.UILayer)
     game.Layers.ZoomLayer:addChild(game.Layers.MapLayer)
 
+    game.MainPage:create()
+
     performWithDelay(self, function ( ... )
         game.NotificationManager.post(MSG_ADD_TEST_UNIT)
+
+        game.MapManager.findEmptyArea(8)
+        game.MapManager.findEmptyArea(16)
+        game.MapManager.findEmptyArea(32)
     end, 1/60)
 
 end
