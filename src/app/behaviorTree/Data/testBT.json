@@ -1,0 +1,56 @@
+{
+  "id": "37512958-61aa-4e55-883c-64af11a39310",
+  "title": "A behavior tree",
+  "description": "",
+  "root": "fed6ba43-db53-4f63-833f-1c0d3c360b40",
+  "properties": {},
+  "nodes": {
+    "fed6ba43-db53-4f63-833f-1c0d3c360b40": {
+      "id": "fed6ba43-db53-4f63-833f-1c0d3c360b40",
+      "name": "Sequence",
+      "title": "Sequence",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 84,
+        "y": 0
+      },
+      "children": [
+        "8a90208d-c362-42fd-8b56-3510a5f69bb6",
+        "edeef1b6-485f-4532-847f-bd9be1e53cb8"
+      ]
+    },
+    "8a90208d-c362-42fd-8b56-3510a5f69bb6": {
+      "id": "8a90208d-c362-42fd-8b56-3510a5f69bb6",
+      "name": "Wait",
+      "title": "Wait <milliseconds>ms",
+      "description": "",
+      "properties": {
+        "milliseconds": 1
+      },
+      "display": {
+        "x": 252,
+        "y": -36
+      }
+    },
+    "edeef1b6-485f-4532-847f-bd9be1e53cb8": {
+      "id": "edeef1b6-485f-4532-847f-bd9be1e53cb8",
+      "name": "Succeeder",
+      "title": "Succeeder",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 240,
+        "y": 60
+      }
+    }
+  },
+  "display": {
+    "camera_x": 512,
+    "camera_y": 301.5,
+    "camera_z": 1,
+    "x": 0,
+    "y": 0
+  },
+  "custom_nodes": []
+}

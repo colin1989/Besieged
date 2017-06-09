@@ -15,6 +15,14 @@ function MainScene:onCreate()
     cc.Image:setPVRImagesHavePremultipliedAlpha(true)
     cc.SpriteFrameCache:getInstance():addSpriteFrames("map/Beijing-hd.plist", "map/Beijing-hd.png")
 
+    -- local tree = game.BTFactory.createTree("testBT")
+    -- tree:activate()
+    -- local status = "running"
+    -- while status == "running" do
+    --     status = tree:tick()
+    --     print("tick ", status)
+    -- end
+
     -- init tmx
     local map = cc.TMXTiledMap:create("map/mymap.tmx")
         :align(cc.p(0.5, 0.5), display.center)
