@@ -2,7 +2,7 @@ local super = game.BTAction
 local BTFailer = class("BTFailer", super)
 
 function BTFailer:ctor( ... )
-	self:init()
+	self:init(...)
 end
 
 function BTFailer:load( tree, id )

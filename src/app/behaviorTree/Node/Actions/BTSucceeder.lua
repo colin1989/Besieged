@@ -2,7 +2,7 @@ local super = game.BTAction
 local BTSucceeder = class("BTSucceeder", super)
 
 function BTSucceeder:ctor( ... )
-	self:init()
+	self:init(...)
 end
 
 function BTSucceeder:load( tree, id )

@@ -4,7 +4,7 @@ local BTSelector = class("BTSelector", super)
 BTSelector.activeIndex = nil
 
 function BTSelector:ctor( ... )
-	self:init()
+	self:init(...)
 end
 
 function BTSelector:load( tree, id )
@@ -12,7 +12,7 @@ function BTSelector:load( tree, id )
 	print("BTSelector load ")
 	local data = tree[id]
 	for i,v in ipairs(data.children or {}) do
-		local child = game.BTFactory.createNode(tree, v)
+		local child = game.BTFactory.createNode(tree, v, self.agent)
 		table.insert(self.children, child)
 	end
 end

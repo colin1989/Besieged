@@ -4,7 +4,7 @@ local BTSequence = class("BTSequence", super)
 BTSequence.activeIndex = nil
 
 function BTSequence:ctor( ... )
-	self:init()
+	self:init(...)
 end
 
 function BTSequence:load( tree, id )
@@ -12,7 +12,7 @@ function BTSequence:load( tree, id )
 	print("BTSequence load ")
 	local data = tree[id]
 	for i,v in ipairs(data.children or {}) do
-		local child = game.BTFactory.createNode(tree, v)
+		local child = game.BTFactory.createNode(tree, v, self.agent)
 		table.insert(self.children, child)
 	end
 end

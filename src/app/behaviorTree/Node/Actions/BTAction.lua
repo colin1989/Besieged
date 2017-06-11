@@ -2,7 +2,7 @@ local super = game.BTNode
 local BTAction = class("BTAction", super)
 
 function BTAction:ctor( ... )
-	self:init()
+	self:init(...)
 end
 
 function BTAction:load( tree, id )

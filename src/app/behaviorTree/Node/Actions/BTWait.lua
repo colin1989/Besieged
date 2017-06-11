@@ -3,7 +3,7 @@ local BTWait = class("BTWait", super)
 BTWait.delay = nil
 
 function BTWait:ctor( ... )
-	self:init()
+	self:init(...)
 end
 
 function BTWait:load( tree, id )

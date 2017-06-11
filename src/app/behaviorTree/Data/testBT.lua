@@ -18,27 +18,12 @@ return
 	},
 	["nodes"] = 
 	{
-		["edeef1b6-485f-4532-847f-bd9be1e53cb8"] = 
-		{
-			["description"] = "",
-			["title"] = "Succeeder",
-			["properties"] = 
-			{
-			},
-			["id"] = "edeef1b6-485f-4532-847f-bd9be1e53cb8",
-			["display"] = 
-			{
-				["y"] = 60,
-				["x"] = 240
-			},
-			["name"] = "BTSucceeder"
-		},
 		["fed6ba43-db53-4f63-833f-1c0d3c360b40"] = 
 		{
 			["description"] = "",
 			["title"] = "Sequence",
 			["children"] = {
-				"edeef1b6-485f-4532-847f-bd9be1e53cb8",
+				"aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
 				"8a90208d-c362-42fd-8b56-3510a5f69bb6",
 			},
 			["properties"] = 
@@ -52,13 +37,64 @@ return
 			},
 			["name"] = "BTSelector"
 		},
+		["aaaaaaaaaaaaaaaaaaaaaaaaaaaa"] = 
+		{
+			["description"] = "",
+			["title"] = "Succeeder",
+			["properties"] = 
+			{
+			},
+			["children"] = {
+				"edeef1b6-485f-4532-847f-bd9be1e53cb8",
+				"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+			},
+			["id"] = "aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+			["display"] = 
+			{
+				["y"] = 60,
+				["x"] = 240
+			},
+			["name"] = "BTSequence"
+		},
+		["edeef1b6-485f-4532-847f-bd9be1e53cb8"] = 
+		{
+			["description"] = "",
+			["title"] = "Succeeder",
+			["properties"] = 
+			{
+				["method"] = "isHaveEnemy",
+			},
+			["id"] = "edeef1b6-485f-4532-847f-bd9be1e53cb8",
+			["display"] = 
+			{
+				["y"] = 60,
+				["x"] = 240
+			},
+			["name"] = "BTCondition"
+		},
+		["bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"] = 
+		{
+			["description"] = "",
+			["title"] = "Succeeder",
+			["properties"] = 
+			{
+				["method"] = "attack",
+			},
+			["id"] = "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+			["display"] = 
+			{
+				["y"] = 60,
+				["x"] = 240
+			},
+			["name"] = "BTAction"
+		},
 		["8a90208d-c362-42fd-8b56-3510a5f69bb6"] = 
 		{
 			["description"] = "",
 			["title"] = "Wait <milliseconds>ms",
 			["properties"] = 
 			{
-				["milliseconds"] = 3
+				["method"] = "idle",
 			},
 			["id"] = "8a90208d-c362-42fd-8b56-3510a5f69bb6",
 			["display"] = 
@@ -66,7 +102,7 @@ return
 				["y"] = -36,
 				["x"] = 252
 			},
-			["name"] = "BTWaitMS"
+			["name"] = "BTAction"
 		}
 	},
 	["root"] = "fed6ba43-db53-4f63-833f-1c0d3c360b40",

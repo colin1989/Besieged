@@ -9,12 +9,13 @@ BTNode.active = false
 BTNode.children = {}
 BTNode.preconditions = {}
 BTNode.tree = nil
+BTNode.agent = nil
 
-function BTNode:ctor( ... )
-	self:init()
+function BTNode:ctor( agent )
+	self:init(agent)
 end
 
-function BTNode:init( ... )
+function BTNode:init( agent )
 	self.id = nil
 	self.name = nil
 	self.status = BTStatus.ST_TRUE
@@ -22,12 +23,21 @@ function BTNode:init( ... )
 	self.children = {}
 	self.preconditions = {}
 	self.tree = nil
+	self.agent = agent
 end
 
 function BTNode:load( tree, id )
 	self.id = id
 	self.name = tree[id].name
 	self.tree = tree
+
+	-- properties
+	local data = tree[id]
+	for k, v in pairs(data.properties or {}) do
+		if k == "method" then
+			self.method = {target = self.agent, method = v}
+		end
+	end
 end
 
 function BTNode:enter( ... )
@@ -47,7 +57,20 @@ function BTNode:tick( ... )
 end
 
 function BTNode:execute( ... )
-	
+	print("BTNode execute")
+	if self.method then
+		local target = self.method.target
+		local method = self.method.method
+		local r = target[method](target)
+		if r == true then
+			print("r = true")
+			self.status = BTStatus.ST_TRUE
+		else
+			print("r = false")
+			self.status = BTStatus.ST_FALSE
+		end
+	end
+	return self.status
 end
 
 function BTNode:activate( ... )

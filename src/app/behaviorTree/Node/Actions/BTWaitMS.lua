@@ -2,7 +2,7 @@ local super = game.BTWait
 local BTWaitMS = class("BTWaitMS", super)
 
 function BTWaitMS:ctor( ... )
-	self:init()
+	self:init(...)
 end
 
 function BTWaitMS:load( tree, id )
