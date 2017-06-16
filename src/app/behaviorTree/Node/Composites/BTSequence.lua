@@ -33,7 +33,7 @@ function BTSequence:execute( ... )
 	print("BTSequence execute")
 	for i = self.activeIndex, #self.children do
 		local child = self.children[i]
-		local status = child:execute()
+		local status = child:tick()
 		if status ~= BTStatus.ST_TRUE then
 			self.status = status
 			self.activeIndex = i

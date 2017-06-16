@@ -10,6 +10,8 @@ BTNode.children = {}
 BTNode.preconditions = {}
 BTNode.tree = nil
 BTNode.agent = nil
+BTNode.method = nil
+BTNode.level = 0
 
 function BTNode:ctor( agent )
 	self:init(agent)
@@ -24,6 +26,8 @@ function BTNode:init( agent )
 	self.preconditions = {}
 	self.tree = nil
 	self.agent = agent
+	self.method = nil
+	self.level = 0
 end
 
 function BTNode:load( tree, id )
@@ -33,9 +37,16 @@ function BTNode:load( tree, id )
 
 	-- properties
 	local data = tree[id]
+	self:load_property(data)
+end
+
+function BTNode:load_property( data )
 	for k, v in pairs(data.properties or {}) do
 		if k == "method" then
+			assert(self.method == nil, "not allow multi method in properties!")
 			self.method = {target = self.agent, method = v}
+		elseif k == "precondition" then
+			table.insert(self.preconditions, game.BTFactory.createNode(self.tree, v, self.agent))
 		end
 	end
 end
@@ -73,6 +84,7 @@ function BTNode:execute( ... )
 	return self.status
 end
 
+-- 激活
 function BTNode:activate( ... )
 	if self.active then
 		return
@@ -90,13 +102,14 @@ function BTNode:activate( ... )
 	self:enter()
 end
 
+-- 评估是否可执行
 function BTNode:evaluate( ... )
 	if not self.active then
 		return false
 	end
 	for i,v in ipairs(self.preconditions) do
-		local preCondition = v
-		if preCondition.execute() ~= BTStatus.ST_TRUE then
+		print("precondition evaluate ", self:toString())
+		if v:tick() ~= BTStatus.ST_TRUE then
 			return false
 		end
 	end
@@ -104,6 +117,7 @@ function BTNode:evaluate( ... )
 	return self:_evaluate()
 end
 
+-- 用于子节点的自定义评估
 function BTNode:_evaluate( ... )
 	return true
 end

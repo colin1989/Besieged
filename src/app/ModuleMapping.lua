@@ -38,6 +38,7 @@ Mapping = {
 	BTWait = "app.behaviorTree.Node.Actions.BTWait",
 	BTWaitMS = "app.behaviorTree.Node.Actions.BTWaitMS",
 	BTCondition = "app.behaviorTree.Node.Conditions.BTCondition",
+	BTConditionIsHaveEnemy = "app.behaviorTree.Node.Conditions.BTConditionIsHaveEnemy",
 	BTFactory = "app.behaviorTree.BTFactory",
 	BaseAgent = "app.behaviorTree.Agent.BaseAgent",
 	SoldierAgent = "app.behaviorTree.Agent.SoldierAgent",

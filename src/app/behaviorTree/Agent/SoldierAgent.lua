@@ -20,18 +20,17 @@ function SoldierAgent:update( ... )
 	super.update(self, ...)
 end
 
+----- condition ------
 local testCount = 0
 function SoldierAgent:isHaveEnemy( ... )
 	print("SoldierAgent:isHaveEnemy")
 	testCount = testCount + 1
 	if testCount < 5 then
-		print("return true")
 		return true
 	end
 	if testCount == 10 then
 		testCount = 0
 	end
-	print("return true")
 	return true
 end
 
@@ -42,16 +41,21 @@ function SoldierAgent:isCanAttack( ... )
 	return false
 end
 
+
+----- action ------
 function SoldierAgent:idle( ... )
 	print("SoldierAgent idle")
+	return true
 end
 
 function SoldierAgent:walk( ... )
 	print("SoldierAgent walk")
+	return true
 end
 
 function SoldierAgent:attack( ... )
 	print("SoldierAgent attack")
+	return true
 end
 
 return SoldierAgent

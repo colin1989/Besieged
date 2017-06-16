@@ -24,7 +24,8 @@ end
 
 function BTAction:execute( ... )
 	print("BTAction execute")
-	return BTStatus.ST_FALSE
+	super.execute(self)
+	return self.status
 end
 
 function BTAction:_evaluate( ... )

@@ -33,7 +33,7 @@ function BTSelector:execute( ... )
 	print("BTSelector execute")
 	for i = self.activeIndex, #self.children do
 		local child = self.children[i]
-		local status = child:execute()
+		local status = child:tick()
 		if status == BTStatus.ST_RUNNING then
 			self.status = status
 			self.activeIndex = i

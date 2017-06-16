@@ -33,7 +33,7 @@ function BTParallelOr:execute( ... )
 	local childStatus = {}
 	for i = 1, #self.children do
 		local child = self.children[i]
-		local status = child:execute()
+		local status = child:tick()
 		table.insert(childStatus, status)
 	end
 	for k,v in pairs(childStatus) do
