@@ -1,5 +1,6 @@
+local super = game.BaseAgent
 local UnitSelectedView = game.UnitSelectedView
-local Unit = class("Unit")
+local Unit = class("Unit", game.BaseAgent)
 
 function Unit:ctor( id )
 	self.init(id)
@@ -16,9 +17,11 @@ function Unit:init( id, type )  -- final
 
 	self.Node_:onNodeEvent("enter", function ( ... )
 		game.NotificateDelegate.add(self, self.unique_)
+		self:schedule()
 	end)
 	self.Node_:onNodeEvent("exit", function ( ... )
 		game.NotificateDelegate.remove(self, self.unique_)
+		self:unschedule()
 	end)
 end
 
@@ -57,6 +60,7 @@ function Unit:reset( ... )  -- final
 	self.BTN_OK_ = nil
 	self.BTN_CANCEL_ = nil
 	self.BATCH_ARROWS_ = nil
+	self.agent_ = nil
 end
 
 function Unit:delete( ... )
@@ -313,19 +317,80 @@ function Unit:unschedule( ... )
 	end
 end
 
-function Unit:update( ... )
-	
-end
+-- function Unit:update( ... )
+-- 	if self.agent_ then
+-- 		self.agent_:update()
+-- 	end
+-- end
 
 function Unit:operability( ... )
 	return self.operability_
 end
+
+-- function Unit:setAgent( agent )
+-- 	self.agent_ = agent
+-- end
 
 
 function Unit:notifications( ... )  -- virtual
 	return {
 		MSG_UNIT_UNSELECTED,
 	}
+end
+
+-------------- Agent -----------------
+function Unit:load( treename )
+	super.load(self, treename)
+end
+
+function Unit:activate( ... )
+	super.activate(self)
+end
+
+function Unit:clear( ... )
+	super.clear(self)
+end
+
+function Unit:update( ... )
+	super.update(self, ...)
+end
+
+----- condition ------
+local testCount = 0
+function Unit:isHaveEnemy( ... )
+	print("Unit:isHaveEnemy")
+	testCount = testCount + 1
+	if testCount < 5 then
+		return false
+	end
+	if testCount == 10 then
+		testCount = 0
+	end
+	return true
+end
+
+function Unit:isCanAttack( ... )
+	if testCount >= 8 then
+		return true
+	end
+	return false
+end
+
+
+----- action ------
+function Unit:idle( ... )
+	print("Unit idle")
+	return true
+end
+
+function Unit:walk( ... )
+	print("Unit walk")
+	return true
+end
+
+function Unit:attack( ... )
+	print("Unit attack")
+	return true
 end
 
 -- 取消所有选中的unit

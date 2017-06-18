@@ -25,7 +25,7 @@ end
 
 function UnitSelectedView:onBtnMake( ... )
 	print("UnitSelectedView BTN_MAKE click")
-	local soldier = game.UnitFactory.newSoldier(20001, cc.p(self.unit_.vertex_.x - 1, self.unit_.vertex_.y - 1), self.unit_.map_)
+	local soldier = game.UnitFactory.newSoldier(20001, cc.p(self.unit_.vertex_.x - 1, self.unit_.vertex_.y - 1), self.unit_.map_)	
 	game.MapManager.addUnit(soldier)
 end
 

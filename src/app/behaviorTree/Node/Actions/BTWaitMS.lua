@@ -23,6 +23,7 @@ end
 
 function BTWaitMS:execute( ... )
 	print("BTWaitMS execute")
+	super.execute(self)
 	if self.delay > 0 then
 		self.delay = self.delay - 1
 		return BTStatus.ST_RUNNING

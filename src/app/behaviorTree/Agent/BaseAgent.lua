@@ -5,7 +5,7 @@ BaseAgent.scheduleId = nil
 function BaseAgent:ctor( ... )
 	self.tree = nil
 	self.scheduleId = nil
-	self:schedule()
+	-- self:schedule()
 end
 
 function BaseAgent:load( treename )
@@ -41,6 +41,7 @@ end
 
 function BaseAgent:update( dt )
 	if self.tree then
+		print("asdasdasdasd")
 		local r = self.tree:tick()
 		-- if r == BTStatus.ST_TRUE then
 			self.tree:clear()

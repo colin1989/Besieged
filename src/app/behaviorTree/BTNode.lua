@@ -12,6 +12,7 @@ BTNode.tree = nil
 BTNode.agent = nil
 BTNode.method = nil
 BTNode.level = 0
+BTNode.runningChildren = {}  -- save running children
 
 function BTNode:ctor( agent )
 	self:init(agent)
@@ -28,6 +29,7 @@ function BTNode:init( agent )
 	self.agent = agent
 	self.method = nil
 	self.level = 0
+	self.runningChildren = {}
 end
 
 function BTNode:load( tree, id )
@@ -60,8 +62,13 @@ function BTNode:exit( ... )
 end
 
 function BTNode:tick( ... )
+	print("BTNode tick")
 	if self:evaluate() then
-		return self:execute()
+		local s = self:execute()
+		if s == BTStatus.ST_RUNNING then
+			table.insert(self.runningChildren, self)
+		end
+		return s
 	end
 	print(self:toString(), " evalute failed")
 	return BTStatus.ST_FALSE
@@ -86,6 +93,7 @@ end
 
 -- 激活
 function BTNode:activate( ... )
+	print("BTNode activate")
 	if self.active then
 		return
 	end
@@ -104,12 +112,17 @@ end
 
 -- 评估是否可执行
 function BTNode:evaluate( ... )
+	print("BTNode evaluate")
 	if not self.active then
 		return false
 	end
 	for i,v in ipairs(self.preconditions) do
 		print("precondition evaluate ", self:toString())
 		if v:tick() ~= BTStatus.ST_TRUE then
+			-- 失败后停止所有running子节点
+			for _, child in ipairs(self.runningChildren) do
+				child:clear()
+			end
 			return false
 		end
 	end
@@ -132,6 +145,8 @@ function BTNode:clear( ... )
 		v:exit()
 	end
 	self.active = false
+	self.status = BTStatus.ST_FALSE
+	self.runningChildren = {}
 end
 
 function BTNode:toString( ... )

@@ -26,7 +26,7 @@ function SoldierAgent:isHaveEnemy( ... )
 	print("SoldierAgent:isHaveEnemy")
 	testCount = testCount + 1
 	if testCount < 5 then
-		return true
+		return false
 	end
 	if testCount == 10 then
 		testCount = 0
