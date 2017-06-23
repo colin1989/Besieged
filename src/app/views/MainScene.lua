@@ -59,8 +59,6 @@ function MainScene:onCreate()
     self:addChild(game.Layers.ZoomLayer)
     self:addChild(game.Layers.UILayer)
     game.Layers.ZoomLayer:addChild(game.Layers.MapLayer)
-    game.Layers.ZoomLayer:setVisible(false)
-    game.Layers.UILayer:setVisible(false)
 
     game.MainPage:create()
 
@@ -71,11 +69,6 @@ function MainScene:onCreate()
         -- game.MapManager.findEmptyArea(16)
         -- game.MapManager.findEmptyArea(32)
     end, 1/60)
-
-    -- local p1 = game.MapUtils.tile_2_map(map, cc.p(34,1))
-    -- local p2 = game.MapUtils.map_2_tile(map, cc.p(2304,1032))
-    -- print(p1.x,p1.y)
-    -- print(p2.x,p2.y)
 end
 
 return MainScene

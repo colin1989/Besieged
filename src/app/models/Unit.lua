@@ -112,6 +112,12 @@ end
 
 function Unit:onBtnBuild( sender )
 	print("Unit Build")
+	local usable = game.MapManager.isUsableExcept(self.vertex_, self.row_, self.unique_)
+	if not usable then
+		print("this is not a valid position")
+		return
+	end
+
 	self.status_ = U_ST_BUILDED
 	if self:isSelected() then
 		self:onUnSelected()

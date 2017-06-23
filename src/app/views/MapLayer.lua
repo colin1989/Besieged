@@ -177,7 +177,7 @@ end
 function MapLayer:MSG_ADD_TEST_UNIT( ... )
 	print("MSG_ADD_TEST_UNIT")
 
-	MapManager.addUnitById(10001, cc.p(34, 1), U_ST_WAITING)
+	MapManager.addUnitById(10001, cc.p(1,1), U_ST_BUILDED)
 
 	-- -- NotificationManager.post(MSG_UNIT_UNSELECTED, self.selectedUnit_)  -- 先清掉之前选中的unit
 	-- MapManager.addUnitById(10004, cc.p(15, 15), U_ST_BUILDED)
@@ -189,8 +189,8 @@ function MapLayer:MSG_ADD_TEST_UNIT( ... )
 	-- 	MapManager.addUnitById(v, vers[k], U_ST_BUILDED)
 	-- end
 
-	local soldier = game.UnitFactory.newSoldier(20001, cc.p(1, 1), MapManager.getMap())	
-	game.MapManager.addUnit(soldier)
+	-- local soldier = game.UnitFactory.newSoldier(20001, cc.p(1, 1), MapManager.getMap())	
+	-- game.MapManager.addUnit(soldier)
 end
 
 

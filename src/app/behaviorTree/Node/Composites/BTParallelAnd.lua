@@ -16,7 +16,6 @@ function BTParallelAnd:load( tree, id )
 end
 
 function BTParallelAnd:enter( ... )
-	self.runningChildren = {}
 end
 
 function BTParallelAnd:exit( ... )

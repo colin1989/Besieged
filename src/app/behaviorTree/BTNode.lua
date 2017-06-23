@@ -12,7 +12,6 @@ BTNode.tree = nil
 BTNode.agent = nil
 BTNode.method = nil
 BTNode.level = 0
-BTNode.runningChildren = {}  -- save running children
 
 function BTNode:ctor( agent )
 	self:init(agent)
@@ -29,7 +28,6 @@ function BTNode:init( agent )
 	self.agent = agent
 	self.method = nil
 	self.level = 0
-	self.runningChildren = {}
 end
 
 function BTNode:load( tree, id )
@@ -64,11 +62,7 @@ end
 function BTNode:tick( ... )
 	-- print("BTNode tick")
 	if self:evaluate() then
-		local s = self:execute()
-		if s == BTStatus.ST_RUNNING then
-			table.insert(self.runningChildren, self)
-		end
-		return s
+		return self:execute()
 	end
 	print(self:toString(), " evalute failed")
 	return BTStatus.ST_FALSE
@@ -116,9 +110,7 @@ function BTNode:evaluate( ... )
 		-- print("precondition evaluate ", self:toString())
 		if v:tick() ~= BTStatus.ST_TRUE then
 			-- 失败后停止所有running子节点
-			for _, child in ipairs(self.runningChildren) do
-				child:clear()
-			end
+			self:stop()
 			return false
 		end
 	end
@@ -129,6 +121,21 @@ end
 -- 用于子节点的自定义评估
 function BTNode:_evaluate( ... )
 	return true
+end
+
+-- 停止running节点
+function BTNode:stop( ... )
+	if self.status == BTStatus.ST_RUNNING then
+		self.status = BTStatus.ST_FALSE
+		self:_stop()
+	end
+	for i,v in ipairs(self.children) do
+		v:stop()
+	end
+end
+
+function BTNode:_stop( ... )
+	
 end
 
 function BTNode:clear( ... )
@@ -142,7 +149,6 @@ function BTNode:clear( ... )
 	end
 	self.active = false
 	self.status = BTStatus.ST_FALSE
-	self.runningChildren = {}
 end
 
 function BTNode:toString( ... )

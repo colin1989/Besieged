@@ -15,7 +15,6 @@ function MainPage:onBtnShop( ... )
 	if vertex then
 		game.MapManager.addUnitById(10004, vertex, U_ST_WAITING)	
 	end
-	
 end
 
 return MainPage
