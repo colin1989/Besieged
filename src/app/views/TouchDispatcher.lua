@@ -14,6 +14,9 @@ local function touchBegan( event )
 	-- 	return false
 	-- end
 	print("touch began point ", table.nums(event.points))
+	local touch = game.MapUtils.getPoints(event)
+	local maptouch = game.MapUtils.screen_2_map(game.MapManager.getMap(), touch)
+	print("maptouch ", maptouch.x, maptouch.y)
 
 	TouchPoint.touchBegan(event)
 	map:touchBegan(event)

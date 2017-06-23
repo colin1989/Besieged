@@ -1,22 +1,23 @@
 local BaseAgent = class("BaseAgent")
 BaseAgent.tree = nil
-BaseAgent.scheduleId = nil
+BaseAgent.blackboard = nil
 
 function BaseAgent:ctor( ... )
+	print("BaseAgent:ctor")
 	self.tree = nil
-	self.scheduleId = nil
-	-- self:schedule()
 end
 
-function BaseAgent:load( treename )
+function BaseAgent:load( treename, blackboard )
+	print("BaseAgent:load ", self)
 	assert(treename)
 	self.tree = game.BTFactory.createTree(self, treename)
+	self.blackboard = blackboard
 end
 
 function BaseAgent:activate( ... )
 	if self.tree then
 		self.tree:activate()
-
+		print("BaseAgent activate over ", self.tree, self)
 	end
 end
 
@@ -26,26 +27,13 @@ function BaseAgent:clear( ... )
 	end
 end
 
-function BaseAgent:schedule( interval )
-	self.scheduleId = cc.Director:getInstance():getScheduler():scheduleScriptFunc(function ( ... )
-		self:update(...)
-	end, interval or 2 / 60, false)
-end
 
-function BaseAgent:unschedule( ... )
-	if self.scheduleId then
-		cc.Director:getInstance():getScheduler():unscheduleScriptEntry(self.scheduleId)
-		self.scheduleId = nil
-	end
-end
-
-function BaseAgent:update( dt )
+function BaseAgent:tick( dt )
 	if self.tree then
-		print("asdasdasdasd")
 		local r = self.tree:tick()
 		-- if r == BTStatus.ST_TRUE then
-			self.tree:clear()
-			self:unschedule()
+			-- self.tree:clear()
+			-- self:unschedule()
 		-- end
 	end
 end

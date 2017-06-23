@@ -1,6 +1,7 @@
 local BTTree = class("BTTree")
 BTTree.root = nil
 BTTree.agent = nil
+BTTree.active = false
 
 function BTTree:ctor( agent )
 	self.agent = agent
@@ -15,18 +16,27 @@ end
 
 function BTTree:activate( ... )
 	if self.root then
+		self.active = true
 		self.root:activate()
 	end
 end
 
 function BTTree:tick( ... )
 	if self.root then
-		return self.root:tick()
+		if not active then
+			self:activate()
+		end
+		local status = self.root:tick()
+		if status == BTStatus.ST_TRUE then
+			-- 执行结束
+			self:clear()
+		end
 	end
 end
 
 function BTTree:clear( ... )
 	if self.root then
+		self.active = false
 		self.root:clear()
 	end
 end

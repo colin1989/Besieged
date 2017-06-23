@@ -6,9 +6,7 @@ function BTAction:ctor( ... )
 end
 
 function BTAction:load( tree, id )
-	super.load(self, tree, id)
-	print("BTAction load")
-	
+	super.load(self, tree, id)	
 end
 
 function BTAction:enter( ... )
@@ -23,8 +21,8 @@ function BTAction:tick( ... )
 end
 
 function BTAction:execute( ... )
-	print("BTAction execute")
 	super.execute(self)
+	print(self:toString(), " execute ", self.status)
 	return self.status
 end
 

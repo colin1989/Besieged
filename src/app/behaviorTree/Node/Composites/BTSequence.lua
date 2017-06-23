@@ -9,7 +9,6 @@ end
 
 function BTSequence:load( tree, id )
 	super.load(self, tree, id)
-	print("BTSequence load ")
 	local data = tree[id]
 	for i,v in ipairs(data.children or {}) do
 		local child = game.BTFactory.createNode(tree, v, self.agent)
@@ -30,18 +29,18 @@ function BTSequence:tick( ... )
 end
 
 function BTSequence:execute( ... )
-	print("BTSequence execute")
 	for i = self.activeIndex, #self.children do
 		local child = self.children[i]
 		local status = child:tick()
 		if status ~= BTStatus.ST_TRUE then
 			self.status = status
 			self.activeIndex = i
+			print(self:toString(), " execute ", self.status)
 			return status
 		end
 	end
 	self.status = BTStatus.ST_TRUE
-	print("BTSequence status ", self.status)
+	print(self:toString(), " execute ", self.status)
 	return self.status
 end
 

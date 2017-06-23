@@ -21,7 +21,7 @@ end
 function BTNode:init( agent )
 	self.id = nil
 	self.name = nil
-	self.status = BTStatus.ST_TRUE
+	self.status = BTStatus.ST_RUNNING
 	self.active = false
 	self.children = {}
 	self.preconditions = {}
@@ -62,7 +62,7 @@ function BTNode:exit( ... )
 end
 
 function BTNode:tick( ... )
-	print("BTNode tick")
+	-- print("BTNode tick")
 	if self:evaluate() then
 		local s = self:execute()
 		if s == BTStatus.ST_RUNNING then
@@ -75,25 +75,20 @@ function BTNode:tick( ... )
 end
 
 function BTNode:execute( ... )
-	print("BTNode execute")
+	-- print("BTNode execute")
 	if self.method then
 		local target = self.method.target
 		local method = self.method.method
 		local r = target[method](target)
-		if r == true then
-			print("r = true")
-			self.status = BTStatus.ST_TRUE
-		else
-			print("r = false")
-			self.status = BTStatus.ST_FALSE
-		end
+		print(self:toString(), " method ", method, " ", r)
+		self.status = r
 	end
 	return self.status
 end
 
 -- 激活
 function BTNode:activate( ... )
-	print("BTNode activate")
+	-- print("BTNode activate")
 	if self.active then
 		return
 	end
@@ -101,7 +96,7 @@ function BTNode:activate( ... )
 		v:activate()
 		v:enter()
 	end
-	print("activate ", self:toString(), #self.children, self)
+	-- print("activate ", self:toString(), #self.children, self)
 	for i,v in ipairs(self.children) do
 		v:activate()
 		v:enter()
@@ -112,12 +107,13 @@ end
 
 -- 评估是否可执行
 function BTNode:evaluate( ... )
-	print("BTNode evaluate")
+	-- print("BTNode evaluate")
 	if not self.active then
+		print(self:toString(), "evaluate not active")
 		return false
 	end
 	for i,v in ipairs(self.preconditions) do
-		print("precondition evaluate ", self:toString())
+		-- print("precondition evaluate ", self:toString())
 		if v:tick() ~= BTStatus.ST_TRUE then
 			-- 失败后停止所有running子节点
 			for _, child in ipairs(self.runningChildren) do

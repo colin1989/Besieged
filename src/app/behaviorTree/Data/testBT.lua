@@ -139,7 +139,7 @@ return
 			["properties"] = 
 			{
 				["precondition"] = "3fb80c03-eb64-44c2-8ff4-17b17db5e5a0",
-				["method"] = "attack"
+				["method"] = "move"
 			},
 			["id"] = "432cc96b-aa68-4208-86ac-759728e7f2a0",
 			["display"] = 

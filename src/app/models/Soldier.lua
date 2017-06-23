@@ -1,3 +1,4 @@
+local super = game.Unit
 local Unit = game.Unit
 local Soldier = class("Soldier", Unit)
 Soldier.behavior_ = nil
@@ -16,7 +17,7 @@ function Soldier:ctor( id )
 end
 
 function Soldier:update( dt )
-	
+	super.update(self, dt)
 end
 
 return Soldier

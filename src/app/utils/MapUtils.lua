@@ -57,6 +57,10 @@ function MapUtils.map_2_screen( map, pos )
 	return map:convertToWorldSpace(pos)
 end
 
+function MapUtils.tile_2_map( map, vertex )
+	return map:getLayer("ground"):getPositionAt(vertex)
+end
+
 -- 瓦片坐标转换成唯一值
 function MapUtils.tile_2_unique( pos )
     return pos.x * 100 + pos.y
@@ -68,7 +72,7 @@ end
 
 -- 将基准位置转换成实际摆放的位置
 function MapUtils.vertex_2_real( map, vertex, row )
-    local mapPoint = map:getLayer("ground"):getPositionAt(vertex)
+    local mapPoint = MapUtils.tile_2_map(map, vertex)
     local tilesize = game.g_mapTileSize
     return cc.p(mapPoint.x + tilesize.width / 2, mapPoint.y + tilesize.height - (row / 2 * tilesize.height))
 end

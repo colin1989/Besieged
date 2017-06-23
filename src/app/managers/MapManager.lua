@@ -43,7 +43,12 @@ function MapManager.addUnitById( id, vertex, status )
 end
 
 function MapManager.addUnit( unit )
-	mapCache_:addUnit(unit.vertex_, unit, unit.row_)
+	if unit.type_ == U_PEOPLE then
+		mapCache_:addPeople(unit)
+	else
+		mapCache_:addUnit(unit.vertex_, unit, unit.row_)
+	end
+	
 	unit.Node_:addTo(unit.map_, ZORDER_NORMAL)
 	game.NotificationManager.post(MSG_ADD_UNIT, unit)
 	return unit
@@ -51,12 +56,12 @@ end
 
 function MapManager.removeUnit( unit )
 	game.NotificationManager.post(MSG_REMOVE_UNIT, unit)
-	mapCache_:clearUnit(unit.vertex_, unit.row_)
+	mapCache_:removeUnit(unit.vertex_, unit.row_)
 	unit:delete()
 end
 
 function MapManager.updateUnit( unit, vertex, row )
-	mapCache_:clearUnit(unit.vertex_, unit.row_)  -- 清空旧位置
+	mapCache_:removeUnit(unit.vertex_, unit.row_)  -- 清空旧位置
 	mapCache_:addUnit(vertex, unit, row)  -- 更新新位置
 	unit:setVertex(vertex)
 	game.NotificationManager.post(MSG_UPDATE_UNIT, unit)
@@ -114,6 +119,10 @@ end
 function MapManager.findEmptyArea( row )
 	local v = mapCache_:findEmptyArea(tonumber(row))
 	return v
+end
+
+function MapManager.getBuildings( ... )
+	return mapCache_.buildings_
 end
 
 return MapManager

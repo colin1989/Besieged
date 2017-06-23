@@ -177,17 +177,20 @@ end
 function MapLayer:MSG_ADD_TEST_UNIT( ... )
 	print("MSG_ADD_TEST_UNIT")
 
-	MapManager.addUnitById(10001, cc.p(34, 1), U_ST_BUILDED)
+	MapManager.addUnitById(10001, cc.p(34, 1), U_ST_WAITING)
 
-	-- NotificationManager.post(MSG_UNIT_UNSELECTED, self.selectedUnit_)  -- 先清掉之前选中的unit
-	MapManager.addUnitById(10004, cc.p(15, 15), U_ST_BUILDED)
+	-- -- NotificationManager.post(MSG_UNIT_UNSELECTED, self.selectedUnit_)  -- 先清掉之前选中的unit
+	-- MapManager.addUnitById(10004, cc.p(15, 15), U_ST_BUILDED)
 
-	local plants = {30001, 30001, 30003, 30002, 30001, 30004, 30005, 30006, 30001, 30004, 30005, 30006, 30001, 30004}
-	local vers = {cc.p(1,1), cc.p(2,5), cc.p(4,10), cc.p(5,15), cc.p(5,1), cc.p(10,10), cc.p(15,7), cc.p(36,10),
-					cc.p(35,36), cc.p(30,13), cc.p(22,31), cc.p(26,1), cc.p(27,19), cc.p(32,3)}
-	for k,v in pairs(plants) do
-		MapManager.addUnitById(v, vers[k], U_ST_BUILDED)
-	end
+	-- local plants = {30001, 30001, 30003, 30002, 30001, 30004, 30005, 30006, 30001, 30004, 30005, 30006, 30001, 30004}
+	-- local vers = {cc.p(1,1), cc.p(2,5), cc.p(4,10), cc.p(5,15), cc.p(5,1), cc.p(10,10), cc.p(15,7), cc.p(36,10),
+	-- 				cc.p(35,36), cc.p(30,13), cc.p(22,31), cc.p(26,1), cc.p(27,19), cc.p(32,3)}
+	-- for k,v in pairs(plants) do
+	-- 	MapManager.addUnitById(v, vers[k], U_ST_BUILDED)
+	-- end
+
+	local soldier = game.UnitFactory.newSoldier(20001, cc.p(1, 1), MapManager.getMap())	
+	game.MapManager.addUnit(soldier)
 end
 
 

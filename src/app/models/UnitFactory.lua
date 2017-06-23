@@ -23,8 +23,8 @@ function factory.newSoldier( id, vertex, map )
 	soldier.map_ = map
 	soldier:setVertex(vertex)
 	-- local agent = game.SoldierAgent:create()
-	soldier:load("testBT")
-	soldier:activate()
+	soldier:load("testBT", game.SoldierBlackboard:create())
+	-- soldier:activate()
 	-- soldier:setAgent(agent)
 	return soldier
 end

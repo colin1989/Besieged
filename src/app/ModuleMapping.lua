@@ -42,4 +42,5 @@ Mapping = {
 	BTFactory = "app.behaviorTree.BTFactory",
 	BaseAgent = "app.behaviorTree.Agent.BaseAgent",
 	SoldierAgent = "app.behaviorTree.Agent.SoldierAgent",
+	SoldierBlackboard = "app.behaviorTree.blackboard.SoldierBlackboard",
 }

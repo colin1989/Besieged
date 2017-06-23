@@ -6,9 +6,8 @@ function BTConditionIsHaveEnemy:ctor( ... )
 end
 
 function BTConditionIsHaveEnemy:execute( ... )
-	print("BTConditionIsHaveEnemy execute")
 	super.execute(self)
-	print("BTConditionIsHaveEnemy status ", self.status)
+	print(self:toString(), " execute ", self.status)
 	return self.status
 end
 

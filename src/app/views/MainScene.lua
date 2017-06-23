@@ -15,6 +15,21 @@ function MainScene:onCreate()
     cc.Image:setPVRImagesHavePremultipliedAlpha(true)
     cc.SpriteFrameCache:getInstance():addSpriteFrames("map/Beijing-hd.plist", "map/Beijing-hd.png")
 
+    -- print(cc.pGetAngle(cc.p(0, 0), cc.p(2, 2)))
+    -- print(cc.pGetAngle(cc.p(0, 0), cc.p(0, 2)))
+    -- print(cc.pGetAngle(cc.p(0, 0), cc.p(2, 0)))
+    -- print(cc.pGetAngle(cc.p(0, 0), cc.p(1.3, 2)))
+    -- local p1 = cc.pNormalize(cc.pSub(cc.p(2, 2), cc.p(0, 0)))
+    -- local p2 = cc.pNormalize(cc.pSub(cc.p(0, 2), cc.p(0, 0)))
+    -- local p3 = cc.pNormalize(cc.pSub(cc.p(2, 0), cc.p(0, 0)))
+    -- local p4 = cc.pNormalize(cc.pSub(cc.p(1.3, 2), cc.p(0, 0)))
+    -- local p5 = cc.pNormalize(cc.pSub(cc.p(1, 10), cc.p(10, 1)))
+    -- print(p1.x,p1.y)
+    -- print(p2.x,p2.y)
+    -- print(p3.x,p3.y)
+    -- print(p4.x,p4.y)
+    -- print(p5.x,p5.y)
+
     -- local tree = game.BTFactory.createTree("testBT")
     -- tree:activate()
     -- local status = "running"
@@ -44,17 +59,23 @@ function MainScene:onCreate()
     self:addChild(game.Layers.ZoomLayer)
     self:addChild(game.Layers.UILayer)
     game.Layers.ZoomLayer:addChild(game.Layers.MapLayer)
+    game.Layers.ZoomLayer:setVisible(false)
+    game.Layers.UILayer:setVisible(false)
 
     game.MainPage:create()
 
     performWithDelay(self, function ( ... )
         game.NotificationManager.post(MSG_ADD_TEST_UNIT)
 
-        game.MapManager.findEmptyArea(8)
-        game.MapManager.findEmptyArea(16)
-        game.MapManager.findEmptyArea(32)
+        -- game.MapManager.findEmptyArea(8)
+        -- game.MapManager.findEmptyArea(16)
+        -- game.MapManager.findEmptyArea(32)
     end, 1/60)
 
+    -- local p1 = game.MapUtils.tile_2_map(map, cc.p(34,1))
+    -- local p2 = game.MapUtils.map_2_tile(map, cc.p(2304,1032))
+    -- print(p1.x,p1.y)
+    -- print(p2.x,p2.y)
 end
 
 return MainScene

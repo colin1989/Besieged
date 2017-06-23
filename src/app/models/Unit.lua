@@ -77,33 +77,6 @@ function Unit:hideWidgets( ... )
 	self:setColorBoardVisible(false)
 end
 
-function Unit:refresh( status, ... )
-	self:hideWidgets()
-
-	if status == U_ST_WAITING then
-		self.status_ = status
-		self.isSelected_ = true
-
-		self:setBuildBtnVisible(true)
-		self:setColorBoardVisible(true)
-
-	elseif status == U_ST_BUILDING then
-		self.status_ = status
-		-- 底部
-		self:drawSubstrate()
-		self:setBuildBtnVisible(false)
-		self:setColorBoardVisible(false)
-		self:setArrowVisible(false)
-	elseif status == U_ST_BUILDED then
-		self.status_ = status
-		-- 底部
-		self:drawSubstrate()
-		self:setBuildBtnVisible(false)
-		self:setColorBoardVisible(false)
-		self:setArrowVisible(false)
-	end
-end
-
 function Unit:setStatus( status )
 	self.status_ = status
 end
@@ -307,21 +280,16 @@ end
 function Unit:schedule( interval )
 	self.scheduleId_ = cc.Director:getInstance():getScheduler():scheduleScriptFunc(function ( ... )
 		self:update(...)
-	end, interval or 1 / 60, false)
+	end, interval or (1 / 60), false)
 end
 
 function Unit:unschedule( ... )
+	print("Unit:unschedule")
 	if self.scheduleId_ then
 		cc.Director:getInstance():getScheduler():unscheduleScriptEntry(self.scheduleId_)
 		self.scheduleId_ = nil
 	end
 end
-
--- function Unit:update( ... )
--- 	if self.agent_ then
--- 		self.agent_:update()
--- 	end
--- end
 
 function Unit:operability( ... )
 	return self.operability_
@@ -339,8 +307,8 @@ function Unit:notifications( ... )  -- virtual
 end
 
 -------------- Agent -----------------
-function Unit:load( treename )
-	super.load(self, treename)
+function Unit:load( treename, blackboard )
+	super.load(self, treename, blackboard)
 end
 
 function Unit:activate( ... )
@@ -352,45 +320,78 @@ function Unit:clear( ... )
 end
 
 function Unit:update( ... )
-	super.update(self, ...)
+	super.tick(self, ...)
 end
 
 ----- condition ------
-local testCount = 0
 function Unit:isHaveEnemy( ... )
-	print("Unit:isHaveEnemy")
-	testCount = testCount + 1
-	if testCount < 5 then
-		return false
+	local buildings = game.MapManager.getBuildings()
+	local target = nil
+	for k,v in pairs(buildings or {}) do
+		if v ~= U_EMPTY then
+			local distance = cc.pGetDistance(self.vertex_, v.vertex_)
+			if not target then
+				target = v
+			end	
+		end
+		
 	end
-	if testCount == 10 then
-		testCount = 0
+	self.blackboard.target_ = target
+	if target then
+		return BTStatus.ST_TRUE
 	end
-	return true
+	return BTStatus.ST_FALSE
 end
 
 function Unit:isCanAttack( ... )
-	if testCount >= 8 then
-		return true
-	end
-	return false
+	return BTStatus.ST_TRUE
 end
 
 
 ----- action ------
 function Unit:idle( ... )
 	print("Unit idle")
-	return true
+	return BTStatus.ST_TRUE
 end
 
-function Unit:walk( ... )
-	print("Unit walk")
-	return true
+function Unit:move( ... )
+	print("Unit move")
+	if not self.blackboard.target_ then
+		return BTStatus.ST_FALSE
+	end
+	local target = self.blackboard.target_
+	self.blackboard.target_ = nil
+
+	local selfPos = cc.p(self.Node_:getPositionX(), self.Node_:getPositionY())
+	local targetPos = game.MapUtils.tile_2_map(self.map_, target.vertex_)
+	print("selfPos ", selfPos.x, selfPos.y)
+	print("targetPos ", targetPos.x, targetPos.y, target.vertex_.x, target.vertex_.y)
+	local normalize = cc.pNormalize(cc.pSub(targetPos, selfPos))
+	local speed = 10
+	normalize = cc.pMul(normalize, speed)
+	if math.abs(targetPos.x - selfPos.x) < math.abs(normalize.x) then
+		normalize.x = math.abs(targetPos.x - selfPos.x) * (math.abs(normalize.x) / normalize.x)
+	elseif math.abs(targetPos.y - selfPos.y) < math.abs(normalize.y) then
+		normalize.y = math.abs(targetPos.y - selfPos.y) * (math.abs(normalize.y) / normalize.y)
+	end
+	if normalize.x == 0 and normalize.y == 0 then
+		return BTStatus.ST_TRUE
+	end
+
+	print("normalize ", normalize.x, normalize.y)
+	selfPos.x = selfPos.x + normalize.x
+	selfPos.y = selfPos.y + normalize.y
+	print("new pos", selfPos.x, selfPos.y)
+
+	self.vertex_ = game.MapUtils.map_2_tile(self.map_, selfPos)
+	self.Node_:setPosition(cc.p(selfPos.x, selfPos.y))
+	
+	return BTStatus.ST_RUNNING
 end
 
 function Unit:attack( ... )
 	print("Unit attack")
-	return true
+	return BTStatus.ST_TRUE
 end
 
 -- 取消所有选中的unit

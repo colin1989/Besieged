@@ -8,7 +8,6 @@ end
 
 function BTParallelOr:load( tree, id )
 	super.load(self, tree, id)
-	print("BTParallelOr load ")
 	local data = tree[id]
 	for i,v in ipairs(data.children or {}) do
 		local child = game.BTFactory.createNode(tree, v, self.agent)
@@ -28,7 +27,6 @@ function BTParallelOr:tick( ... )
 end
 
 function BTParallelOr:execute( ... )
-	print("BTParallelOr execute")
 	self.status = BTStatus.ST_FALSE
 	local childStatus = {}
 	for i = 1, #self.children do
@@ -44,7 +42,7 @@ function BTParallelOr:execute( ... )
 			self.status = v
 		end
 	end
-	print("BTParallelOr status ", self.status)
+	print(self:toString(), " execute ", self.status)
 	return self.status
 end
 

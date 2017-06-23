@@ -9,7 +9,6 @@ end
 
 function BTSelector:load( tree, id )
 	super.load(self, tree, id)
-	print("BTSelector load ")
 	local data = tree[id]
 	for i,v in ipairs(data.children or {}) do
 		local child = game.BTFactory.createNode(tree, v, self.agent)
@@ -30,21 +29,22 @@ function BTSelector:tick( ... )
 end
 
 function BTSelector:execute( ... )
-	print("BTSelector execute")
 	for i = self.activeIndex, #self.children do
 		local child = self.children[i]
 		local status = child:tick()
 		if status == BTStatus.ST_RUNNING then
 			self.status = status
 			self.activeIndex = i
+			print(self:toString(), " execute ", self.status)
 			return status
 		elseif status == BTStatus.ST_TRUE then
 			self.status = status
+			print(self:toString(), " execute ", self.status)
 			return status
 		end
 	end
 	self.status = BTStatus.ST_FALSE
-	print("BTSelector status ", self.status)
+	print(self:toString(), " execute ", self.status)
 	return self.status
 end
 

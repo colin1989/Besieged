@@ -2,14 +2,12 @@ local super = game.BTNode
 local BTCondition = class("BTCondition", super)
 
 function BTCondition:ctor( ... )
-	print("asdasdas ", ...)
 	self:init(...)
 end
 
 function BTCondition:execute( ... )
-	print("BTCondition execute")
 	super.execute(self)
-	print("BTCondition status ", self.status)
+	print(self:toString(), " execute ", self.status)
 	return self.status
 end
 
