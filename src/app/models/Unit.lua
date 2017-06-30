@@ -16,11 +16,11 @@ function Unit:init( id, type )  -- final
 	self.Node_ = display.newNode():align(cc.p(0.5, 0.5), 0, 0)
 
 	self.Node_:onNodeEvent("enter", function ( ... )
-		game.NotificateDelegate.add(self, self.unique_)
+		game.NotificateUtil.add(self, self.unique_)
 		self:schedule()
 	end)
 	self.Node_:onNodeEvent("exit", function ( ... )
-		game.NotificateDelegate.remove(self, self.unique_)
+		game.NotificateUtil.remove(self, self.unique_)
 		self:unschedule()
 	end)
 end

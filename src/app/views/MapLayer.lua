@@ -23,10 +23,10 @@ function MapLayer:ctor( ... )
 	self:move(cc.p(0, 0))
 
     self:onNodeEvent("enter", function ( ... )
-		game.NotificateDelegate.add(self, "MapLayer")
+		game.NotificateUtil.add(self, "MapLayer")
 	end)
 	self:onNodeEvent("exit", function ( ... )
-		game.NotificateDelegate.remove(self, "MapLayer")
+		game.NotificateUtil.remove(self, "MapLayer")
 	end)
 end
 

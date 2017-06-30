@@ -63,12 +63,37 @@ function MainScene:onCreate()
     game.MainPage:create()
 
     performWithDelay(self, function ( ... )
-        game.NotificationManager.post(MSG_ADD_TEST_UNIT)
+        -- game.NotificationManager.post(MSG_ADD_TEST_UNIT)
 
         -- game.MapManager.findEmptyArea(8)
         -- game.MapManager.findEmptyArea(16)
         -- game.MapManager.findEmptyArea(32)
     end, 1/60)
+
+
+    local Game = game.ECSGame:create()
+    local world = game.World:create()
+    Game:runWorld(world)
+    world:addSystem(game.VertexSystem:create())
+    world:addSystem(game.BuildingStateSystem:create())
+    world:addSystem(game.RenderSystem:create())
+
+    -- local entity = game.EntityFactory.createBuilding(10004, cc.p(15, 15), U_ST_BUILDED)
+    -- local entity2 = game.EntityFactory.createBuilding(10001, cc.p(30, 30), U_ST_WAITING)
+    -- local entity3 = game.EntityFactory.createPlant(30006, cc.p(8, 9))
+    performWithDelay(self, function ( ... )
+        -- local com = game.EntityManager:getInstance():getComponent("BuildStateComponent", entity2)
+        -- if com then
+        --     com.state = U_ST_BUILDED
+        -- end
+        -- game.EntityManager:getInstance():removeComponent("RenderPlaceBtnComponent", entity2)
+        -- print("remove entity", entity)
+        -- game.EntityManager:getInstance():removeEntity(entity)
+    end, 3)
+
+
+    -- world:update()
+    world:execute()
 end
 
 return MainScene

@@ -27,13 +27,13 @@ function BaseView:init( csb )
 	print("BaseView init "..self.__cname)
 	self._mainLayer = game.UIManager.loadCSB("ui/"..csb..".csb")
 	self._mainLayer:onNodeEvent("enter", function ( ... )
-		game.NotificateDelegate.add(self, self.__cname)
+		game.NotificateUtil.add(self, self.__cname)
 		if self.onEnter then
 			self:onEnter()
 		end
 	end)
 	self._mainLayer:onNodeEvent("exit", function ( ... )
-		game.NotificateDelegate.remove(self, self.__cname)
+		game.NotificateUtil.remove(self, self.__cname)
 		if self.onExit then
 			self:onExit()
 		end

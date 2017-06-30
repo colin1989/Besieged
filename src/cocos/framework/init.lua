@@ -44,6 +44,7 @@ require("app.managers.ModuleManager")
 require("app.constants.message")
 require("app.constants.operate_types")
 require("app.constants.unit_types")
+require("app.utils.LuaUtils")
 
 require("cocos.framework.extends.NodeEx")
 require("cocos.framework.extends.SpriteEx")
