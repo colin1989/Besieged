@@ -34,6 +34,14 @@ function EntityManager.getInstance( ... )
 	return instance
 end
 
+function EntityManager:ctor( ... )
+	self.gridManager = game.GridManager:create()
+end
+
+function EntityManager:getGridManager( ... )
+	return self.gridManager
+end
+
 function EntityManager:createEntity( ... )
 	return os.time() + os.clock() + math.random()%100
 end
@@ -73,7 +81,7 @@ end
 
 -- 所有实体都会对应db信息，所以单独抽离出此方法
 function EntityManager:getDBComponent( entity )
-	return sel:getComponent("DBComponent", entity)
+	return self:getComponent("DBComponent", entity)
 end
 
 -- 获取与指定组件名相关的所有实体

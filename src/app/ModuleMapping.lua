@@ -10,6 +10,7 @@ Mapping = {
 	NotificationManager = "app.managers.NotificationManager",
 	LayerManager = "app.managers.LayerManager",
 	UIManager = "app.managers.UIManager",
+	GridManager = "app.managers.GridManager",
 	MapCache = "app.models.MapCache",
 	Unit = "app.models.Unit",
 	Building = "app.models.Building",

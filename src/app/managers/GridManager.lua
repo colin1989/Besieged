@@ -24,26 +24,27 @@ function GridManager:addEntity( entity )
 	local dbComponent = game.EntityManager:getInstance():getDBComponent(entity)
 	local vertexComponent = game.EntityManager:getInstance():getComponent("VertexComponent", entity)
 	assert(dbComponent and vertexComponent, "Entity add to grid data need DBComponent and VertexComponent!")
-	for i = vertexComponent.x - 1, vertexComponent.x + dbComponent.db.row - 1 do
-		for j = vertexComponent.y - 1, vertexComponent.y + dbComponent.db.row - 1 do
+	for i = vertexComponent.x, vertexComponent.x + dbComponent.db.row - 1 do
+		for j = vertexComponent.y, vertexComponent.y + dbComponent.db.row - 1 do
 			local gridId = game.g_mapSize.width * i + j
 			assert(not self.gridData[gridId], string.format("Grid %d not empty!", gridId))
 			self.gridData[gridId] = entity
 		end
 	end
+
+	print("grid data", table.nums(self.gridData))
 end
 
 function GridManager:removeEntity( entity )
-	local dbComponent = game.EntityManager:getInstance():getDBComponent(entity)
-	local vertexComponent = game.EntityManager:getInstance():getComponent("VertexComponent", entity)
-	assert(dbComponent and vertexComponent, "Entity remove from grid data need DBComponent and VertexComponent!")
-	for i = vertexComponent.x - 1, vertexComponent.x + dbComponent.db.row - 1 do
-		for j = vertexComponent.y - 1, vertexComponent.y + dbComponent.db.row - 1 do
+	for i = 0, game.g_mapSize.width - 1 do
+		for j = 0, game.g_mapSize.height - 1 do
 			local gridId = game.g_mapSize.width * i + j
-			assert(self.gridData[gridId] == entity, string.format("Grid %d have %s, remove %s", gridId, self.gridData[gridId], entity))
-			self.gridData[gridId] = nil
+			if self.gridData[gridId] == entity then
+				self.gridData[gridId] = nil
+			end
 		end
 	end
+	print("grid data", table.nums(self.gridData))
 end
 
 return GridManager

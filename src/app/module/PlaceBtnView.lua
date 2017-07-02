@@ -39,12 +39,14 @@ function PlaceBtnView:onBtnBuild( sender )
 	local buildStateComponent = game.EntityManager:getInstance():getComponent("BuildStateComponent", self.entity_)
 	assert(buildStateComponent, "build OK need BuildStateComponent!")
 	buildStateComponent.state = U_ST_BUILDED
+	game.EntityManager:getInstance():getGridManager():addEntity(self.entity_)
 end
 
 function PlaceBtnView:onBtnCancel( sender )
 	local placeBtnComponent = game.EntityManager:getInstance():getComponent("RenderPlaceBtnComponent", self.entity_)
 	assert(placeBtnComponent, "build cancel need RenderPlaceBtnComponent!")
 	game.EntityManager:getInstance():removeEntity(self.entity_)
+	-- game.EntityManager:getInstance():getGridManager():removeEntity(self.entity_)
 end
 
 function PlaceBtnView:destroy( ... )

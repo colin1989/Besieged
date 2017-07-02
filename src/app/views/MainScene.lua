@@ -79,8 +79,10 @@ function MainScene:onCreate()
     world:addSystem(game.RenderSystem:create())
 
     -- local entity = game.EntityFactory.createBuilding(10004, cc.p(15, 15), U_ST_BUILDED)
+    -- game.EntityManager:getInstance():getGridManager():addEntity(entity)
     -- local entity2 = game.EntityFactory.createBuilding(10001, cc.p(30, 30), U_ST_WAITING)
     -- local entity3 = game.EntityFactory.createPlant(30006, cc.p(8, 9))
+    -- game.EntityManager:getInstance():getGridManager():addEntity(entity3)
     performWithDelay(self, function ( ... )
         -- local com = game.EntityManager:getInstance():getComponent("BuildStateComponent", entity2)
         -- if com then
@@ -89,6 +91,7 @@ function MainScene:onCreate()
         -- game.EntityManager:getInstance():removeComponent("RenderPlaceBtnComponent", entity2)
         -- print("remove entity", entity)
         -- game.EntityManager:getInstance():removeEntity(entity)
+        -- game.EntityManager:getInstance():getGridManager():removeEntity(entity)
     end, 3)
 
 
