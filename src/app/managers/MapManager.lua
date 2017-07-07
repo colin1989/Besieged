@@ -2,10 +2,6 @@
 	地图的总管理
 ]]
 
-local MapCache = game.MapCache
-local Building = game.Building
-local UnitFactory = game.UnitFactory
-
 local MapManager = {}
 
 local map_ = nil
@@ -18,8 +14,6 @@ function MapManager.init( map )
     game.g_mapSize = mapsize
     game.g_mapGridNum = mapsize.width * mapsize.height
     game.g_mapTileSize = map_:getTileSize()
-
-	mapCache_ = game.MapCache:create(game.g_mapSize.width, game.g_mapSize.height)
 end
 
 function MapManager.getMap( ... )

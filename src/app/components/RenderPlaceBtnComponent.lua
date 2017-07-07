@@ -1,18 +1,17 @@
 --
 -- Author: Your Name
 -- Date: 2017-06-29 18:01:20
--- 不需主动添加，由BuildStateComponent组件的状态控制
 --
 local RenderPlaceBtnComponent = class("RenderPlaceBtnComponent", game.Component)
-RenderPlaceBtnComponent.layout = nil
+RenderPlaceBtnComponent.container = nil
 function RenderPlaceBtnComponent:ctor( ... )
 end
 
 function RenderPlaceBtnComponent:destroy( ... )
-	if self.layout then
+	if self.container and self.container:getParent() then
 		print("RenderPlaceBtnComponent:destroy")
-		self.layout:removeSelf()
-		self.layout = nil
+		self.container:removeSelf()
 	end
+	self.container = nil
 end
 return RenderPlaceBtnComponent

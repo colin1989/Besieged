@@ -10,7 +10,7 @@ function BTParallelAnd:load( tree, id )
 	super.load(self, tree, id)
 	local data = tree[id]
 	for i,v in ipairs(data.children or {}) do
-		local child = game.BTFactory.createNode(tree, v, self.agent)
+		local child = game.BTFactory.createNode(tree, v, self.entity)
 		table.insert(self.children, child)
 	end
 end

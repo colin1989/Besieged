@@ -12,7 +12,7 @@ local currentModule_ = {
 }
 local layoutStack_ = {}
 
-function LayerManager.changeModule( layout, name )
+function LayerManager.replaceLayout( layout, name )
 	-- 移除现存的层
 	if currentModule_.layout then
 		game.Layers.UILayer:removeChild(currentModule_.layout)

@@ -13,8 +13,8 @@ function ComponentFactory.createPosition( x, y, ax, ay )
 	local component = ComponentFactory.create("PositionComponent")
 	component.x = x
 	component.y = y
-	component.x = ax
-	component.y = ay
+	component.ax = ax
+	component.ay = ay
 	return component
 end
 
@@ -55,11 +55,10 @@ function ComponentFactory.createRender( parent )
 	return component
 end
 
-function ComponentFactory.createRenderSubstrate( vx, vy, GID, row )
+function ComponentFactory.createRenderSubstrate( vx, vy, row )
 	local component = ComponentFactory.create("RenderSubstrateComponent")
 	component.vx = vx
 	component.vy = vy
-	component.GID = GID
 	component.grids = {}
 	for i = component.vx, component.vx + row - 1 do
 		for j = component.vy, component.vy + row - 1 do
@@ -74,9 +73,40 @@ function ComponentFactory.createRenderPlaceBtn( ... )
 	return component
 end
 
-function ComponentFactory.createBuildState( state )
-	local component = ComponentFactory.create("BuildStateComponent")
-	component.state = state
+function ComponentFactory.createRenderColorBoard( bool )
+	local component = ComponentFactory.create("RenderColorBoardComponent")
+	component.bool = bool
+	return component
+end
+
+function ComponentFactory.createRenderArrow( ... )
+	local component = ComponentFactory.create("RenderArrowComponent")
+	cc.SpriteFrameCache:getInstance():addSpriteFrames("map/UI_Building.plist", "map/UI_Building.pvr.ccz")
+	return component
+end
+
+function ComponentFactory.createState( state )
+	local component = ComponentFactory.create("StateComponent")
+	component.buildState = state or U_ST_BUILDED
+	component.selected = false
+	component.pressed = false
+	return component
+end
+
+function ComponentFactory.createStore( type )
+	local component = ComponentFactory.create("StoreComponent")
+	component.storeType = type
+	component.save = false
+	component.update = false
+	component.remove = false
+	return component
+end
+
+function ComponentFactory.createAI( treeName, blackboard )
+	local component = ComponentFactory.create("AIComponent")
+	component.treeName = treeName
+	component.root = nil
+	component.blackboard = blackboard
 	return component
 end
 

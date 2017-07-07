@@ -107,4 +107,36 @@ function MapUtils.isEqual( p1, p2 )
 	return p1.x == p2.x and p1.y == p2.y
 end
 
+function MapUtils.getEntityPoints( vertex, row )
+	local points = {}
+	for i = vertex.x, vertex.x + row - 1 do
+		for j = vertex.y, vertex.y + row - 1 do
+			table.insert(points, cc.p(i, j))
+		end
+	end
+	return points
+end
+
+function MapUtils.isInBound( tileCoordinate, vertex, row )
+	return tileCoordinate.x >= vertex.x and tileCoordinate.y >= vertex.y and tileCoordinate.x <= vertex.x + row and tileCoordinate.y <= vertex.y + row
+end
+
+function MapUtils.createInfluenceGraph( vertex, row )
+	local t = {}
+    for i = 0, game.g_mapSize.height - 1 do
+        for j = 0, game.g_mapSize.width - 1 do
+            local x = vertex.x
+            local y = vertex.y
+            if j > x + row - 1 then                 x = x + row - 1
+            elseif j >= x and j <= x + row -1 then  x = j
+            end
+            if i > y + row - 1 then                 y = y + row - 1
+            elseif i >= y and i <= y + row -1 then  y = i
+            end
+            t[game.g_mapSize.width * i + j] = math.max(math.abs(x - j), math.abs(y - i))
+        end
+    end
+    return t
+end
+
 return MapUtils

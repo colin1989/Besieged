@@ -3,6 +3,7 @@
 -- Date: 2017-06-30 10:54:19
 --
 local PlaceBtnView = class("PlaceBtnView")
+local EntityManager = game.EntityManager:getInstance()
 PlaceBtnView.entity_ = nil
 
 function PlaceBtnView.createLayout( entity )
@@ -34,19 +35,21 @@ end
 
 function PlaceBtnView:onBtnBuild( sender )
 	print("onBtnBuild")
-	local placeBtnComponent = game.EntityManager:getInstance():getComponent("RenderPlaceBtnComponent", self.entity_)
-	assert(placeBtnComponent, "build OK need RenderPlaceBtnComponent!")
-	local buildStateComponent = game.EntityManager:getInstance():getComponent("BuildStateComponent", self.entity_)
-	assert(buildStateComponent, "build OK need BuildStateComponent!")
-	buildStateComponent.state = U_ST_BUILDED
-	game.EntityManager:getInstance():getGridManager():addEntity(self.entity_)
+	local stateComponent = EntityManager:getComponent("StateComponent", self.entity_)
+	assert(stateComponent, "build OK need StateComponent!")
+	stateComponent.buildState = U_ST_BUILDED
+	
+	local storeComponent = EntityManager:getComponent("StoreComponent", self.entity_)
+	assert(storeComponent, "build OK need StoreComponent!")
+	storeComponent.save = true  -- 标记可添加到缓存
+	EntityManager:setComponentEnabled("StoreComponent", self.entity_, true)
+
+	local singletonCurEntity = game.SingletonCurrentEntityComponent:getInstance()
+	singletonCurEntity:switch(nil)
 end
 
 function PlaceBtnView:onBtnCancel( sender )
-	local placeBtnComponent = game.EntityManager:getInstance():getComponent("RenderPlaceBtnComponent", self.entity_)
-	assert(placeBtnComponent, "build cancel need RenderPlaceBtnComponent!")
-	game.EntityManager:getInstance():removeEntity(self.entity_)
-	-- game.EntityManager:getInstance():getGridManager():removeEntity(self.entity_)
+	EntityManager:removeEntity(self.entity_)
 end
 
 function PlaceBtnView:destroy( ... )

@@ -74,7 +74,7 @@ return
 			["description"] = nil,
 			["properties"] = 
 			{
-				["method"] = "isHaveEnemy"
+				["method"] = {target = "AIUtils", method = "findEnemy"},
 			},
 			["name"] = "BTConditionIsHaveEnemy",
 			["title"] = nil
@@ -88,7 +88,7 @@ return
 			["title"] = "BTAction",
 			["properties"] = 
 			{
-				["method"] = "idle"
+				["method"] = {target = "AIUtils", method = "idle"},
 			},
 			["id"] = "c27692f5-8a0b-4e36-9e98-c39d766d8464",
 			["display"] = 
@@ -122,7 +122,7 @@ return
 			["title"] = "BTConditionIsHaveEnemy",
 			["properties"] = 
 			{
-				["method"] = "isHaveEnemy"
+				["method"] = {target = "AIUtils", method = "findEnemy"},
 			},
 			["id"] = "3fb80c03-eb64-44c2-8ff4-17b17db5e5a0",
 			["display"] = 
@@ -139,7 +139,7 @@ return
 			["properties"] = 
 			{
 				["precondition"] = "3fb80c03-eb64-44c2-8ff4-17b17db5e5a0",
-				["method"] = "move"
+				["method"] = {target = "AIUtils", method = "move"},
 			},
 			["id"] = "432cc96b-aa68-4208-86ac-759728e7f2a0",
 			["display"] = 

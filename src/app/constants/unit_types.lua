@@ -19,3 +19,7 @@ U_ST_MOVING 	= 8
 -- Z order
 ZORDER_NORMAL 	= 1
 ZORDER_MOVING 	= 2
+
+-- store type
+STORE_POSITION = 1  -- 按位置存储
+STORE_LIST = 2  	-- 直接保存

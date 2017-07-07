@@ -9,15 +9,15 @@ BTNode.active = false
 BTNode.children = {}
 BTNode.preconditions = {}
 BTNode.tree = nil
-BTNode.agent = nil
+BTNode.entity = nil
 BTNode.method = nil
 BTNode.level = 0
 
-function BTNode:ctor( agent )
-	self:init(agent)
+function BTNode:ctor( entity )
+	self:init(entity)
 end
 
-function BTNode:init( agent )
+function BTNode:init( entity )
 	self.id = nil
 	self.name = nil
 	self.status = BTStatus.ST_RUNNING
@@ -25,7 +25,7 @@ function BTNode:init( agent )
 	self.children = {}
 	self.preconditions = {}
 	self.tree = nil
-	self.agent = agent
+	self.entity = entity
 	self.method = nil
 	self.level = 0
 end
@@ -44,9 +44,9 @@ function BTNode:load_property( data )
 	for k, v in pairs(data.properties or {}) do
 		if k == "method" then
 			assert(self.method == nil, "not allow multi method in properties!")
-			self.method = {target = self.agent, method = v}
+			self.method = {target = v.target, method = v.method}
 		elseif k == "precondition" then
-			table.insert(self.preconditions, game.BTFactory.createNode(self.tree, v, self.agent))
+			table.insert(self.preconditions, game.BTFactory.createNode(self.tree, v, self.entity))
 		end
 	end
 end
@@ -73,7 +73,9 @@ function BTNode:execute( ... )
 	if self.method then
 		local target = self.method.target
 		local method = self.method.method
-		local r = target[method](target)
+		local aiComponent = game.EntityManager:getInstance():getComponent("AIComponent", self.entity)
+		print("execute entity", self.entity)
+		local r = game[target][method](self.entity, aiComponent.blackboard)
 		print(self:toString(), " method ", method, " ", r)
 		self.status = r
 	end

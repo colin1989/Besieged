@@ -60,7 +60,7 @@ function EntityManager:removeComponent( componentName, entity )
 	local coms = self.entityHashComponent[entity] or {}
 	local component = coms[componentName]
 	if component then
-		component:destroy()
+		component:destroy(entity)
 		coms[componentName] = nil
 		self.entityHashComponent[entity] = coms
 	end
@@ -74,7 +74,7 @@ function EntityManager:removeEntity( entity )
 	for _, com in pairs(coms) do
 		local entities = self.componentHashEntity[com:getName()] or {}
 		entities[entity] = nil
-		com:destroy()
+		com:destroy(entity)
 	end
 	self.entityHashComponent[entity] = nil
 end
@@ -95,8 +95,13 @@ function EntityManager:getComponents( entity )
 end
 
 -- 获取指定实体的某个组件
+-- 不可用的组件获取不到
 function EntityManager:getComponent( componentName, entity )
-	return self:getComponents(entity)[componentName]
+	local component = self:getComponents(entity)[componentName]
+	if component then
+		return component
+	end
+	return nil
 end
 
 function EntityManager:getEntitiesIntersection( componentNames, ... )
@@ -106,6 +111,52 @@ function EntityManager:getEntitiesIntersection( componentNames, ... )
 		table.insert(components, EntityManager:getEntities(name))
 	end
 	return table.intersection(components)
+end
+
+-- 设置组件的可用性
+function EntityManager:setComponentEnabled( componentName, entity, enable )
+	local component = self:getComponent(componentName, entity)
+	if component then
+		component.active = enable
+		if not enable then
+			component:destroy(entity)
+		end
+	end
+end
+
+function EntityManager:isComponentEnabled( componentName, entity )
+	local component = self:getComponent(componentName, entity)
+	if component then
+		return component.active
+	end
+	return false
+end
+
+function EntityManager:setComponentMember( componentName, memberName, value, entity )
+	local component = self:getComponent(componentName, entity)
+	if component and component.active then
+		component[memberName] = value
+	end
+end
+
+function EntityManager:getComponentMember( componentName, memberName, entity )
+	local component = self:getComponent(componentName, entity)
+	if component then
+		return component[memberName]
+	end
+	return nil
+end
+
+function EntityManager:getSingletonComponent( componentName )
+	local component = game[componentName]:create()
+	if component and component.super and component.super.__cname == "SingletonComponent" then
+		return component
+	end
+	return nil
+end
+
+function EntityManager:getAllEntities( ... )
+	return table.keys(self.entityHashComponent or {})
 end
 
 return EntityManager

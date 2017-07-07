@@ -7,7 +7,6 @@ local RenderSubstrateComponent = class("RenderSubstrateComponent", game.Componen
 RenderSubstrateComponent.grids = nil
 RenderSubstrateComponent.vx = nil
 RenderSubstrateComponent.vy = nil
-RenderSubstrateComponent.GID = nil
 function RenderSubstrateComponent:ctor( ... )
 	self.vx = 0
 	self.vy = 0

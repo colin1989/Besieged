@@ -1,17 +1,17 @@
 local BTTree = class("BTTree")
 BTTree.root = nil
-BTTree.agent = nil
+BTTree.entity = nil
 BTTree.active = false
 
-function BTTree:ctor( agent )
-	self.agent = agent
+function BTTree:ctor( entity )
+	self.entity = entity
 end
 
 function BTTree:load( name )
 	print("BTTree load")
 	local data = require("app.behaviorTree.Data."..name)
 	local root_id = data.root
-	self.root = game.BTFactory.createNode(data.nodes, root_id, self.agent)
+	self.root = game.BTFactory.createNode(data.nodes, root_id, self.entity)
 end
 
 function BTTree:activate( ... )
@@ -42,7 +42,7 @@ function BTTree:clear( ... )
 end
 
 function BTTree:getAgent( ... )
-	return self.agent
+	return self.entity
 end
 
 return BTTree

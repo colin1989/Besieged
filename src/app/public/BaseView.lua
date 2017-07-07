@@ -25,7 +25,7 @@ end
 
 function BaseView:init( csb )
 	print("BaseView init "..self.__cname)
-	self._mainLayer = game.UIManager.loadCSB("ui/"..csb..".csb")
+	self._mainLayer = game.UIManager.loadCSB("ui/"..csb)
 	self._mainLayer:onNodeEvent("enter", function ( ... )
 		game.NotificateUtil.add(self, self.__cname)
 		if self.onEnter then
@@ -38,8 +38,6 @@ function BaseView:init( csb )
 			self:onExit()
 		end
 	end)
-
-	game.LayerManager.addLayout(self._mainLayer, self.__cname)
 end
 
 function BaseView:binding( widget, callbackName )

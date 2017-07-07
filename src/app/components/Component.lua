@@ -12,6 +12,10 @@ function Component:destroy( ... )
 	
 end
 
+function Component:setEnabled( enabled )
+	self.active = enabled
+end
+
 function Component:getName( ... )
 	return self.__cname
 end

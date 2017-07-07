@@ -1,5 +1,5 @@
 local super = game.BaseAgent
-local UnitSelectedView = game.UnitSelectedView
+local EntitySelectedView = game.EntitySelectedView
 local Unit = class("Unit", game.BaseAgent)
 
 function Unit:ctor( id )
@@ -60,7 +60,7 @@ function Unit:reset( ... )  -- final
 	self.BTN_OK_ = nil
 	self.BTN_CANCEL_ = nil
 	self.BATCH_ARROWS_ = nil
-	self.agent_ = nil
+	self.entity_ = nil
 end
 
 function Unit:delete( ... )
@@ -147,7 +147,7 @@ function Unit:onSelected( ... )
 	self:resetZOrder(ZORDER_MOVING)
 
 	-- 选中unit后打开的菜单
-	game.UnitSelectedView:create(self)
+	game.EntitySelectedView:create(self)
 end
 
 function Unit:isSelected( ... )
@@ -302,7 +302,7 @@ function Unit:operability( ... )
 end
 
 -- function Unit:setAgent( agent )
--- 	self.agent_ = agent
+-- 	self.entity_ = agent
 -- end
 
 

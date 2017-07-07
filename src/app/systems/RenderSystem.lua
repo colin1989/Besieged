@@ -14,6 +14,7 @@ function RenderSystem:execute( ... )
 		local positionComponent = EntityManager:getComponent("PositionComponent", entity)
 		local renderComponent = EntityManager:getComponent("RenderComponent", entity)
 		local dbComponent = EntityManager:getDBComponent(entity)
+		local row = dbComponent.db.row
 
 		renderComponent.container:setAnchorPoint(cc.p(positionComponent.ax, positionComponent.ay))
 		renderComponent.container:setPosition(cc.p(positionComponent.x, positionComponent.y))
@@ -23,7 +24,7 @@ function RenderSystem:execute( ... )
 				local logic_height = dbComponent.db.occupy * game.g_mapTileSize.height  -- 逻辑高度，与纹理尺寸无关
 			    local anchorY = renderComponent.sprite:getContentSize().height > logic_height and (logic_height / 2 / renderComponent.sprite:getContentSize().height) or 0.5
 			    renderComponent.sprite:setAnchorPoint(cc.p(0.5, anchorY))
-			    renderComponent.sprite:addTo(renderComponent.container)
+			    renderComponent.container:addChild(renderComponent.sprite, 1)
 			end
 			
 			if renderComponent.animate then
@@ -37,7 +38,7 @@ function RenderSystem:execute( ... )
 		if substrateComponent and substrateComponent.active then
 			for _,v in pairs(substrateComponent.grids) do
 				if game.MapUtils.isIndexValid(v) then
-					game.MapManager.getMap():getLayer("ground"):setTileGID(substrateComponent.GID, v)
+					game.MapManager.getMap():getLayer("ground"):setTileGID(dbComponent.db.groundGID, v)
 				end
 			end
 		end
@@ -45,9 +46,49 @@ function RenderSystem:execute( ... )
 		-- place button
 		local placeBtnComponent = EntityManager:getComponent("RenderPlaceBtnComponent", entity)
 		if placeBtnComponent and placeBtnComponent.active then
-			if not placeBtnComponent.layout then
-				placeBtnComponent.layout = game.PlaceBtnView.createLayout(entity)--:move(0, 0)
-				renderComponent.container:addChild(placeBtnComponent.layout)
+			if not placeBtnComponent.container then
+				placeBtnComponent.container = game.PlaceBtnView.createLayout(entity)--:move(0, 0)
+				renderComponent.container:addChild(placeBtnComponent.container, 2)
+			end
+		end
+
+		-- color board
+		local colorBoardComponent = EntityManager:getComponent("RenderColorBoardComponent", entity)
+		if colorBoardComponent and colorBoardComponent.active then
+			local invalidPosition = not EntityManager:getComponentMember("StateComponent", "invalidPosition", entity)
+			local colorBoardComponent = EntityManager:getComponent("RenderColorBoardComponent", entity)
+			if colorBoardComponent and colorBoardComponent.bool ~= invalidPosition then
+				colorBoardComponent.bool = invalidPosition
+				colorBoardComponent:destroy()
+			end
+
+			if not colorBoardComponent.container then
+				colorBoardComponent.container = game.MapUtils.createColorBoard(row, colorBoardComponent.bool)
+				renderComponent.container:addChild(colorBoardComponent.container, 0)
+			end
+			renderComponent.container:setLocalZOrder(2)
+		else
+			renderComponent.container:setLocalZOrder(1)
+		end
+
+		-- arrow
+		local arrowComponent = EntityManager:getComponent("RenderArrowComponent", entity)
+		if arrowComponent and arrowComponent.active then
+			if not arrowComponent.container then
+				arrowComponent.container = cc.SpriteBatchNode:create("map/UI_Building.pvr.ccz")
+				cc.Sprite:createWithSpriteFrameName("ui_map_btn_jiantou1.png")
+					:align(cc.p(0,0), game.g_mapTileSize.width/4 * row, game.g_mapTileSize.height/4 * row)
+					:addTo(arrowComponent.container)
+				cc.Sprite:createWithSpriteFrameName("ui_map_btn_jiantou2.png")
+					:align(cc.p(1,1), -game.g_mapTileSize.width/4 * row, -game.g_mapTileSize.height/4 * row)
+					:addTo(arrowComponent.container)
+				cc.Sprite:createWithSpriteFrameName("ui_map_btn_jiantou3.png")
+					:align(cc.p(1,0), -game.g_mapTileSize.width/4 * row, game.g_mapTileSize.height/4 * row)
+					:addTo(arrowComponent.container)
+				cc.Sprite:createWithSpriteFrameName("ui_map_btn_jiantou4.png")
+					:align(cc.p(0,1), game.g_mapTileSize.width/4 * row, -game.g_mapTileSize.height/4 * row)
+					:addTo(arrowComponent.container)
+				renderComponent.container:addChild(arrowComponent.container, 1)
 			end
 		end
 	end

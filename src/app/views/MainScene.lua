@@ -50,41 +50,36 @@ function MainScene:onCreate()
     game.MapManager.init(map)
 
     game.Layers.ZoomLayer = game.ZoomLayer:create()
-    game.Layers.MapLayer = game.MapLayer:create()
+    -- game.Layers.MapLayer = game.MapLayer:create()
     game.Layers.TouchDispatcher = game.TouchDispatcher:create()
     game.Layers.UILayer = cc.Layer:create() -- game.UILayer:create()
 
-    map:addTo(game.Layers.MapLayer)
+    -- map:addTo(game.Layers.MapLayer)
+    map:addTo(game.Layers.ZoomLayer)
     self:addChild(game.Layers.TouchDispatcher)
     self:addChild(game.Layers.ZoomLayer)
     self:addChild(game.Layers.UILayer)
-    game.Layers.ZoomLayer:addChild(game.Layers.MapLayer)
-
-    game.MainPage:create()
-
-    performWithDelay(self, function ( ... )
-        -- game.NotificationManager.post(MSG_ADD_TEST_UNIT)
-
-        -- game.MapManager.findEmptyArea(8)
-        -- game.MapManager.findEmptyArea(16)
-        -- game.MapManager.findEmptyArea(32)
-    end, 1/60)
+    -- game.Layers.ZoomLayer:addChild(game.Layers.MapLayer)
 
 
     local Game = game.ECSGame:create()
     local world = game.World:create()
     Game:runWorld(world)
     world:addSystem(game.VertexSystem:create())
-    world:addSystem(game.BuildingStateSystem:create())
+    world:addSystem(game.AISystem:create())
+    world:addSystem(game.StateSystem:create())
+    world:addSystem(game.CurrentEntitySystem:create())
     world:addSystem(game.RenderSystem:create())
+    world:addSystem(game.StoreSystem:create())
 
-    -- local entity = game.EntityFactory.createBuilding(10004, cc.p(15, 15), U_ST_BUILDED)
+    local entity = game.EntityFactory.createBuilding(10004, cc.p(15, 15), U_ST_BUILDED)
     -- game.EntityManager:getInstance():getGridManager():addEntity(entity)
     -- local entity2 = game.EntityFactory.createBuilding(10001, cc.p(30, 30), U_ST_WAITING)
-    -- local entity3 = game.EntityFactory.createPlant(30006, cc.p(8, 9))
+    local entity3 = game.EntityFactory.createPlant(30006, cc.p(8, 9))
+    local entity4 = game.EntityFactory.createSoldier(20001, cc.p(25, 5))
     -- game.EntityManager:getInstance():getGridManager():addEntity(entity3)
     performWithDelay(self, function ( ... )
-        -- local com = game.EntityManager:getInstance():getComponent("BuildStateComponent", entity2)
+        -- local com = game.EntityManager:getInstance():getComponent("StateComponent", entity2)
         -- if com then
         --     com.state = U_ST_BUILDED
         -- end
@@ -92,11 +87,14 @@ function MainScene:onCreate()
         -- print("remove entity", entity)
         -- game.EntityManager:getInstance():removeEntity(entity)
         -- game.EntityManager:getInstance():getGridManager():removeEntity(entity)
-    end, 3)
-
+        game.EntityManager:getInstance():getGridManager():dumpGraph(entity)
+    end, 1/60)
 
     -- world:update()
     world:execute()
+
+    -- UI
+    game.MainPage:create()
 end
 
 return MainScene
