@@ -35,8 +35,6 @@ function CurrentEntitySystem:execute( ... )
 
 		if singletonCurEntity.entity then
 			local entity = singletonCurEntity.entity
-			-- local vertexComponent = EntityManager:getComponent("VertexComponent", entity)
-			-- local dbComponent = EntityManager:getComponent("DBComponent", entity)
 			local stateComponent = EntityManager:getComponent("StateComponent", entity)
 
 			stateComponent.selected = true

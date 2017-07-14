@@ -5,12 +5,13 @@
 local GridManager = class("GridManager")
 -- 存储地图中格子的状态
 -- 一个entity会占据多个格子
+-- road：是否是可走的路
 -- 结构 ：{
 -- 	grid1 = {
--- 		entity1,
+-- 		{entity = entity1, road = true},
 -- 	},
 -- 	grid2 = {
--- 		entity1,
+-- 		{entity = entity1, road = false},
 -- 	},
 -- 	grid3 = {
 -- 		nil,
@@ -22,6 +23,7 @@ GridManager.gridInfo = {}
 -- 存储所有根据位置存储的entity的顶点
 GridManager.vertexInfo = {}
 
+-- 存储所有移动单位
 GridManager.listInfo = {}
 
 -- 势力图
@@ -36,13 +38,19 @@ function GridManager:addEntity( entity, storetype )
 		for i = vertexComponent.x, vertexComponent.x + dbComponent.db.row - 1 do
 			for j = vertexComponent.y, vertexComponent.y + dbComponent.db.row - 1 do
 				local gridId = game.g_mapSize.width * i + j
+				local isRoad = game.MapUtils.MapUtils.isInBound(
+									cc.p(i, j), 
+									cc.p(vertexComponent.x + dbComponent.db.edge, vertexComponent.y + dbComponent.db.edge), 
+									dbComponent.db.occupy)
 				assert(not self.gridInfo[gridId], string.format("Grid %d not empty!", gridId))
-				self.gridInfo[gridId] = entity
+				self.gridInfo[gridId] = {entity = entity, road = isRoad}
 			end
 		end
 		self.vertexInfo[entity] = vertexComponent.x * 100 + vertexComponent.y
 
-		self.influenceGraph[entity] = game.MapUtils.createInfluenceGraph(cc.p(vertexComponent.x, vertexComponent.y), dbComponent.db.row)
+		self.influenceGraph[entity] = game.MapUtils.createInfluenceGraph(
+											cc.p(vertexComponent.x + dbComponent.db.edge, vertexComponent.y + dbComponent.db.edge), 
+											dbComponent.db.occupy)
 	elseif storetype == STORE_LIST then
 		for _, v in pairs(self.listInfo) do
 			assert(v ~= entity, "list info already have entity "..entity)
@@ -90,7 +98,7 @@ end
 
 function GridManager:isTouchEntity( tileX, tileY )
 	local gridId = game.g_mapSize.width * tileX + tileY
-	return self.gridInfo[gridId]
+	return (self.gridInfo[gridId] or {}).entity
 end
 
 -- 格子是否为空
@@ -104,7 +112,7 @@ function GridManager:isAreaEmpty( vertexX, vertexY, row, exceptEntity )
 		for j = vertexY, vertexY + row - 1 do
 			local gridId = game.g_mapSize.width * i + j
 			if self.gridInfo[gridId] then
-				if not exceptEntity or self.gridInfo[gridId] ~= exceptEntity then
+				if not exceptEntity or self.gridInfo[gridId].entity ~= exceptEntity then
 					return false
 				end
 			end
@@ -113,6 +121,7 @@ function GridManager:isAreaEmpty( vertexX, vertexY, row, exceptEntity )
 	return true
 end
 
+-- 根据行数寻找空位置
 function GridManager:findEmptyArea( row )
 	for i = 0, game.g_mapSize.width - 1 - row do
 		for j = 0, game.g_mapSize.height - 1 - row do

@@ -37,7 +37,6 @@ function AIUtils.move( self, blackboard )
 	if not enemy then
 		return BTStatus.ST_FALSE
 	end
-	blackboard.target = nil
 
 	local selfposition = EntityManager:getComponent("PositionComponent", self)
 	local enemyposition = EntityManager:getComponent("PositionComponent", enemy)

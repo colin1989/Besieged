@@ -118,7 +118,7 @@ function MapUtils.getEntityPoints( vertex, row )
 end
 
 function MapUtils.isInBound( tileCoordinate, vertex, row )
-	return tileCoordinate.x >= vertex.x and tileCoordinate.y >= vertex.y and tileCoordinate.x <= vertex.x + row and tileCoordinate.y <= vertex.y + row
+	return tileCoordinate.x >= vertex.x and tileCoordinate.y >= vertex.y and tileCoordinate.x <= (vertex.x + row - 1) and tileCoordinate.y <= (vertex.y + row - 1)
 end
 
 function MapUtils.createInfluenceGraph( vertex, row )
