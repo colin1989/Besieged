@@ -5,12 +5,15 @@
 --
 local super = game.SingletonComponent
 local SingletonTouchComponent = class("SingletonTouchComponent", super)
--- 存储本次操作的触摸点集合
+-- 存储当前停留在屏幕上的触摸点集合
 -- 结构：{
 -- 	touchid = {x = 0, y = 0},
 -- 	...
 -- }
 SingletonTouchComponent.touches = nil 
+
+-- 存储当前事件的触摸点集合
+SingletonTouchComponent.current = nil
 
 -- 当前屏幕上的点的数量
 SingletonTouchComponent.nums = 0

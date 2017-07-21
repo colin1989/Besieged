@@ -10,15 +10,15 @@ function AIUtils.findEnemy( self, blackboard )
 	local weight = nil
 	local graphes = EntityManager:getGridManager():getAllGraph()
 	for entity, graph in pairs(graphes) do
-		local selfposition = EntityManager:getComponent("PositionComponent", self)
-		local vertex = game.MapUtils.map_2_tile(game.MapManager.getMap(), selfposition)
+		local selfposition = EntityManager:getComponent("TransformComponent", self)
+		local vertex = cc.p(selfposition.vx, selfposition.vy)
 		local gridId = game.g_mapSize.width * vertex.y + vertex.x
 		if not weight or weight > graph[gridId] then
 			weight = graph[gridId]
 			enemy = entity
 		end
 	end
-	blackboard.target = enemy
+	blackboard:Set("target", enemy)
 	return enemy and BTStatus.ST_TRUE or BTStatus.ST_FALSE
 end
 
@@ -28,21 +28,17 @@ function AIUtils.idle( self, blackboard )
 end
 
 function AIUtils.move( self, blackboard )
-	--- 待优化
-	--- 将enemy的位置、speed添加到MovementComponent中
-	--- 问题是怎么获取回调?
-	--- Movement 每帧修改位置，并保存状态为running；当位置到达，状态修改为true；
 	print("Move")
-	local enemy = blackboard.target
+	local enemy = blackboard:Get("target")
 	if not enemy then
 		return BTStatus.ST_FALSE
 	end
 
-	local selfposition = EntityManager:getComponent("PositionComponent", self)
-	local enemyposition = EntityManager:getComponent("PositionComponent", enemy)
+	local selfposition = EntityManager:getComponent("TransformComponent", self)
+	local enemyposition = EntityManager:getComponent("TransformComponent", enemy)
 
-	local selfPos = cc.p(selfposition.x, selfposition.y)
-	local targetPos = cc.p(enemyposition.x, enemyposition.y)
+	local selfPos = cc.p(selfposition.px, selfposition.py)
+	local targetPos = cc.p(enemyposition.px, enemyposition.py)
 	-- print("selfPos ", selfPos.x, selfPos.y)
 	-- print("targetPos ", targetPos.x, targetPos.y)
 	local normalize = cc.pNormalize(cc.pSub(targetPos, selfPos))
@@ -58,10 +54,18 @@ function AIUtils.move( self, blackboard )
 	end
 	-- print("normalize ", normalize.x, normalize.y)
 
-	selfposition.x = selfPos.x + normalize.x
-	selfposition.y = selfPos.y + normalize.y
+	selfposition.px = selfPos.x + normalize.x
+	selfposition.py = selfPos.y + normalize.y
 
 	return BTStatus.ST_RUNNING
+end
+
+function AIUtils.attack( self, blackboard )
+	-- 自动攻击
+	local skill = EntityManager:getComponent("SkillComponent", self)
+	if skill and skill.skillInstance then
+		skill.skillInstance:attack(blackboard:Get("target"))
+	end
 end
 
 return AIUtils

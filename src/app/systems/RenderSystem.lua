@@ -1,23 +1,23 @@
 --
 -- Author: Your Name
 -- Date: 2017-06-28 11:16:44
--- 绘制系统，强制关心"PositionComponent", "RenderComponent"，并对所有RenderXxx组件关心
+-- 绘制系统，强制关心"TransformComponent", "RenderComponent"，并对所有RenderXxx组件关心
 --
 local RenderSystem = class("RenderSystem", game.System)
 local EntityManager = game.EntityManager:getInstance()
 
 function RenderSystem:execute( ... )
 	-- print("RenderSystem")
-	local entities = EntityManager:getEntitiesIntersection("PositionComponent", "RenderComponent")
+	local entities = EntityManager:getEntitiesIntersection("TransformComponent", "RenderComponent")
 	-- print("entites", #entities)
 	for _, entity in pairs(entities) do
-		local positionComponent = EntityManager:getComponent("PositionComponent", entity)
+		local transformComponent = EntityManager:getComponent("TransformComponent", entity)
 		local renderComponent = EntityManager:getComponent("RenderComponent", entity)
 		local dbComponent = EntityManager:getDBComponent(entity)
 		local row = dbComponent.db.row
 
-		renderComponent.container:setAnchorPoint(cc.p(positionComponent.ax, positionComponent.ay))
-		renderComponent.container:setPosition(cc.p(positionComponent.x, positionComponent.y))
+		renderComponent.container:setAnchorPoint(cc.p(transformComponent.ax, transformComponent.ay))
+		renderComponent.container:setPosition(cc.p(transformComponent.px, transformComponent.py))
 		if renderComponent.isStatic then
 			if not renderComponent.sprite then
 				renderComponent.sprite = display.newSprite(renderComponent.assetName, 0, 0)	
@@ -91,13 +91,19 @@ function RenderSystem:execute( ... )
 				renderComponent.container:addChild(arrowComponent.container, 1)
 			end
 		end
+
+		-- UI
+		local uiComponent = EntityManager:getComponent("UIOperateComponent", entity)
+		if uiComponent and uiComponent.visible and not uiComponent.mainLayer then
+			uiComponent.mainLayer = game.EntitySelectedView:create(entity)
+		end
 	end
 end
 
 function RenderSystem:exit( ... )
-	local entities = EntityManager:getEntitiesIntersection("PositionComponent", "RenderComponent")
+	local entities = EntityManager:getEntitiesIntersection("TransformComponent", "RenderComponent")
 	for _, entity in pairs(entities) do
-		local positionComponent = EntityManager:getComponent("PositionComponent", entity)
+		local TransformComponent = EntityManager:getComponent("TransformComponent", entity)
 		local renderComponent = EntityManager:getComponent("RenderComponent", entity)
 		if renderComponent.container then
 			renderComponent.container:removeSelf()

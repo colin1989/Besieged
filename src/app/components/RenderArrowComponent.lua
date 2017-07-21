@@ -6,7 +6,7 @@
 local RenderArrowComponent = class("RenderArrowComponent", game.Component)
 RenderArrowComponent.container = nil
 function RenderArrowComponent:destroy( ... )
-	if self.container and self.container:getParent() then
+	if self.container and not tolua.isnull(self.container) and self.container:getParent() then
 		print("RenderArrowComponent:destroy")
 		self.container:removeSelf()
 	end

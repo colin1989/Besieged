@@ -6,11 +6,16 @@
 local TouchDispatcher = class("TouchDispatcher", cc.Layer)
 local zoom = game.Layers.ZoomLayer
 local map = game.Layers.MapLayer
+-- 由于cocos的单点触摸不能屏蔽掉多点触摸，所以添加此标记
+local isHasBegan = false
 
 local function touchBegan( event )
+	print("touchBegan")
+	isHasBegan = true
 	local touchCom = game.SingletonTouchComponent:getInstance()
 	if not touchCom.state then
 		touchCom.touches = {}
+		touchCom.current = {}
 		touchCom.preTile = nil
 		touchCom.isMoved = false
 	end
@@ -21,6 +26,7 @@ local function touchBegan( event )
 	for _, p in pairs(ps or {}) do
 		touchCom.touches[p.touchid] = p
 	end
+	touchCom.current = ps
 	-- print("234", table.nums(touchCom.touches))
 	if touchCom.nums == 1 then
 		touchCom.prePosition = ps[1]
@@ -36,6 +42,10 @@ local function touchBegan( event )
 end
 
 local function touchMoved( event )
+	if not isHasBegan then
+		print("not have began")
+		return
+	end
 	-- print("touch move point ", table.nums(event.points))
 	local touchCom = game.SingletonTouchComponent:getInstance()
 	touchCom.state = "moved"
@@ -44,6 +54,7 @@ local function touchMoved( event )
 	for _, p in pairs(ps or {}) do
 		touchCom.touches[p.touchid] = p
 	end
+	touchCom.current = ps
 	if not game.HandleTouchUtil.handleEntity(touchCom) then
 		game.HandleTouchUtil.handleZoomLayer(touchCom)
 	end
@@ -55,15 +66,19 @@ local function touchMoved( event )
 end
 
 local function touchEnded( event )
+	if not isHasBegan then
+		print("not have began")
+		return
+	end
 	-- print("touch end point ", table.nums(event.points))
 	local touchCom = game.SingletonTouchComponent:getInstance()
 	touchCom.state = "ended"
-	touchCom.nums = touchCom.nums - table.nums(event.points)
+	touchCom.nums = math.max(touchCom.nums - table.nums(event.points), 0)
 	local ps = {game.MapUtils.getPoints(event)}
 	for _, p in pairs(ps or {}) do
-		touchCom.touches[p.touchid] = p
+		touchCom.touches[p.touchid] = nil
 	end
-	
+	touchCom.current = ps
 	if not game.HandleTouchUtil.handleEntity(touchCom) then
 		game.HandleTouchUtil.handleZoomLayer(touchCom)
 	end
@@ -72,7 +87,10 @@ local function touchEnded( event )
 	else
 		touchCom.prePositions = table.values(touchCom.touches)
 	end
-	touchCom.state = nil
+	if touchCom.nums == 0 then
+		isHasBegan = false
+		touchCom.state = nil
+	end
 end
 
 -- local function touchCancelled( event )

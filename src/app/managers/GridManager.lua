@@ -29,27 +29,28 @@ GridManager.listInfo = {}
 -- 势力图
 GridManager.influenceGraph = {}
 
--- 添加实体到数据中，实体必须具有DBComponent、VertexComponent组件
+-- 添加实体到数据中，实体必须具有DBComponent、TransformComponent组件
 function GridManager:addEntity( entity, storetype )
 	if storetype == STORE_POSITION then
 		local dbComponent = game.EntityManager:getInstance():getDBComponent(entity)
-		local vertexComponent = game.EntityManager:getInstance():getComponent("VertexComponent", entity)
-		assert(dbComponent and vertexComponent, "Entity add to grid data need DBComponent and VertexComponent!")
-		for i = vertexComponent.x, vertexComponent.x + dbComponent.db.row - 1 do
-			for j = vertexComponent.y, vertexComponent.y + dbComponent.db.row - 1 do
+		local transformComponent = game.EntityManager:getInstance():getComponent("TransformComponent", entity)
+		assert(dbComponent and transformComponent, "Entity add to grid data need DBComponent and TransformComponent!")
+		local vertex = cc.p(transformComponent.vx, transformComponent.vy)
+		for i = vertex.x, vertex.x + dbComponent.db.row - 1 do
+			for j = vertex.y, vertex.y + dbComponent.db.row - 1 do
 				local gridId = game.g_mapSize.width * i + j
-				local isRoad = game.MapUtils.MapUtils.isInBound(
+				local isRoad = game.MapUtils.isInBound(
 									cc.p(i, j), 
-									cc.p(vertexComponent.x + dbComponent.db.edge, vertexComponent.y + dbComponent.db.edge), 
+									cc.p(vertex.x + dbComponent.db.edge, vertex.y + dbComponent.db.edge), 
 									dbComponent.db.occupy)
 				assert(not self.gridInfo[gridId], string.format("Grid %d not empty!", gridId))
 				self.gridInfo[gridId] = {entity = entity, road = isRoad}
 			end
 		end
-		self.vertexInfo[entity] = vertexComponent.x * 100 + vertexComponent.y
+		self.vertexInfo[entity] = vertex.x * 100 + vertex.y
 
 		self.influenceGraph[entity] = game.MapUtils.createInfluenceGraph(
-											cc.p(vertexComponent.x + dbComponent.db.edge, vertexComponent.y + dbComponent.db.edge), 
+											cc.p(vertex.x + dbComponent.db.edge, vertex.y + dbComponent.db.edge), 
 											dbComponent.db.occupy)
 	elseif storetype == STORE_LIST then
 		for _, v in pairs(self.listInfo) do
@@ -73,7 +74,7 @@ function GridManager:removeEntity( entity, storetype )
 		for i = 0, game.g_mapSize.width - 1 do
 			for j = 0, game.g_mapSize.height - 1 do
 				local gridId = game.g_mapSize.width * i + j
-				if self.gridInfo[gridId] == entity then
+				if self.gridInfo[gridId] and self.gridInfo[gridId].entity == entity then
 					self.gridInfo[gridId] = nil
 				end
 			end

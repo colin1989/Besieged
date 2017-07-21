@@ -70,6 +70,9 @@ function EntityManager:removeComponent( componentName, entity )
 end
 
 function EntityManager:removeEntity( entity )
+	local singletonCurEntity = game.SingletonCurrentEntityComponent:getInstance()
+	singletonCurEntity:remove(entity)
+
 	local coms = self.entityHashComponent[entity] or {}
 	for _, com in pairs(coms) do
 		local entities = self.componentHashEntity[com:getName()] or {}
@@ -97,11 +100,7 @@ end
 -- 获取指定实体的某个组件
 -- 不可用的组件获取不到
 function EntityManager:getComponent( componentName, entity )
-	local component = self:getComponents(entity)[componentName]
-	if component then
-		return component
-	end
-	return nil
+	return self:getComponents(entity)[componentName]
 end
 
 function EntityManager:getEntitiesIntersection( componentNames, ... )

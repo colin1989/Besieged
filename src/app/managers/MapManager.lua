@@ -111,8 +111,7 @@ function MapManager.logicVertex( unit )
 end
 
 function MapManager.findEmptyArea( row )
-	local v = mapCache_:findEmptyArea(tonumber(row))
-	return v
+	return game.EntityManager:getInstance():getGridManager():findEmptyArea(row)
 end
 
 function MapManager.getBuildings( ... )

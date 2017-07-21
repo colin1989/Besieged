@@ -7,8 +7,9 @@ EntitySelectedView.mapping_ = {
 EntitySelectedView.entity_ = nil
 
 function EntitySelectedView:ctor( entity )
+	print("EntitySelectedView ctor")
 	self.entity_ = entity
-	local dbCom = EntityManager:getInstance():getDBComponent(entity)
+	local dbCom = game.EntityManager:getInstance():getDBComponent(entity)
 	self:init("unit_select.csb")
 
 	for _, v in pairs(self.mapping_) do
@@ -31,9 +32,10 @@ function EntitySelectedView:onBtnMake( ... )
 	print("EntitySelectedView BTN_MAKE click")
 end
 
-function EntitySelectedView:onBtnSale( ... )
+function EntitySelectedView:onBtnSale( event )
 	print("EntitySelectedView BTN_SALE click")
 	self:destroy()
+	game.EntityManager:getInstance():removeEntity(self.entity_)
 end
 
 function EntitySelectedView:onBtnUpgrade( ... )

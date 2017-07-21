@@ -13,11 +13,7 @@ return {
 				},
 			},
 			{
-				name = "VertexComponent",
-				properties = {},
-			},
-			{
-				name = "PositionComponent",
+				name = "TransformComponent",
 				properties = {},
 			},
 			{

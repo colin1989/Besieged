@@ -24,20 +24,22 @@ function HandleTouchUtil.handleEntity( touchComponent )
 		end
 	end
 
-	local touch = table.values(touchComponent.touches)[1]
+	local touch = table.values(touchComponent.current)[1]
 	
 	-- 屏幕坐标转map坐标
 	local maptouch = game.MapUtils.screen_2_map(game.MapManager:getMap(), touch)
 	-- map坐标转格子坐标
 	local tiletouch = game.MapUtils.map_2_tile(game.MapManager:getMap(), maptouch)
 	local touchedEntity = game.GridManager:isTouchEntity(tiletouch.x, tiletouch.y)
+
 	-- 当非法位置 或者 waiting状态时
 	-- isTouchEntity会获取不到当前entity
 	local singletonCurEntity = game.SingletonCurrentEntityComponent:getInstance()
 	if singletonCurEntity.entity and singletonCurEntity.entity ~= touchedEntity then
-		local vertexComponent = EntityManager:getComponent("VertexComponent", singletonCurEntity.entity)
+		local transformComponent = EntityManager:getComponent("TransformComponent", singletonCurEntity.entity)
 		local dbComponent = EntityManager:getComponent("DBComponent", singletonCurEntity.entity)
-		if game.MapUtils.isInBound(tiletouch, vertexComponent, dbComponent.db.row) then
+		local vertex = cc.p(transformComponent.vx, transformComponent.vy)
+		if game.MapUtils.isInBound(tiletouch, vertex, dbComponent.db.row) then
 			touchedEntity = singletonCurEntity.entity
 		end
 	end
@@ -50,9 +52,9 @@ function HandleTouchUtil.handleEntity( touchComponent )
 	end
 
 	local returnValue = false
-	local entities = EntityManager:getEntitiesIntersection("SingletonTouchComponent", "VertexComponent", "StateComponent")
+	local entities = EntityManager:getEntitiesIntersection("SingletonTouchComponent", "TransformComponent", "StateComponent")
 	for _, entity in pairs(entities) do
-		local vertexComponent = EntityManager:getComponent("VertexComponent", entity)
+		local transformComponent = EntityManager:getComponent("TransformComponent", entity)
 		local dbComponent = EntityManager:getComponent("DBComponent", entity)
 		local stateComponent = EntityManager:getComponent("StateComponent", entity)
 		
@@ -67,12 +69,12 @@ function HandleTouchUtil.handleEntity( touchComponent )
 		elseif touchComponent.state == "moved" then
 			if stateComponent.pressed then
 				if game.MapUtils.isIndexValid(tiletouch) and tiletouch.x ~= touchComponent.preTile.x or tiletouch.y ~= touchComponent.preTile.y  then
-					local new_vertex = cc.p(vertexComponent.x + tiletouch.x - touchComponent.preTile.x, 
-											vertexComponent.y + tiletouch.y - touchComponent.preTile.y)
+					local vertex = cc.p(transformComponent.vx, transformComponent.vy)
+					local new_vertex = cc.p(vertex.x + tiletouch.x - touchComponent.preTile.x, 
+											vertex.y + tiletouch.y - touchComponent.preTile.y)
 					if game.MapUtils.isUnitValid(new_vertex, dbComponent.db.row) then
 						touchComponent.preTile = tiletouch  -- 保存本次选中的index
-						vertexComponent.x = new_vertex.x
-						vertexComponent.y = new_vertex.y
+						transformComponent:setVertex(new_vertex.x, new_vertex.y, dbComponent.db.row)
 						-- 检测位置是否合法
 						stateComponent.invalidPosition = not EntityManager:getGridManager():isAreaEmpty(new_vertex.x, new_vertex.y, dbComponent.db.row, entity)
 					end
@@ -84,15 +86,16 @@ function HandleTouchUtil.handleEntity( touchComponent )
 				returnValue = touchedEntity ~= nil
 			else
 				if stateComponent.pressed == true then
+					local vertex = cc.p(transformComponent.vx, transformComponent.vy)
 					-- 移动完更新substrate位置和缓存信息
 					local substrateComponent = EntityManager:getComponent("RenderSubstrateComponent", entity)
 					if substrateComponent then
-						substrateComponent.vx = vertexComponent.x
-						substrateComponent.vy = vertexComponent.y
-						substrateComponent.grids = game.MapUtils.getEntityPoints(vertexComponent, dbComponent.db.row)
+						substrateComponent.vx = vertex.x
+						substrateComponent.vy = vertex.y
+						substrateComponent.grids = game.MapUtils.getEntityPoints(vertex, dbComponent.db.row)
 					end
 					-- 检查位置是否可更新
-					local isEmpty = EntityManager:getGridManager():isAreaEmpty(vertexComponent.x, vertexComponent.y, dbComponent.db.row, entity)
+					local isEmpty = EntityManager:getGridManager():isAreaEmpty(vertex.x, vertex.y, dbComponent.db.row, entity)
 					-- 标记可更新位置
 					EntityManager:setComponentMember("StoreComponent", "update", isEmpty, entity)
 				end
@@ -110,6 +113,7 @@ function HandleTouchUtil.handleZoomLayer( touchComponent )
 	if not touchComponent.state then
 		return false
 	end
+	-- dump(touchComponent, "touchComponent", 3)
 	-- print("handleZoomLayer", table.nums(touchComponent.prePositions or {}))
 	if touchComponent.nums == 1 then  -- 单点
 		local touch = table.values(touchComponent.touches)[1]

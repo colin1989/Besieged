@@ -11,8 +11,9 @@ function EntityFactory.createBuilding( id, vertex, state )
 	local entity = EntityManager:createEntity()
 	local dbCom = ComponentFactory.createDB(id)
 	EntityManager:addComponent(dbCom, entity)
-	EntityManager:addComponent(ComponentFactory.createVertex(vertex.x, vertex.y), entity)
-	EntityManager:addComponent(ComponentFactory.createPosition(0, 0, 0.5, 0.5), entity)
+	local transform = game.TransformComponent:create()
+	transform:setVertex(vertex.x, vertex.y, dbCom.db.row)
+	EntityManager:addComponent(transform, entity)
 	-- EntityManager:addComponent(ComponentFactory.createMovement(0, 0), entity)
 	EntityManager:addComponent(ComponentFactory.createState(state), entity)
 
@@ -34,7 +35,8 @@ function EntityFactory.createBuilding( id, vertex, state )
 	-- 等待状态的禁用存储组件
 	EntityManager:setComponentEnabled("StoreComponent", entity, state ~= U_ST_WAITING)
 	EntityManager:setComponentMember("StoreComponent", "save", true, entity)
-	EntityManager:addComponent(game.BreakableComponent:create(), entity)
+	local uioperate = game.UIOperateComponent:create()
+	EntityManager:addComponent(uioperate, entity)
 	
 	return entity
 end
@@ -44,8 +46,9 @@ function EntityFactory.createPlant( id, vertex )
 	local entity = EntityManager:createEntity()
 	local dbCom = ComponentFactory.createDB(id)
 	EntityManager:addComponent(dbCom, entity)
-	EntityManager:addComponent(ComponentFactory.createVertex(vertex.x, vertex.y), entity)
-	EntityManager:addComponent(ComponentFactory.createPosition(0, 0, 0.5, 0.5), entity)
+	local transform = game.TransformComponent:create()
+	transform:setVertex(vertex.x, vertex.y, dbCom.db.row)
+	EntityManager:addComponent(transform, entity)
 	EntityManager:addComponent(ComponentFactory.createState(), entity)
 	EntityManager:addComponent(ComponentFactory.createRenderSubstrate(vertex.x, vertex.y, dbCom.db.row), entity)
 	local renderCom = ComponentFactory.createRender(game.MapManager.getMap())
@@ -58,6 +61,7 @@ function EntityFactory.createPlant( id, vertex )
 	-- 按位置存储
 	EntityManager:addComponent(ComponentFactory.createStore(STORE_POSITION), entity)	
 	EntityManager:setComponentMember("StoreComponent", "save", true, entity)
+	EntityManager:addComponent(game.UIOperateComponent:create(), entity)
 
 	return entity
 end
@@ -68,7 +72,9 @@ function EntityFactory.createSoldier( id, vertex )
 	EntityManager:addComponent(dbCom, entity)
 	local position = game.MapUtils.vertex_2_real(game.MapManager.getMap(), vertex, dbCom.db.row)
 	print("soldier position", position.x, position.y)
-	EntityManager:addComponent(ComponentFactory.createPosition(position.x, position.y, 0.5, 0.5), entity)
+	local transform = game.TransformComponent:create()
+	transform:setPosition(position.x, position.y)
+	EntityManager:addComponent(transform, entity)
 	EntityManager:addComponent(ComponentFactory.createState(), entity)
 	local renderCom = ComponentFactory.createRender(game.MapManager.getMap())
 	renderCom.assetName = string.format("character/arrower1/%s.png", "105.0")
@@ -79,7 +85,7 @@ function EntityFactory.createSoldier( id, vertex )
 	EntityManager:addComponent(ComponentFactory.createStore(STORE_LIST), entity)	
 	EntityManager:setComponentMember("StoreComponent", "save", true, entity)
 	-- AI
-	EntityManager:addComponent(ComponentFactory.createAI("testBT", game.SoldierBlackboard:create()), entity)
+	-- EntityManager:addComponent(ComponentFactory.createAI("testBT", game.Blackboard:create()), entity)
 end
 
 return EntityFactory

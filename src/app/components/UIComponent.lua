@@ -5,5 +5,14 @@
 local UIComponent = class("UIComponent", game.Component)
 UIComponent.csbName = nil
 UIComponent.mainLayer = nil
+UIComponent.visible = false
+
+function UIComponent:destroy( ... )
+	if self.mainLayer then
+		self.mainLayer:destroy()
+	end
+	self.mainLayer = nil
+	self.visible = false
+end
 
 return UIComponent

@@ -9,19 +9,8 @@ function ComponentFactory.create( componentName )
 	return game[componentName]:create()
 end
 
-function ComponentFactory.createPosition( x, y, ax, ay )
-	local component = ComponentFactory.create("PositionComponent")
-	component.x = x
-	component.y = y
-	component.ax = ax
-	component.ay = ay
-	return component
-end
-
-function ComponentFactory.createVertex( x, y )
-	local component = ComponentFactory.create("VertexComponent")
-	component.x = x
-	component.y = y
+function ComponentFactory.createTransform( ... )
+	local component = ComponentFactory.create("TransformComponent")
 	return component
 end
 

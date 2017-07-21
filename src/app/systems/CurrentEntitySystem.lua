@@ -12,22 +12,31 @@ function CurrentEntitySystem:execute( ... )
 		-- 取消操作当前的entity
 		if singletonCurEntity.preEntity then
 			local entity = singletonCurEntity.preEntity
-			local vertexComponent = EntityManager:getComponent("VertexComponent", entity)
+			local transformComponent = EntityManager:getComponent("TransformComponent", entity)
 			local dbComponent = EntityManager:getComponent("DBComponent", entity)
 			local stateComponent = EntityManager:getComponent("StateComponent", entity)
+			if stateComponent.buildState == U_ST_WAITING then
+				return
+			end
 
-			local isEmpty = EntityManager:getGridManager():isAreaEmpty(vertexComponent.x, vertexComponent.y, dbComponent.db.row, entity)
+			local vertex = cc.p(transformComponent.vx, transformComponent.vy)
+			local isEmpty = EntityManager:getGridManager():isAreaEmpty(vertex.x, vertex.y, dbComponent.db.row, entity)
 			if not isEmpty then
 				local realVertex = EntityManager:getGridManager():getVertex(entity)
-				vertexComponent.x = realVertex.x
-				vertexComponent.y = realVertex.y
+				vertex.x = realVertex.x
+				vertex.y = realVertex.y
 				local substrateComponent = EntityManager:getComponent("RenderSubstrateComponent", entity)
 				if substrateComponent then
-					substrateComponent.vx = vertexComponent.x
-					substrateComponent.vy = vertexComponent.y
-					substrateComponent.grids = game.MapUtils.getEntityPoints(vertexComponent, dbComponent.db.row)
+					substrateComponent.vx = vertex.x
+					substrateComponent.vy = vertex.y
+					substrateComponent.grids = game.MapUtils.getEntityPoints(vertex, dbComponent.db.row)
 				end
 				stateComponent.invalidPosition = false
+			end
+
+			local uiComponent = EntityManager:getComponent("UIOperateComponent", entity)
+			if uiComponent and uiComponent.visible then
+				uiComponent:destroy()
 			end
 			stateComponent.selected = false
 			singletonCurEntity.preEntity = nil
@@ -36,8 +45,12 @@ function CurrentEntitySystem:execute( ... )
 		if singletonCurEntity.entity then
 			local entity = singletonCurEntity.entity
 			local stateComponent = EntityManager:getComponent("StateComponent", entity)
-
 			stateComponent.selected = true
+
+			local uiComponent = EntityManager:getComponent("UIOperateComponent", entity)
+			if uiComponent and stateComponent.buildState ~= U_ST_WAITING then
+				uiComponent.visible = true
+			end
 		end
 	end
 end

@@ -10,7 +10,7 @@ StoreComponent.update = false  -- 需要更新
 StoreComponent.storeType = nil  -- 存储类型
 
 function StoreComponent:destroy( entity )
-	EntityManager:getGridManager():removeEntity(entity)
+	EntityManager:getGridManager():removeEntity(entity, self.storeType)
 end
 
 return StoreComponent

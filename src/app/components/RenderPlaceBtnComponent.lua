@@ -8,7 +8,7 @@ function RenderPlaceBtnComponent:ctor( ... )
 end
 
 function RenderPlaceBtnComponent:destroy( ... )
-	if self.container and self.container:getParent() then
+	if self.container and not tolua.isnull(self.container) and self.container:getParent() then
 		print("RenderPlaceBtnComponent:destroy")
 		self.container:removeSelf()
 	end

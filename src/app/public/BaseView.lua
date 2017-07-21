@@ -6,7 +6,7 @@ function BaseView.ctor( ... )
 end
 
 function BaseView:destroy( ... )
-	game.LayerManager.removeLayout(self.__cname)
+	game.LayerManager.removeLayoutByName(self.__cname)
 end
 
 function BaseView:notifications( ... )

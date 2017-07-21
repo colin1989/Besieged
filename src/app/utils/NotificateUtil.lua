@@ -16,7 +16,7 @@ function component.add(instance, flag)
 	end
 end
 
-function component.remove( self, flag )
+function component.remove( instance, flag )
 	if instance.notifications then
 		local notificates = instance:notifications()
 		for _, v in pairs(notificates) do

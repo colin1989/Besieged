@@ -35,11 +35,17 @@ function LayerManager.addLayout( layout, name, action )
 		actions[#actions + 1] = cc.ScaleTo:create(0.05, 1)
 		layout:runAction(cc.Sequence:create(actions))
 	end
+	return #layoutStack_
 end
 
 
+function LayerManager.removeLayout( id )
+	local layout = table.remove(layoutStack_, id)
+	layout:removeSelf()
+end
+
 -- name为空则默认删除最上层的layout
-function LayerManager.removeLayout( name )
+function LayerManager.removeLayoutByName( name )
 	if name then
 		for k, v in pairs(layoutStack_ or {}) do
 			if v.name == name then
